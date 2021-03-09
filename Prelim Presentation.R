@@ -19,7 +19,7 @@ library(data.table)
 UHC2_long<-melt(setDT(UHC2),measure=patterns("^POST1", "^POST2", "^POST3", "^POST4"), 
                value.name=c("P1", "P2", "P3", "P4"), variable.name="condition")
 #Gives me the melt I want
-UHC_long<-UHC_long[!(is.na(UHC_long$P1) | UHC_long$P1==""), ]
+UHC2_long<-UHC2_long[!(is.na(UHC_long$P1) | UHC_long$P1==""), ]
 #deletes the empty rows created by the melt i want
 
 #renaming our conditions
