@@ -64,10 +64,55 @@ UHC_long<-melt(setDT(UHC),measure=patterns("1_10", "2_1", "3_1", "4_1", "Med_A_1
                value.name=c("P1", "P2", "P3", "P4", "Post_Med_A","Post_Med_B_1","Post_Med_B_2", "ins_score"), variable.name="condition")
 
 UHC_w_score %>% select(contains("Med_B_2"))
-#1_10 dirty w/ med q
+#1_10 fine
 #2_1 dirty w/ med q
 #3_1 fine
 #4_1 fine
 #med_a_1 fine
 #med_b_1 fine
 #med_b_2 fine
+
+UHC_w_score<-read.csv("UHC_w_score_2020.csv")
+names(UHC_w_score)[names(UHC_w_score) == 'Post_Ctrl_Med_B_1_10'] <- 'Post_Ctrl_Med_B_1_1'
+UHC_w_score %>% select(contains("1_10"))
+
+names(UHC_w_score)[names(UHC_w_score) == 'Post_Ctrl_Med_B_2_10'] <- 'Post_Ctrl_Med_B_2_2'
+names(UHC_w_score)[names(UHC_w_score) == 'Post_Int_Med_B_2_1'] <- 'Post_Int_Med_B_2_2'
+UHC_w_score %>% select(contains("2_1"))
+
+UHC_w_score %>% select(contains("Med_B_2"))
+#i think we fixed it all?
+
+UHC_w_score %>% select(contains("1_10"))
+UHC_w_score %>% select(contains("2_1"))
+UHC_w_score %>% select(contains("3_1"))
+UHC_w_score %>% select(contains("4_1"))
+UHC_w_score %>% select(contains("Med_A_1"))
+UHC_w_score %>% select(contains("Med_B_1"))
+UHC_w_score %>% select(contains("Med_B_2"))
+names(UHC_w_score)[names(UHC_w_score) == 'Insurance_Int_1'] <- 'Insurance_1_Int'
+names(UHC_w_score)[names(UHC_w_score) == 'Insurance_Int_2'] <- 'Insurance_2_Int'
+UHC_w_score %>% select(contains("Insurance_1"))
+names(UHC_w_score)[names(UHC_w_score) == 'Insurance_Ctrl_1'] <- 'Insurance_1_Ctrl'
+names(UHC_w_score)[names(UHC_w_score) == 'Insurance_Ctrl_2'] <- 'Insurance_2_Ctrl'
+UHC_w_score %>% select(contains("Insurance_2"))
+
+#need to only have 2 groups for ins question, probably check 2 patterns and group into 2 values
+
+#need an additional entry in ourmelt for age, gender, race, school year,
+UHC_w_score %>% select(contains("Age"))
+UHC_w_score %>% select(contains("Gender"))
+UHC_w_score %>% select(contains("Race"))
+UHC_w_score %>% select(contains("School"))
+UHC_w_score %>% select(contains("Free"))
+
+UHC_long<-melt(setDT(UHC_w_score),measure=patterns("1_10", "2_1", "3_1", "4_1", "Med_A_1", "Med_B_1", "Med_B_2", "Insurance_1", "Insurance_2","Age","Gender","Race","School", "Free"), 
+               value.name=c("P1", "P2", "P3", "P4", "Post_Med_A","Post_Med_B_1","Post_Med_B_2", "ins_score_1", "ins_score_2", "Age","Gender","Race","School_Year","Free_Response"), variable.name="condition")
+
+
+#time to clean out our empty rows
+ind<-which(is.na(UHC_long$P1))
+UHC_long_clean<-UHC_long[!ind,]
+
+#save this clean shit!
+write.csv(UHC_long_clean,'UHC_clean_2020.csv')
