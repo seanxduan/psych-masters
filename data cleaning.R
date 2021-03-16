@@ -116,3 +116,53 @@ UHC_long_clean<-UHC_long[!ind,]
 
 #save this clean shit!
 write.csv(UHC_long_clean,'UHC_clean_2020.csv')
+
+#lets make sure we're all gucci
+UHC_clean<-read.csv("UHC_clean_2020.csv")
+
+#lets try our string replacement so we can get proper class names
+library(tidyverse)
+glimpse(UHC_clean)
+test<-str_replace_all(UHC_clean$Race, c("1"= "White", "2" = "Black", "3" = "APAC",
+                                        "4" = "American Indian/Alaska Native",
+                                        "5" = "Hispanic/Latino", "6" = "Other"))
+table(test)
+UHC_clean$Race<-test
+
+UHC_clean$Race[UHC_clean$Race==""]<-"Other"
+UHC_clean$Race<-as.factor(UHC_clean$Race)
+# Race taken care of
+test<-str_replace_all(UHC_clean$condition, c("1"= "Intervention", "2" = "Control"))
+UHC_clean$condition<-test
+UHC_clean$condition<-as.factor(UHC_clean$condition)
+#condition
+
+UHC_clean$School_Year<-str_replace_all(UHC_clean$School_Year, c("1"= "Freshman", "2" = "Sophmore",
+                                                                "3" = "Junior","4" = "Senior","5" = "Other"))
+UHC_clean$School_Year[is.na(UHC_clean$School_Year)] <- "Other"
+UHC_clean$School_Year<-as.factor(UHC_clean$School_Year)
+#school yr done
+
+UHC_clean$ins_score_1<-str_replace_all(UHC_clean$ins_score_1, c("1" = "Yes", "2" = "No"))
+UHC_clean$ins_score_1<-as.factor(UHC_clean$ins_score_1)
+UHC_clean$ins_score_2<-str_replace_all(UHC_clean$ins_score_2, c("1" = "Yes", "2" = "No"))
+UHC_clean$ins_score_2<-as.factor(UHC_clean$ins_score_2)
+#ins score done
+
+UHC_clean$Gender<-str_replace_all(UHC_clean$Gender, c("1"= "Male", "2" = "Female","3" = "Gender Variant/Nonconforming"))
+UHC_clean$Gender<-as.factor(UHC_clean$Gender)
+#gender done
+
+#lets try to aggregate and score our elements?
+UHC_clean$Prescore<-((UHC_clean$Pre_P1+UHC_clean$Pre_P2+(100-UHC_clean$Pre_P3)+UHC_clean$Pre_P4)/4)
+UHC_clean$Postscore<-((UHC_clean$P1+UHC_clean$P2+(100-UHC_clean$P3)+UHC_clean$P4)/4)
+
+UHC_clean$Pre_Equality<-UHC_clean$Pre_Med_P5
+UHC_clean$Post_Equality<-UHC_clean$Post_Med_A
+
+UHC_clean$Pre_Understanding<-((UHC_clean$Pre_Med_P6+UHC_clean$Pre_Med_P7)/2)
+UHC_clean$Post_Understanding<-((UHC_clean$Post_Med_B_1+UHC_clean$Post_Med_B_2)/2)
+
+UHC_final<-UHC_clean[,c(10:14,22:34)]
+#alrighty, we're ready for data analysis! time to save!
+write.csv(UHC_clean,'UHC_rdy_for_analysis_2020.csv')
