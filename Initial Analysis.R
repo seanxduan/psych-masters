@@ -89,3 +89,69 @@ demog %>%
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
 
 #alrighty, well that's something decent if nothing else!
+#if we want to clone out this data using our previous analysis, we have to change our organization quite a bit
+#e.g. need to melt out prescore and postscore into one col
+UHC_model<-UHC[,c(11:15,23:35)]
+
+UHC_model_long <- reshape(
+  data = UHC_model,
+  varying = list(c("Prescore","Postscore"),
+                 c("Pre_Equality","Post_Equality"),
+                 c("Pre_Understanding","Post_Understanding")),
+  idvar = 'Subject',
+  v.names = c('UHC_Support', 'Equality', 'Understanding'),
+  timevar = 'Time',
+  times = c('pre', 'post'),
+  direction = 'long'
+)
+
+## lets do some basic modelling work, copying what we did from an earlier era!
+library(tidyverse)
+library("lme4")
+library("ggplot2")
+library("papaja")
+library("sjPlot")
+library("papaja")
+library("brms")
+library("rethinking")
+library("dplyr")
+library("texreg")
+
+##copied direct from old code
+UHC_old<-read.csv("UHC_old.csv")
+#changing to allow the correct levels
+UHC_old$variable <- factor(UHC_old$variable, levels = c("PRESCORE","POSTSCORE"))
+#rename our condition var's to have actual names
+UHC_old$condition<-factor(UHC_old$condition)
+levels(UHC_old$condition)<-c("Control", "Active","Passive")
+#frequentist model
+m3 <- lmer(value ~ 0 + condition*variable + (1|SUBJECT), data    = UHC_final)
+m3_sum <- summary(m3)
+
+
+#lets see if we can try this with our NEW data
+m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+m1_sum <- summary(m1)
+
+#perhaps try it as a normal lm?
+m2<-lm(UHC_Support ~condition*Time, data = UHC_model_long)
+summary(m2)
+
+m3<-lm(UHC_Support ~Understanding + Equality, data = UHC_model_long)
+summary(m3)
+
+
+#maybe try some descriptive plots??
+plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
+  geom_boxplot() 
+plot1 + facet_wrap(~ condition)
+
+#lets see if understanding changes?
+plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
+  geom_boxplot() 
+plot2 + facet_wrap(~ condition)
+
+plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
+  geom_boxplot() 
+plot3 + facet_wrap(~ condition)
+
