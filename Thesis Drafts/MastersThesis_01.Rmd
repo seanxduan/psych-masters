@@ -8,7 +8,7 @@ bibliography: library.bib
 ---
 
 ```{r setup, include = FALSE}
-
+library(texreg)
 library(dplyr)
 library(tidyr)
 library(data.table)
@@ -24,16 +24,24 @@ library(apaTables)
 library(sjPlot)
 library(brms)
 library(tinytex)
-UHC_final<-read.csv("E:/Grad School/2019-2020/Masters Thesis/Prelim Data Presentation/UHC_final.csv")
-UHC_final_long<-read.csv("E:/Grad School/2019-2020/Masters Thesis/Prelim Data Presentation/UHC_final_long.csv")
+library(gtsummary)
+setwd("D:/Grad School/2020-2021/psych-masters")
+UHC<-read.csv("UHC_rdy_for_analysis_2020.csv")
+UHC_model<-UHC[,c(11:15,23:35)]
+UHC_model_long <- reshape(
+  data = UHC_model,
+  varying = list(c("Prescore","Postscore"),
+                 c("Pre_Equality","Post_Equality"),
+                 c("Pre_Understanding","Post_Understanding")),
+  idvar = 'Subject',
+  v.names = c('UHC_Support', 'Equality', 'Understanding'),
+  timevar = 'Time',
+  times = c('pre', 'post'),
+  direction = 'long'
+)
 
-#code for our models
-m3<-lmer(value ~ condition*variable + (1|SUBJECT), data    = UHC_final)
-
-myprior<-prior(normal(0,2.5), class ="Intercept")
-
-#m8<-brm(measurement ~ condition*time + (1|SUBJECT), data = UHC_final_long, family = cumulative("logit"), prior = myprior)
-
+UHC_model_long$condition<- ordered(UHC_model_long$condition, levels = c("Control", "Intervention"))
+UHC_model_long$Time<- ordered(UHC_model_long$Time, levels = c("pre", "post"))
 ```
 
 
@@ -102,7 +110,7 @@ Additionally, our free-response section indicated that some subjects had trouble
 	
 Participants were students enrolled in the Psychology 1000 course at a large midwestern university. Our study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. Participants were not given any other incentive for participation in the study. Randomization to different conditions was determined within the online survey software used to deliver the pre and post test measures. Our total number of participants was 412. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
 
-```{r demographic, include = FALSE}
+```{r demographic, echo=TRUE, results="asis", message = FALSE, include = FALSE}
 demog<-UHC[,c(25:28,15)]
 
 demog %>%
@@ -118,79 +126,68 @@ demog %>%
 ```
 
 
-## Materials
+## Materials and Procedure
 
-Each participant begins by being seated at a computer cubicle with running the online survey software “Qualtrics”, which is used to deliver the pre and post test measures, instructions on how to complete the measures, as well as the condition exercise. Our only pre-test measure will be a single measure of support for universal health care (UHC). This is a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Compared to our pilot study, each item was selected using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree).  
+Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. The singular pre-test measure is a single measure of support for universal health care (UHC). This is a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Each item was selected using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Cronbach's alpha for the items in this measure was ##INSERT ITEM HERE##.
 
-Next, participants in our intervention condition will be directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by Danis, Biddle & Goold (2002). This exercise consists of participants ‘filling out’ a game board by spending up to 49 ‘points’ in a maximum of 79 spaces. Several groups of medical care are represented by costing different amounts of points, with some groups having up to two greater levels of intensity offered for correspondingly higher amounts of points. The core of the exercise consists of the trading off of limited funds in order to determine priorities for the health care system and considering how the specifics of a given plan would affect individual health outcomes. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Our control condition replaces the ‘hands on’ task of the web-exercise with exposure to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources such as the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
+After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. Participants in our intervention condition were directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by @Danis2002 . CHAT consists of participants designing their own Universal Health Care plan by trading off limited "points". Most groups of medical care are represented, costing different amounts of points. Some care options also had greater levels of intensity offered for correspondingly higher amounts of points. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Participants in our control condition were directed to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources including the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
 
-Lastly, our participants will receive a post-test measure, that consists of two main items. The first is a post-test measure of support for UHC, using the Shen et al. (2013) measurement tool. The second item is demographic information, including sex, age, and current year of schooling. 
+Afterwards, participants receive a post-test measure, consisting of two main items. The first is a post-test measure of support for UHC, using the same items as the pre-test measure. The second item is demographic information, including sex, age, and current year of schooling. 
+
+Finally, our participants read a one page paper debriefing them of the purpose and theory behind the research, and is then granted 1 credit in the Psych 1000 system. This entire process should take 20-25 minutes on average, as evinced in our pilot study.
 
 ## Design
 
-The design of this experiment is best described by a multi-level model. Our multi level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x2 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the second ‘2’ is our two experimental conditions, the control and the intervention. Our dependent variable was support for UHC. I believe that there should be no extraneous variables that might influence our results.
-
-## Procedure
-	
-The study begins by our administrator requesting that all subjects turn off personal electronic devices, in order to minimize distraction and disruption. Next, the subjects are lead by the administrator into the room, and are briefly told that the study will consist of a computer survey, with a computer activity during the middle of the survey. Each subject is then brought to a single-occupant cubicle with a computer running our Qualtrics survey. At this point, participants are told to read the instructions carefully, and notify the administrator once the survey assigned them to an experimental condition. Our subjects at this point complete the first half of the survey, consisting of our pre-test measure. After this is completed, the Qualtrics software randomly assigns the survey participant to one of two experimental conditions, with instructions on how to complete the computer exercise displayed upon the screen. Once this occurs, the administrator brings reference materials to our intervention condition, and both groups of subjects will complete the exercise after a brief verbal reminder of the task they were to be working on. After the task is complete, the subject responds to our post-test measures. Lastly, the subject reads a one page paper debriefing them of the purpose and theory behind the research, and is then granted 1 credit in the Psych 1000 system. This entire process should take 20-25 minutes on average, as evinced in our pilot study.
+This experiment is best described as a multi-level model. The multi level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x2 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the second ‘2’ is our two experimental conditions, the control and the intervention. Our dependent variable was support for UHC. I believe that there should be no extraneous variables that might influence our results.
 
 ## Modelling
-
+##???
 I plan to employ two sets of models. One standard frequentist model, accounting for the multi-level nested nature of our repeated measures. Our other model will be a Bayesian model. A special model detail of importance is choosing a prior for our cumulative multinomial regression, of a normal distribution with a mean of zero, and a variance of 4. This was chosen so as to mimic the nature of our log-odds being akin to a z-score, with ranges outside of 4 not having much meaning than one at 2.5. Our main results that we will attend to will be seeing if the variables that we have hypothesized having an effect on support for UHC are statistically sigificant, and from the Bayesian perspective, seeing how much uncertainty we see in our estimates.
+##???
+
+# Results
+
+```{r frequentist, echo=TRUE}
+m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+
+#plot3<-ggplot(UHC_final, aes(x=variable, y=value, shape=condition, color=condition)) +geom_boxplot()
+#plot3 + facet_wrap(~ condition)
+#ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
+```
+
+```{r freq-table1, tab.cap= "Frequentist Table of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m1) 
+##note need to fix this a lil'
+```
+
+```{r freq-graph1, echo=FALSE}
+plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
+  geom_boxplot() 
+plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")
+```
+
+```{r freq-graph2, echo=TRUE}
+plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
+  geom_boxplot() 
+plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")
+
+plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
+  geom_boxplot() 
+plot3 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")
+
+```
+
 
 # Discussion
 
 ## Relate Results to Past Research
 
-Looking at our pilot study. our expectation was that there would be a strong effect confirming our hypothesis as our work related strongly to previous research in the field. We did find a slight effect when exposing individuals to HBP, but there was significant uncertainty regarding our result. Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. With regards to likelihood of wanting the referenced plans for themselves, the slight positive result we obtained cleanly replicates the findings of Danis, Biddle & Goold, 2002. The majority individuals exposed to a health benefit package would be willing to use the health package for themselves. Lastly, our results were different from Weiger, Armstrong & Shaffer, 2019. According to Weiger et al. we should have expected a stronger effect with the experiential intervention as compared to the informational intervention. We neither saw a difference in support between our two interventions (as compared to each other, not the control), as well as no difference in likelihood to accept the proposed HBP for self use. However, we may find different results with an informational intervention that reflects commonly shared information about UHC, as with our currently proposed study, as compared to the informational intervention we used in our pilot. Lastly, since there was a lack of conclusiveness, there is the possibility that the mechanism underlying opposition to UHC could be different than the initial two we hypothesized. While an HBP solves very neatly the issue of ‘fairness’ and ‘lack of explicit definition’ for the program, if opposition to UHC is due to another issue, it may not ameliorate the problem. Due to this lack of conclusiveness, there is significant value in the partial replication we are proposing.
+Given the results of our pilot study, we expected a strong effect confirming our hypothesis.
+
+We did find a slight effect when exposing individuals to HBP, but there was significant uncertainty regarding our result. Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. With regards to likelihood of wanting the referenced plans for themselves, the slight positive result we obtained cleanly replicates the findings of Danis, Biddle & Goold, 2002. The majority individuals exposed to a health benefit package would be willing to use the health package for themselves. Lastly, our results were different from Weiger, Armstrong & Shaffer, 2019. According to Weiger et al. we should have expected a stronger effect with the experiential intervention as compared to the informational intervention. We neither saw a difference in support between our two interventions (as compared to each other, not the control), as well as no difference in likelihood to accept the proposed HBP for self use. However, we may find different results with an informational intervention that reflects commonly shared information about UHC, as with our currently proposed study, as compared to the informational intervention we used in our pilot. Lastly, since there was a lack of conclusiveness, there is the possibility that the mechanism underlying opposition to UHC could be different than the initial two we hypothesized. While an HBP solves very neatly the issue of ‘fairness’ and ‘lack of explicit definition’ for the program, if opposition to UHC is due to another issue, it may not ameliorate the problem. Due to this lack of conclusiveness, there is significant value in the partial replication we are proposing.
 
 # Limitations
 	
 Both our pilot study and planned study recruited or will recruit participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. In addition, our methodology, specifically the process of instructing our participants how to complete the pencil and paper exercise in the pilot study, was imperfect. In the free response portion of the exit survey as well as when administering the experiment, participants often had trouble understanding the instructions. Furthermore, our control condition in our pilot was a ‘dummy exercise’, and we never presented supporting information for UHC using the ‘standard’ format or content that health organizations would use, reducing our external validity. 
-
-# Appendix	
-
-## Pilot Study Code for Frequentist MLM - treating ordinal values as continuous 
-
-The goal of this analysis is to examine my Universal Health Care benefit package data with an eye towards considering it as a multilevel model. The multilevel structure in this study is that each subject has two support for UHC measurements, one done as a pre-test measure, and one done as a post-test measure. Thus, our two trial times are nested within subjects. Our main level two predictor variable is which condition out of three our subjects were assigned to. We chose the first model assuming that we would best predict UHC support through a specific subject, and which condition they were assigned. This model failed to converge. We next moved to a model that predicted UHC support from just condition, and it was able to converge. We then wished to examine our interaction between time, and condition, as that was part of our hypothesis originally. The model for this also converged. We lastly tried a more complex model that allowed the intercept to vary by time, but the model did not converge, thus we returned to analyzing the results of model 3.
-
-First model, predicting UHC support by subject, and condition, letting intercepts vary by subject.
-
-m1<-lmer(value ~ SUBJECT + condition + (1|SUBJECT), data    = UHC_final) 
-
-We move to this model, as the previous one registered errors.
-
-m2<-lmer(value ~ condition + (1|SUBJECT), data    = UHC_final)
-
-We lastly use this model, as we wish to consider the effect of time as well as condition.
-
-m3<-lmer(value ~ condition*variable + (1|SUBJECT), data    = UHC_final)
-
-We try both this more complex model, but we failure to converge, so we return to using m3.
-
-m5<-lmer(value ~ condition*variable + (1|SUBJECT) + (1|variable), data    = UHC_final)
-
-
-# Pilot Study Code for Bayesian MLM - Treating ordinal values as ordinal
-
-To analyze the data in a different way, I have chosen to look at the per-item scores in the aggregated measure of support for UHC. Treating these values as ordinal, I reshaped my data from wide to tall, with each pre and post test question recieving it's own row. I chose to set my prior based on the understanding that the variance range should roughly mimic z-scores, with values of +- 2.5 being near the edge of the range. 
-
-I started with a simple model, and added more complexity as I desired to test my hypothesis. The first model was a simple affect of condition, time, and question. After finding that the question parameter did not make much of an impact, I chose to look at the interaction between condition and time, something I presupposed would have an effect. The last model I examined had a random intercept by subject, but also allowed the slope for 'condition' to vary by subject. Sadly, this model refused to converge and thus I decided to use my m8 model.
-
-Create a prior based on our understanding of likely ranges in a Z-score.
-
-myprior<-prior(normal(0,2.5), class ="Intercept")
-
-Simplest form of our model.
-
-m7<-brm(measurement ~ condition + time + question + (1|SUBJECT), data = UHC_final_long, family = cumulative("logit"), prior = myprior)
-
-Simplest form testing our base hypothesis.
-
-m8<-brm(measurement ~ condition*time + (1|SUBJECT), data = UHC_final_long, family = cumulative("logit"), prior = myprior)
-
-Model that did not converge
-
-m9<-brm(measurement ~ condition*time + (condition|SUBJECT), data = UHC_final_long, family = cumulative("logit"), prior = myprior)
 
 # References

@@ -144,12 +144,12 @@ summary(m3)
 #maybe try some descriptive plots??
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
   geom_boxplot() 
-plot1 + facet_wrap(~ condition)
+plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")
 
 #lets see if understanding changes?
 plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
   geom_boxplot() 
-plot2 + facet_wrap(~ condition)
+plot2 + facet_wrap(~ condition) +scale_fill_distiller()
 
 plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
   geom_boxplot() 

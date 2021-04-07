@@ -23,6 +23,7 @@ library(apaTables)
 library(sjPlot)
 library(brms)
 library(tinytex)
+library(gtsummary)
 UHC_final<-read.csv("E:/Grad School/2019-2020/Masters Thesis/Prelim Data Presentation/UHC_final.csv")
 UHC_final_long<-read.csv("E:/Grad School/2019-2020/Masters Thesis/Prelim Data Presentation/UHC_final_long.csv")
 
