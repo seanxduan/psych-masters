@@ -42,6 +42,9 @@ UHC_model_long <- reshape(
 
 UHC_model_long$condition<- ordered(UHC_model_long$condition, levels = c("Control", "Intervention"))
 UHC_model_long$Time<- ordered(UHC_model_long$Time, levels = c("pre", "post"))
+
+#cronbahcs alpha
+psych::alpha(UHC[,4:7], check.keys = TRUE)
 ```
 
 
@@ -103,6 +106,7 @@ As a follow-up to our pilot study, the primary study directly addresses the init
 
 Additionally, our free-response section indicated that some subjects had trouble comprehending the instructions. Several occasions occurred where the participant asked the administrator how to complete the exercise after being exposed to the instructions. Improving our instructions and/or simplifying the task was necessary before implementation of our primary study. We resolved this concern by adapting our pen and paper exercise into an easy to use web applet.
 
+Lastly, our pilot study was predicated on the assumption that opposition and support for UHC hinged on both the need for equity and/or fairness, and having a system that is comprehendable and understandable. The CHAT intervention in the study was chosen as it directly addresses both of these issues. However, in our pilot study, we did not directly measure these proposed mediating variables. Thus, in our primary study, we added two items on these mediating variables in order to determine the validity of our proposed mediating mechanism.
 
 # Method
 
@@ -110,7 +114,7 @@ Additionally, our free-response section indicated that some subjects had trouble
 	
 Participants were students enrolled in the Psychology 1000 course at a large midwestern university. Our study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. Participants were not given any other incentive for participation in the study. Randomization to different conditions was determined within the online survey software used to deliver the pre and post test measures. Our total number of participants was 412. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
 
-```{r demographic, echo=TRUE, results="asis", message = FALSE, include = FALSE}
+```{r demographic, echo=FALSE, message=FALSE, results="asis", tab.cap= "Demographics of Subjects"}
 demog<-UHC[,c(25:28,15)]
 
 demog %>%
@@ -124,15 +128,23 @@ demog %>%
     sort = list(everything() ~ "frequency")
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
 ```
+## Measures
 
+There are five main measures used for the primary study. 
+
+Our first three measures directly examine support for UHC and our two proposed mediating variables. The first is a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Each item was selected using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Cronbach's alpha for the items in this measure was 0.85. The second is a single item measure of our equity/fairness mediating variable, adapted from @Netemeyer1996, using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Our second measure was a 2 item measure of our understandability mediating variable, adapted from @VanMulken2010. Both items were scored using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree), and the measure is a simple average of these, Cronbach's alpha for the items in this measure was 0.92.
+
+Our last two measures examined subjective and objective numeracy. Our subjective numeracy measure was the Subjective Numeracy Scale created by @Fagerlin2007. This measure is a simple average consisting of eight items, with the seventh item reverse scored. Each item was selected using a likert scale that went from 1 (generally poor with numbers) to 7 (generally prefer numbers). The Cronbach's alpha for these items is 0.84. An example item is "How good are you at calculating a 15% tip?".
+
+The objective numeracy measure was the Rasch Numeracy Scale, created by @Weller2013. This measure consists of 8 items, all math problems of varying complexity, generally using some amount of algebra, percentiles, and table reading skill. This measure was scored from 0 to 8, with the sum of all correct answers to the individual items as the subject's objective numeracy score. The Cronbach's alpha for these items is 0.71. An example item is "If it takes five machines 5 minutes to make five widgets, how long would it take 100 machines to make 100 widgets?"
 
 ## Materials and Procedure
 
-Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. The singular pre-test measure is a single measure of support for universal health care (UHC). This is a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Each item was selected using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Cronbach's alpha for the items in this measure was ##INSERT ITEM HERE##.
+Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. Our pre-test measure is then given, consisting of the Support for UHC measure, fairness of UHC measure, and Comprehensability of UHC measure. After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. 
 
-After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. Participants in our intervention condition were directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by @Danis2002 . CHAT consists of participants designing their own Universal Health Care plan by trading off limited "points". Most groups of medical care are represented, costing different amounts of points. Some care options also had greater levels of intensity offered for correspondingly higher amounts of points. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Participants in our control condition were directed to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources including the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
+Participants in our intervention condition were directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by @Danis2002 . CHAT consists of participants designing their own Universal Health Care plan by trading off limited "points". Most groups of medical care are represented, costing different amounts of points. Some care options also had greater levels of intensity offered for correspondingly higher amounts of points. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Participants in our control condition were directed to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources including the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
 
-Afterwards, participants receive a post-test measure, consisting of two main items. The first is a post-test measure of support for UHC, using the same items as the pre-test measure. The second item is demographic information, including sex, age, and current year of schooling. 
+Afterwards, participants receive a post-test measure, consisting of three main sections. The first is the mostly the same as our pre-test section (support for UHC, perception of UHC equality, understanding of UHC). There are additional items inquiring as to whether or not individuals pay for their own health insurance, or if they have been uninsured, and the intervention condition was asked if they would be happy having the plan they built as their own health insurance. The second section is a simple free-response question asking about the subjects thoughts about the exercise they just completed. The third section is demographic information, including sex, age, and current year of schooling. 
 
 Finally, our participants read a one page paper debriefing them of the purpose and theory behind the research, and is then granted 1 credit in the Psych 1000 system. This entire process should take 20-25 minutes on average, as evinced in our pilot study.
 
@@ -147,7 +159,7 @@ I plan to employ two sets of models. One standard frequentist model, accounting 
 
 # Results
 
-```{r frequentist, echo=TRUE}
+```{r frequentist, echo=FALSE}
 m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
 
 #plot3<-ggplot(UHC_final, aes(x=variable, y=value, shape=condition, color=condition)) +geom_boxplot()
@@ -155,10 +167,15 @@ m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_l
 #ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
 ```
 
-```{r freq-table1, tab.cap= "Frequentist Table of Intervention on UHC Support", echo=FALSE, results="asis"}
-texreg(m1) 
+```{r freq-table1, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m1, custom.model.names = "Frequentist Model",
+       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Interevention and Post-Measurement"),
+       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table1",
+       ci.force = TRUE) 
 ##note need to fix this a lil'
 ```
+
+Examining 
 
 ```{r freq-graph1, echo=FALSE}
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
