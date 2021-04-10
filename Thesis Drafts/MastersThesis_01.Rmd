@@ -4,7 +4,7 @@ subtitle: 'Masters Thesis'
 author: "Sean Duan"
 date: "April 9, 2021"
 output: pdf_document
-bibliography: library.bib
+bibliography: My_collection.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -140,7 +140,7 @@ The objective numeracy measure was the Rasch Numeracy Scale, created by @Weller2
 
 ## Materials and Procedure
 
-Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. Our pre-test measure is then given, consisting of the Support for UHC measure, fairness of UHC measure, and Comprehensability of UHC measure. After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. 
+Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. Our pre-test measure is then given, consisting of the Support for UHC measure, fairness of UHC measure, and comprehensibility of UHC measure. After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. 
 
 Participants in our intervention condition were directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by @Danis2002 . CHAT consists of participants designing their own Universal Health Care plan by trading off limited "points". Most groups of medical care are represented, costing different amounts of points. Some care options also had greater levels of intensity offered for correspondingly higher amounts of points. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Participants in our control condition were directed to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources including the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
 
@@ -150,51 +150,72 @@ Finally, our participants read a one page paper debriefing them of the purpose a
 
 ## Design
 
-This experiment is best described as a multi-level model. The multi level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x2 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the second ‘2’ is our two experimental conditions, the control and the intervention. Our dependent variable was support for UHC. I believe that there should be no extraneous variables that might influence our results.
-
-## Modelling
-##???
-I plan to employ two sets of models. One standard frequentist model, accounting for the multi-level nested nature of our repeated measures. Our other model will be a Bayesian model. A special model detail of importance is choosing a prior for our cumulative multinomial regression, of a normal distribution with a mean of zero, and a variance of 4. This was chosen so as to mimic the nature of our log-odds being akin to a z-score, with ranges outside of 4 not having much meaning than one at 2.5. Our main results that we will attend to will be seeing if the variables that we have hypothesized having an effect on support for UHC are statistically sigificant, and from the Bayesian perspective, seeing how much uncertainty we see in our estimates.
-##???
+The design of this experiment is as a multi-level model. The multi-level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x2 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the second ‘2’ is our two experimental conditions, the control and the intervention. Our primary dependent variable was support for UHC, with two mediating variables on comprehensibility and equity. I believe that there should be no extraneous variables that might influence our results.
 
 # Results
 
-```{r frequentist, echo=FALSE}
+```{r frequentist models, echo=FALSE}
+#first basic mlm of UHC supp, no slope, intercept varies by subj, w/ condit, time, and intrxn.
 m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+
+#secondary mod of if understanding predicts UHC supp
+m2 <-lm(UHC_Support ~ Understanding, data = UHC_model_long)
+
+#secondary mod of if equity predicts UHC supp
+m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
 
 #plot3<-ggplot(UHC_final, aes(x=variable, y=value, shape=condition, color=condition)) +geom_boxplot()
 #plot3 + facet_wrap(~ condition)
 #ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
 ```
 
-```{r freq-table1, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
-texreg(m1, custom.model.names = "Frequentist Model",
-       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Interevention and Post-Measurement"),
-       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table1",
-       ci.force = TRUE) 
-##note need to fix this a lil'
-```
+
 
 Examining 
 
 ```{r freq-graph1, echo=FALSE}
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
   geom_boxplot() 
-plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")
+plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Support for UHC", title = "Effect of Intervention on Support for UHC")
+#do we want to add fig caps? like fig.cap= "Frequentist Model of Intervention on UHC Support"
+```
+```{r freq-table1, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
+       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Interevention and Post-Measurement"),
+       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table1",
+       ci.force = TRUE) 
+##note need to fix this a lil'
 ```
 
 ```{r freq-graph2, echo=TRUE}
 plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
   geom_boxplot() 
-plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")
+plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC")
+```
 
+```{r freq-table2, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m2, custom.model.names = "Effect of Understanding on UHC Support",
+       custom.coef.names = c("Intercept","Understanding"),
+       caption = "Table of Linear Model - Understanding Predicing UHC Support", label = "tab:freq-table2",
+       ci.force = TRUE) 
+##note need to fix this a lil'
+```
+
+```{r freq-graph3, echo=TRUE}
 plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
   geom_boxplot() 
-plot3 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")
+plot3 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC")
 
 ```
 
-
+```{r freq-table3, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
+       custom.coef.names = c("Intercept","Equity"),
+       caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
+       ci.force = TRUE) 
+##note need to fix this a lil'
+summary(m3)
+```
 # Discussion
 
 ## Relate Results to Past Research
