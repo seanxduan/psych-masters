@@ -4,7 +4,7 @@ subtitle: 'Masters Thesis'
 author: "Sean Duan"
 date: "April 9, 2021"
 output: pdf_document
-bibliography: My_collection.bib
+bibliography: library.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -114,7 +114,8 @@ Lastly, our pilot study was predicated on the assumption that opposition and sup
 	
 Participants were students enrolled in the Psychology 1000 course at a large midwestern university. Our study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. Participants were not given any other incentive for participation in the study. Randomization to different conditions was determined within the online survey software used to deliver the pre and post test measures. Our total number of participants was 412. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
 
-```{r demographic, echo=FALSE, message=FALSE, results="asis", tab.cap= "Demographics of Subjects"}
+```{r demographic, echo=FALSE, message=FALSE, results="asis"}
+#, tab.cap= "Demographics of Subjects"
 demog<-UHC[,c(25:28,15)]
 
 demog %>%
@@ -127,6 +128,10 @@ demog %>%
     missing_text = "(Missing)",
     sort = list(everything() ~ "frequency")
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
+```
+```{r blankey, message=FALSE, tab.cap= "Demographics of Subjects"}
+#empty to see if we can get our caption on the first table to work?
+#it seems like it doesnt?
 ```
 ## Measures
 
@@ -154,9 +159,12 @@ The design of this experiment is as a multi-level model. The multi-level structu
 
 # Results
 
+## Quantitative Results
+
 ```{r frequentist models, echo=FALSE}
 #first basic mlm of UHC supp, no slope, intercept varies by subj, w/ condit, time, and intrxn.
 m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+#summary(m1)
 
 #secondary mod of if understanding predicts UHC supp
 m2 <-lm(UHC_Support ~ Understanding, data = UHC_model_long)
@@ -169,9 +177,9 @@ m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
 #ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
 ```
 
+A total of 412 subjects completed our exercise. Our final sample in our primary study included 195 participants in our control condition, and 217 participants in our intervention condition, and was approximately 67% female. Additional demographic information can be found in Table 1 above.
 
-
-Examining 
+Table \@ref(tab:freq-table1) presents the results of the primary analysis of our primary study, the effect of our intervention on support for UHC as modelled by a 2x2 multi-level model. Unexpectedly, we see that individuals in our control condition trended towards larger values than those in our intervention condition, the opposite of what we hypothesized.
 
 ```{r freq-graph1, echo=FALSE}
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
@@ -187,7 +195,16 @@ texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject
 ##note need to fix this a lil'
 ```
 
-```{r freq-graph2, echo=TRUE}
+Our secondary hypothesis was that our two moderating variables would be the mechanism that predicts increased support for UHC. The first element of our secondary hypothesis can be seen in table \@ref(tab:freq-table2). We can clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Furthermore, we see that while pre-measurement understanding is roughly equal in both groups, post-measurement understanding has increased in both groups, with larger variance in score for our control condition.
+
+```{r equity-diff, echo=FALSE}
+#do we include this?
+UHC_equity<-filter(UHC_model_long, Time =='post')
+res <- var.test(Equality ~ condition, data = UHC_equity)
+res
+```
+
+```{r freq-graph2, echo=FALSE}
 plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
   geom_boxplot() 
 plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC")
@@ -196,12 +213,13 @@ plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = 
 ```{r freq-table2, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
 texreg(m2, custom.model.names = "Effect of Understanding on UHC Support",
        custom.coef.names = c("Intercept","Understanding"),
-       caption = "Table of Linear Model - Understanding Predicing UHC Support", label = "tab:freq-table2",
+       caption = "Table of Linear Model - Understanding Predicting UHC Support", label = "tab:freq-table2",
        ci.force = TRUE) 
-##note need to fix this a lil'
 ```
+The second element of our secondary hypothesis can be seen in table \@ref(tab:freq-table3). We can clearly see in this second table that there seems to be a statistically significant effect wherein increased perception of equity predicts increased support for UHC. It is very apparent as well that in our post-intervention measurement, that our control group had a significantly increased perception of equity as compared to our intervention.
 
-```{r freq-graph3, echo=TRUE}
+
+```{r freq-graph3, echo=FALSE}
 plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
   geom_boxplot() 
 plot3 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC")
@@ -213,19 +231,32 @@ texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
        custom.coef.names = c("Intercept","Equity"),
        caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
        ci.force = TRUE) 
-##note need to fix this a lil'
-summary(m3)
 ```
+## Qualitative Results
+
+PUT TEXT IN HERE ABOUT OUR FREE-RESPONSE SECTION AND OUR THOUGHTS???
+
+
 # Discussion
 
 ## Relate Results to Past Research
 
 Given the results of our pilot study, we expected a strong effect confirming our hypothesis.
 
-We did find a slight effect when exposing individuals to HBP, but there was significant uncertainty regarding our result. Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. With regards to likelihood of wanting the referenced plans for themselves, the slight positive result we obtained cleanly replicates the findings of Danis, Biddle & Goold, 2002. The majority individuals exposed to a health benefit package would be willing to use the health package for themselves. Lastly, our results were different from Weiger, Armstrong & Shaffer, 2019. According to Weiger et al. we should have expected a stronger effect with the experiential intervention as compared to the informational intervention. We neither saw a difference in support between our two interventions (as compared to each other, not the control), as well as no difference in likelihood to accept the proposed HBP for self use. However, we may find different results with an informational intervention that reflects commonly shared information about UHC, as with our currently proposed study, as compared to the informational intervention we used in our pilot. Lastly, since there was a lack of conclusiveness, there is the possibility that the mechanism underlying opposition to UHC could be different than the initial two we hypothesized. While an HBP solves very neatly the issue of ‘fairness’ and ‘lack of explicit definition’ for the program, if opposition to UHC is due to another issue, it may not ameliorate the problem. Due to this lack of conclusiveness, there is significant value in the partial replication we are proposing.
+We did not find a statistically significant effect of our intervention in our primary study. 
+
+Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. With regards to likelihood of wanting the referenced plans for themselves, the slight positive result we obtained cleanly replicates the findings of Danis, Biddle & Goold, 2002. The majority individuals exposed to a health benefit package would be willing to use the health package for themselves. (IS THIS TRUE? examine and see our % of acceptance??)???
+
+Furthermore, our results were different from Weiger, Armstrong & Shaffer, 2019. In our primary study, we were interested in seeing if our results from our pilot study replicated. Specifically, we wanted further confirmation on whether or not an experiential intervention would be more effective than an informational intervention. Compared to our pilot study, while we did not have two interventions, our control condition was a pseudo 'information only intervention', as it was presenting commonly accepted facts about UHC from well trusted sources. Given that support for UHC was higher in our information only based control condition than it was in our experiential intervention, we replicated our preliminary results indicating that to be the case from our pilot study.
+
+Interestingly, there was significant evidence supporting our secondary hypothesis. When directly measuring our proposed mediating variables, we see that both percieved equality as well as understanding of UHC strongly predicted support for UHC. Furthermore, our mediating variables indicated that while our control condition increased both perceived equality as well as increased understanding, our intervention condition only increased understanding. Thus, the gap in perceptions of increased equality is likely the mechanism by which our intervention was unsuccessful at increasing support for UHC. Lastly, while we did see an increase in variance in perceptions of equality between our control and intervention, the difference was not statistically significant, and the group mean of both conditions was extremely similar.
+
+###### PUT IN DISCUSSION OF OUR QUALITATIVE DATA
+
 
 # Limitations
 	
-Both our pilot study and planned study recruited or will recruit participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. In addition, our methodology, specifically the process of instructing our participants how to complete the pencil and paper exercise in the pilot study, was imperfect. In the free response portion of the exit survey as well as when administering the experiment, participants often had trouble understanding the instructions. Furthermore, our control condition in our pilot was a ‘dummy exercise’, and we never presented supporting information for UHC using the ‘standard’ format or content that health organizations would use, reducing our external validity. 
+Our primary and pilot studies both recruited participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. 
+# PIT MORE THINGS HERE?
 
 # References
