@@ -45,6 +45,13 @@ UHC_model_long$Time<- ordered(UHC_model_long$Time, levels = c("pre", "post"))
 
 #cronbahcs alpha
 psych::alpha(UHC[,4:7], check.keys = TRUE)
+
+#% of accepters?
+#mean of acceptance
+mean(UHC_model_long$Post_Int_Accept_1, na.rm=TRUE)
+
+sum(UHC_model_long$Post_Int_Accept_1>50, na.rm=TRUE)
+284/412
 ```
 
 
@@ -129,10 +136,7 @@ demog %>%
     sort = list(everything() ~ "frequency")
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
 ```
-```{r blankey, message=FALSE, tab.cap= "Demographics of Subjects"}
-#empty to see if we can get our caption on the first table to work?
-#it seems like it doesnt?
-```
+
 ## Measures
 
 There are five main measures used for the primary study. 
@@ -142,6 +146,8 @@ Our first three measures directly examine support for UHC and our two proposed m
 Our last two measures examined subjective and objective numeracy. Our subjective numeracy measure was the Subjective Numeracy Scale created by @Fagerlin2007. This measure is a simple average consisting of eight items, with the seventh item reverse scored. Each item was selected using a likert scale that went from 1 (generally poor with numbers) to 7 (generally prefer numbers). The Cronbach's alpha for these items is 0.84. An example item is "How good are you at calculating a 15% tip?".
 
 The objective numeracy measure was the Rasch Numeracy Scale, created by @Weller2013. This measure consists of 8 items, all math problems of varying complexity, generally using some amount of algebra, percentiles, and table reading skill. This measure was scored from 0 to 8, with the sum of all correct answers to the individual items as the subject's objective numeracy score. The Cronbach's alpha for these items is 0.71. An example item is "If it takes five machines 5 minutes to make five widgets, how long would it take 100 machines to make 100 widgets?"
+
+Additionally, note that we did not initially collect data on subjective and objective numeracy until part-way through the data collection. Thus, the first 68 subjects do not have this data recorded.
 
 ## Materials and Procedure
 
@@ -172,6 +178,9 @@ m2 <-lm(UHC_Support ~ Understanding, data = UHC_model_long)
 #secondary mod of if equity predicts UHC supp
 m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
 
+#numeracy model
+m4<-lm(UHC_Support~ SNS_score + RNS_score, data = UHC_model_long)
+
 #plot3<-ggplot(UHC_final, aes(x=variable, y=value, shape=condition, color=condition)) +geom_boxplot()
 #plot3 + facet_wrap(~ condition)
 #ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
@@ -179,7 +188,7 @@ m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
 
 A total of 412 subjects completed our exercise. Our final sample in our primary study included 195 participants in our control condition, and 217 participants in our intervention condition, and was approximately 67% female. Additional demographic information can be found in Table 1 above.
 
-Table \@ref(tab:freq-table1) presents the results of the primary analysis of our primary study, the effect of our intervention on support for UHC as modelled by a 2x2 multi-level model. Unexpectedly, we see that individuals in our control condition trended towards larger values than those in our intervention condition, the opposite of what we hypothesized.
+Table 2 presents the results of the primary analysis of our primary study, the effect of our intervention on support for UHC as modelled by a 2x2 multi-level model. Unexpectedly, we see that individuals in our control condition trended towards larger values than those in our intervention condition, the opposite of what we hypothesized.
 
 ```{r freq-graph1, echo=FALSE}
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
@@ -195,9 +204,9 @@ texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject
 ##note need to fix this a lil'
 ```
 
-Our secondary hypothesis was that our two moderating variables would be the mechanism that predicts increased support for UHC. The first element of our secondary hypothesis can be seen in table \@ref(tab:freq-table2). We can clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Furthermore, we see that while pre-measurement understanding is roughly equal in both groups, post-measurement understanding has increased in both groups, with larger variance in score for our control condition.
+Our secondary hypothesis was that our two moderating variables would be the mechanism that predicts increased support for UHC. The first element of our secondary hypothesis can be seen in table 3. We can clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Furthermore, we see that while pre-measurement understanding is roughly equal in both groups, post-measurement understanding has increased in both groups, with larger variance in score for our control condition.
 
-```{r equity-diff, echo=FALSE}
+```{r equity-diff, include=FALSE}
 #do we include this?
 UHC_equity<-filter(UHC_model_long, Time =='post')
 res <- var.test(Equality ~ condition, data = UHC_equity)
@@ -216,8 +225,7 @@ texreg(m2, custom.model.names = "Effect of Understanding on UHC Support",
        caption = "Table of Linear Model - Understanding Predicting UHC Support", label = "tab:freq-table2",
        ci.force = TRUE) 
 ```
-The second element of our secondary hypothesis can be seen in table \@ref(tab:freq-table3). We can clearly see in this second table that there seems to be a statistically significant effect wherein increased perception of equity predicts increased support for UHC. It is very apparent as well that in our post-intervention measurement, that our control group had a significantly increased perception of equity as compared to our intervention.
-
+The second element of our secondary hypothesis can be seen in table 4. We can clearly see in this second table that there seems to be a statistically significant effect wherein increased perception of equity predicts increased support for UHC. It is very apparent as well that in our post-intervention measurement, that our control group had a significantly increased perception of equity as compared to our intervention.
 
 ```{r freq-graph3, echo=FALSE}
 plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
@@ -232,31 +240,67 @@ texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
        caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
        ci.force = TRUE) 
 ```
+
+```{r freq-graph4, echo=FALSE, message=FALSE, warning=FALSE}
+plot4<-ggplot(UHC_model_long, aes(x=SNS_score, y=UHC_Support, color=condition)) +
+  geom_point()+geom_smooth(method="lm") 
+plot4 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Subjective Numeracy", y = "Support for UHC", title = "Effect of Subjective Numeracy on Support for UHC",subtitle="With added linear regression line at 95% confidence interval")
+```
+
+```{r freq-graph5, echo=FALSE, message=FALSE, warning=FALSE}
+plot4<-ggplot(UHC_model_long, aes(x=RNS_score, y=UHC_Support, color=condition)) +
+  geom_jitter(width=0.1) +geom_smooth(method="lm")
+plot4 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Objective Numeracy", y = "Support for UHC", title = "Effect of Objective Numeracy on Support for UHC", subtitle="With added linear regression line at 95% confidence interval")
+```
+Looking at the effect of numeracy on support for UHC, we can see the presence of significant effects in table 5. Primarily, we find that there are no statistically significant effect of an individual's perceived subjective numeracy on support for UHC across both our conditions. However, when we examine the effect of objective numeracy, we see a clear association between increased performance and increasing support for UHC. Furthermore, when examining how this effect propagates through our two conditions, it is extremely clear that this significant effect is driven almost entirely by the strong association in objective numeracy increasing support for UHC in our intervention condition.
+
+```{r freq-table4, echo=FALSE, message=FALSE, warning=FALSE, results="asis", tab.cap="Frequentist Model of Numeracy on UHC Support"}
+texreg(m4, custom.model.names = "Effect of Percieved Equity on UHC Support",
+       custom.coef.names = c("Intercept","Subjective Numeracy Score", "Objective Numeracy Score"),
+       caption = "Table of Linear Model - Numeracy Predicting UHC Support", label = "tab:freq-table4",
+       ci.force = TRUE) 
+```
+
+
 ## Qualitative Results
 
-PUT TEXT IN HERE ABOUT OUR FREE-RESPONSE SECTION AND OUR THOUGHTS???
+In addition to our statistical modeling work on our quantitative data, we did some preliminary naive text analysis on our free-response section.
 
+Primarily, our responses fell into 3 rough categories. The first, the difficulty category, contained responses that conveyed a belief that the exercise was difficult, hard to complete, or otherwise problematic. In our intervention condition, 23% of our free responses were categorized in this way. In our control condition, 0% of our responses were categorized in this way. Some examples of this category of responses:
+
+>"it was much more difficult than I thought it was going to be; I had to compromise points in some places to be able to get at least basic coverage in other areas"
+
+>"It's hard for me to think about people having to pick and choose which parts of healthcare they'll have access to when they're all important. It makes me wish healthcare would be reformed for the good of everyone and not just those who can afford it."
+
+Our second category were responses that conveyed a belief that the exercise was interesting, engaging, or "eye-opening". 49.8% of our responses in the intervention condition, and 53.2% of our responses in our control condition were categorized in this way. An example of these responses:
+
+>"Interesting that my answers changed. I would be interested in seeing someone against Universal Health Care make a study, too."
+
+Our final category were responses that conveyed the perception that this exercise was enjoyable, worked well, or convinced them to support UHC. 18.4% of the responses in our Intervention, and 8.7% of our responses in our control condition were categorized. An example is:
+
+> "Enjoyed it, overall I believe that there should be Universal Health Care, but I did not realize how complicated it was. This exercise showed me how complicated it will be if the US decides to go through with something like this."
 
 # Discussion
 
 ## Relate Results to Past Research
 
-Given the results of our pilot study, we expected a strong effect confirming our hypothesis.
+Given the results of our pilot study, we expected a strong effect confirming our hypothesis. However, we did not find a statistically significant main effect of our intervention in our primary study from the perspective of a 2x2 multi-level model. 
 
-We did not find a statistically significant effect of our intervention in our primary study. 
-
-Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. With regards to likelihood of wanting the referenced plans for themselves, the slight positive result we obtained cleanly replicates the findings of Danis, Biddle & Goold, 2002. The majority individuals exposed to a health benefit package would be willing to use the health package for themselves. (IS THIS TRUE? examine and see our % of acceptance??)???
+Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority (69% of our subjects) of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. We replicated the findings of Danis, Biddle & Goold that the majority of individuals exposed to a health benefit package would be willing to use the health package for themselves.
 
 Furthermore, our results were different from Weiger, Armstrong & Shaffer, 2019. In our primary study, we were interested in seeing if our results from our pilot study replicated. Specifically, we wanted further confirmation on whether or not an experiential intervention would be more effective than an informational intervention. Compared to our pilot study, while we did not have two interventions, our control condition was a pseudo 'information only intervention', as it was presenting commonly accepted facts about UHC from well trusted sources. Given that support for UHC was higher in our information only based control condition than it was in our experiential intervention, we replicated our preliminary results indicating that to be the case from our pilot study.
 
 Interestingly, there was significant evidence supporting our secondary hypothesis. When directly measuring our proposed mediating variables, we see that both percieved equality as well as understanding of UHC strongly predicted support for UHC. Furthermore, our mediating variables indicated that while our control condition increased both perceived equality as well as increased understanding, our intervention condition only increased understanding. Thus, the gap in perceptions of increased equality is likely the mechanism by which our intervention was unsuccessful at increasing support for UHC. Lastly, while we did see an increase in variance in perceptions of equality between our control and intervention, the difference was not statistically significant, and the group mean of both conditions was extremely similar.
 
-###### PUT IN DISCUSSION OF OUR QUALITATIVE DATA
+The effect of numeracy on support for UHC was quite unexpected. Firstly, I had assumed that both objective and subjective numeracy would have similar effects, if any effect was extant at all. Secondly, I had assumed that the effect of numeracy would be the same across both categories. Neither of these two assumptions was correct. We saw very clearly in table 5 that there was a significant effect of objective, not subjective numeracy. Also, the impact of objective numeracy was significantly greater in our intervention than in our control. Considering the impact of objective and subjective numeracy, it is fairly obvious that our intervention skill required some larger amount of comfort with numbers, given that the core of the exercise was trading off various health benefits using a limited pool of resources. However, while our pilot study initially required manual calculation with physical calculators, the web-exercise that was designed for the primary study was constructed such as to minimize required calculations. Perhaps one reasonable supposition is that without sufficiently great objective numeracy, it was difficult for an exercise primarily centered on numbers to be effective. An alternative supposition would be that highly numerate individuals were significantly more engaged with an exercise that let them use their numeracy, leading to more attention paid, resulting in a larger effect of our intervention.
+
+With regards to our qualitative data, we saw a pretty significant difference in the proportion of types of content in both intervention and control condition. Unsurprisingly, no individuals in our control condition had any difficulty with the very simple exercise (reading multiple fliers). In comparison, after reading the responses, it seemed very clear that the main source of difficulty for individuals in the intervention condition was 'agonizing' over the optimal distribution of resources so as to have the most preferred health plan. Conceptually, this seems more like a feature than a bug. Confronting individuals with a realistic and difficult choice similar to those for health-care policy officials is exactly the purpose of the exercise. Additionally, over double the number of individuals in our intervention condition expressed active support and appreciation for the purpose of the exercise, that it improved their understanding of the problem and that it was a fun and enjoyable exercise. 
+
+However, one consistent category of responses across both conditions were subjects that believed that the exercise was either politically motivated, or had a strong intentional bias in it's construction. This lead to some subjects expressing suspicion or lack of belief in the presented information. Perhaps a reasonable extension would be to present HBP for a UHC in comparison to a set of standard private insurance plans. Additionally, it would be interesting to see how much this correlates with or against political affiliation, which was not measured in the primary study.
 
 
 # Limitations
 	
-Our primary and pilot studies both recruited participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. 
-# PIT MORE THINGS HERE?
+Our primary and pilot studies both recruited participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. The design of this study did indeed require a reasonable amount of familiarity with internet and online survey platform technology, which may make it difficult to adapt to older or less tech-savvy populations. 
 
 # References
