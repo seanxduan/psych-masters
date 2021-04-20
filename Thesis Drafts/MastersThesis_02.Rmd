@@ -1,0 +1,316 @@
+---
+title: 'Impact of Explicit Health Benefits Package on Support for Universal Health Care'
+subtitle: 'Masters Thesis'
+author: "Sean Duan"
+date: "April 9, 2021"
+output: pdf_document
+bibliography: library.bib
+---
+
+```{r setup, include = FALSE}
+library(texreg)
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(stringr)
+library(plyr)
+library(data.table)
+library(car)
+library(tidyverse)
+library(reshape2)
+library(lme4)
+library(lmerTest)
+library(apaTables)
+library(sjPlot)
+library(tinytex)
+library(gtsummary)
+setwd("D:/Grad School/2020-2021/psych-masters")
+UHC<-read.csv("UHC_rdy_for_analysis_2020.csv")
+UHC_model<-UHC[,c(11:15,23:35)]
+UHC_model_long <- reshape(
+  data = UHC_model,
+  varying = list(c("Prescore","Postscore"),
+                 c("Pre_Equality","Post_Equality"),
+                 c("Pre_Understanding","Post_Understanding")),
+  idvar = 'Subject',
+  v.names = c('UHC_Support', 'Equality', 'Understanding'),
+  timevar = 'Time',
+  times = c('pre', 'post'),
+  direction = 'long'
+)
+
+UHC_model_long$condition<- ordered(UHC_model_long$condition, levels = c("Control", "Intervention"))
+UHC_model_long$Time<- ordered(UHC_model_long$Time, levels = c("pre", "post"))
+
+#cronbahcs alpha
+psych::alpha(UHC[,4:7], check.keys = TRUE)
+
+#% of accepters?
+#mean of acceptance
+mean(UHC_model_long$Post_Int_Accept_1, na.rm=TRUE)
+
+sum(UHC_model_long$Post_Int_Accept_1>50, na.rm=TRUE)
+284/412
+
+UHC_model_long$ins_score_1<-ordered(UHC_model_long$ins_score_1, levels = c("No", "Yes"))
+UHC_model_long$ins_score_2<-ordered(UHC_model_long$ins_score_2, levels = c("No", "Yes"))
+
+```
+
+
+# Introduction
+
+Universal Health Care (UHC) is important because it addresses two issues in medicine. Access to universal care addresses the issue of equity and helps bridge the gap between marginalized and privileged groups with regards to health care outcomes. Additionally, universal health care programs in general focus on cost-effectiveness of care, leading to more efficient use of resources. Universal health care would likely benefit America if implemented. However, there is a significant lack of support for universal health care. Thus, improving likelihood of implementation by improving support for UHC is valuable.
+
+Opposition of UHC in the U.S. hinges on several issues. The first is that it is impossible to quantify improved support for UHC without consensus as to what UHC is. To give an example, it would be reasonable to assume medical students understand health care and its distribution. Surprisingly, this is not the case! Students struggle to answer questions regarding UHC due to divergent beliefs as to exactly what ‘universal coverage’ means [@Huebner2006]. Secondly, without a framework for what care is to be distributed through UHC, rationing of limited health resources is haphazard and arbitrary. Indeed, the main mechanism through which racial prejudice predicts decreased support for UHC in the U.S. is ‘unfair’ disbursement of resources to undeserving minorities [@Shen2016].  
+	
+Looking at successful UHC programs in other westernized first world countries (UK, Canada, etc.) these issues are addressed by the usage of a ‘explicit health benefit plan’ (HBP). An explicit health benefit plan is best defined as “a set of services that can be feasibly financed and provided under the actual circumstances in which a given country finds itself” [@Glassman2016]. While reaching consensus on the exact terms of the HBP is not a small process, an explicit HBP ensures that there is little room for confusion regarding what is covered. There are very clear boundaries set for what care the government can subsidize. In doing so, concerns regarding fairness are strongly mitigated. Furthermore, studies have shown that an explicit HBP can also improve efficiency in resource allocation, create explicit entitlements for patients which help prevent marginalized individuals from being excluded from care, and reduces arbitrary restrictions on access and services [@Glassman2016]. 
+
+
+Additionally, it is important to explore what is the best way of exposing participants to an HBP. Previous research indicates that a simulated experience exercise can have more impact than simply being told facts [@Wegier2019]. Another improvement over our pilot study is replacing our uninformitive control with ‘standard’ messaging supporting UHC,  adding additional external validity. Furthermore, our new ‘standard informational intervention’ hews more closely to the methodology for a control presented by Wegier et al. [-@Wegier2019].
+
+# Review of Literature
+
+## Inadequacies with our current system
+
+Health care in the United States, as it is now, is very broken. The purpose of health care is to improve the well-being of those treated. However, until the passing of the 2010 Affordable Care Act, medical expenses were the most common cause of bankruptcy in the United States [@Galvani2017]. Indeed, there are several conceptual problems with a ‘competitive marketplace’ of multiple insurers. Galvani et al. [-@Galvani2017] notes, it is hard for a private insurance company to justify preventative care, as “future benefits could accrue to another insurance provider. The result is a systematic undervaluation of preventative measures”. In fact, looking at our closest analogue for a broad public health option, Medicare and Medicaid, we find that billing rates and expenses for private insurance are up to six times more expensive! Simply put, medical care is unaffordable in the United States for many individuals.
+	
+Perhaps another way of looking at the issue is to consider health outcomes, instead of cost for health. However, even looking at the United States from this perspective, Galvani et al. [-@Galvani2017] finds that our life expectancy has been reversing since 2014, even as money spent on health has increased by 130%! Delving deeper, we see that even the care we deign to deliver is problematic. Manchikanti, Falco, and Boswell [-@Manchikanti2010] find that “almost 50% of our care is not evidence based” and “as much as 30% of our spending reflects care of uncertain or questionable value”. It is thus trivial to conclude that our current system is broken. Fortunately for the United States, Universal Health Care cleanly answers these issues and has been put into practice for decades in many other first world countries. 
+
+## Benefits of Universal Health Care
+
+Before delving into the proven benefits of UHC in other contexts, it is important to define exactly what we mean by saying “Universal Health Care”. A resolution adopted by the UN General Assembly states that UHC is “access to key promotive, preventive, curative, and rehabilitative health interventions for all at an affordable cost” [@Assembly1991]. 
+	
+One significant benefit of UHC is that it ensures continuous enrollment in a health care plan. Galvani et al. [-@Galvani2017] finds that uninsured individuals have a 40% elevated risk of mortality. Additionally, for individuals who have chronic conditions, significant barriers to re-engagement exist under ‘traditional’ insurance plans. Improvement in coverage is so great, that a study done by Panpiemras et al. [-@Panpiemras2011] found that within one year of the implementation of UHC in Thailand, the percentage of the population insured surged from 40% to 97%. It is likely that implementation would indeed lead to a significant reduction of un/underinsured Americans. 
+
+Merely improving quality of health would be extremely exciting, but UHC also is effective at reducing waste and cost in the health system. Compared to a similar country, Canada, we find that 25% of our total medical cost is administrative, more than twice what the percentage is under Canadian UHC [@Galvani2017]!  By transferring to a single payer option, Manchikanti et al. [-@Manchikanti2009] note that UHC results in savings “large enough to pay for most of the additional utilization by those previously uninsured”. To look at another example, we can consider Jamaica. Their UHC program reduced sick days by 34%, leading to productivity gains that dwarfed the additional cost in healthcare, essentially producing pure value [@Galvani2017]. Another thing to note is that the collective bargaining power that comes from a UHC system cannot be downplayed. Manchikanti et al.[-@Manchikanti2009] finds that while we use 10% fewer drugs per capita than other OECD countries, our prices are somehow 50% higher for equivalent drugs! An extreme example can be found when looking at the recent price spikes for toxoplasmosis drugs, a 5500% increase, and EpiPens, a 791% increase, which has not occurred in Europe or Canada. This is due to both countries able to collectively bargain for drug prices due to UHC [@Galvani2017]. We can clearly see that UHC both improves health outcomes and is cheaper to implement than our current system. Yet, as UHC has not been implemented in the U.S., we must look at why there is opposition.
+
+## Opposition and Support to Universal Health Care
+
+Looking at the subset of literature detailing support for Universal Health Care in the United States specifically, we find two main aspects that explain opposition to UHC. Huebner et al.[-@Huebner2006] examined how US medical students feelings towards UHC change from their first to their fourth year. Surprisingly, the researchers found significant confusion when designing the questionnaire. Medical student focus groups struggled to come to consensus on terms related to UHC such as “fee for service”, “managed care”, “single-payer”, “multi-payer”, and “universal health care”. Furthermore, the authors note that ‘complex policy terms’ were not able to be defined in the questionnaire, which indicates a need to explain the concepts of UHC without necessarily using an informational intervention. Without a clear understanding of what exactly these terms mean, and what is being offered in a UHC program, it is impossible to accurately gauge support or opposition. Additionally, given that medical students would be assumed to have a greater understanding of these medical-adjacent terms, it stands to reason that the confusion would be even greater for members of the general populace.
+	
+Shen et al. [-@Shen2016] chose to look at the issue of opposition to UHC from another aspect, whether racism describes why there is a lack of support for UHC. The authors hypothesized that Whites oppose government programs designed to eliminate racial inequity because it “represents ‘unfair government assistance’, such as welfare or ‘free’ busing”. This is additionally relevant as the historically disadvantaged groups that tend to benefit from government aid have high uninsured rates compared to whites (11.7% for whites, 20.8% for blacks, 30.7% for Hispanics). Furthermore, while UHC does not directly aim at benefiting blacks, “those high in racial prejudice may assume so”. Importantly, when looking to see if racism predicts opposition to UHC, Shen et al. [-@Shen2016] found the surprising result that it did not predict opposition to UHC. In fact, it was the saliency of whether the individual purported to benefit from UHC was a ‘free-rider’, or someone who was unfairly benefitting from UHC. This was unrelated to race. This shows that concerns with equality, equity, and fairness are most important with regards to changing attitudes towards UHC. Determining how to easily address this, as well as confusion regarding the definition of UHC at the same time is a challenge.
+
+## Addressing These Issues with a Health Benefit Package
+
+The concept of a Health Benefit Package, as studied by Glassman et al. [-@Glassman2016] neatly addresses the previously mentioned issues with opposition to UHC in America. Definitionally, what makes a HBP a HBP is three factors. First, HBPs are a portfolio of multiple services, as compared to single services or a category of care; this allows direct assessment of effectiveness across each category. Second, HBPs are costed using actuarially informed estimates of supply and demand. Third, HBPs constrain the services made available through the public health system, but in doing so, guarantee that at least certain services will be made available. Through these three mechanics, Glassman et al. [-@Glassman2016] finds that there are clear benefits in countries that adopt a HBP for their UHC. As the system creates explicit entitlements for patients, it reduces confusion as to what is being offered and ensures fairness and equity, by preventing discretionary variation in access to care that would otherwise be largely determined by clinical professionals. Since the categories are costed and explicitly budgeted for, an HBP facilitates adherence to budget limits, “which might otherwise only be attained through arbitrary restrictions on access and services”, which clearly speaks to the issue of fairness and equity. Furthermore, setting transparent criteria on what services are to be offered with the resources available allows a proper debate to take place regarding the objectives of the health system, what should be prioritized, and how good performance should be determined. This improves perceptions of fairness and equity within the medical system. 
+  
+While HBPs address issues that would lead to opposition to UHC in the US, HBPs have furthermore been shown to be a key factor for success of UHC in other countries as well. An economists’ declaration published in the Lancet states a belief that UHC means “ensuring that everyone can obtain essential health services at high quality without suffering financial hardship” [@Summers2015]. Yet the economists themselves realize that “resource constraints require individual countries to determine their own definition of ‘essential’”. This speaks directly to the practical issue of universal health needing limits to be effective. In fact, looking at countries that have UHC without an HBP linked to cost, such as Ghana, Uganda, and Peru, we find significant fiscal imbalances and implicit rationing, reducing overall quality of healthcare outcomes [@Glassman2016]. Looking at a parallel situation of how cancer care is managed in the U.S., Chalkidou, Marquez, and Dhillon et al. [-@Chalkidou2014] find that a HBP like framework is essential, as evidence or guidelines towards care (an UHC without an HBP) are unlikely to improve efficiency and quality of care without “the support of institutional, and legal frameworks” (UHC with an HBP). Given that we have shown that our issues with UHC in the U.S. can be addressed by an HBP, it then stands to reason that we must determine the best methodology for exposing our population to an HBP.
+
+## Communicating the Health Benefit Plan
+	
+When communicating the essence of an HBP, it is important to ensure that what is being presented is clear and easy to understand, as well as emphasizing the necessary nature of tradeoffs or compromises in medical care. Developed by @Goold2005, the Choosing Healthplans All Together exercise exhibits these traits perfectly. The central tenet of the CHAT exercise is to use a ‘gamification’ of what actually occurs when deciding insurance spending; Participants chose components for their own health plan, by selecting categories of services at various levels of ‘rationing’ (e.g. generics instead of name-brand drugs, copayments, etc.). The purpose of the exercise was initially to help explain how trade-offs in medicine are necessary, given limited resources. Conveniently, the final chosen plan is clear and explicit in what care is offered and at what level, neatly answering the issue of consumer confusion at the specifics. Another factor is that CHAT is understandable, with a stunning 97% of participants finding the task easy to do [@Danis2002]. Furthermore, the CHAT exercise has been adapted twice to the specific scenario of a government funded health plan. The first, by Danis et al. [-@Danis2004], was letting Medicare enrollees come to a consensus on what services they prioritize, under the financial restraints of government funded Medicare. While a sizeable portion of participants felt that what was chosen was different than what they would have chosen for themselves (41%) surprisingly, 86% were still satisfied with the plan they got. The second adaptation, by Hurst, Schindler, and Goold [-@Hurst2018], was looking at what types of care that Swiss citizens’ citizens would prioritize in their already extant HBP. The participants had no trouble using the exercise to improve their understanding of the Swiss HBP, were easily able to make trade-offs and set priorities, and found “the degree of consensus despite differing opinions surprising and valuable”. Lastly, the CHAT exercise is particularly valuable in that it is a hands-on exercise as compared to a simple informational intervention. Work by Wegier et al. [-@Wegier2019] found that a simulated experience lead to more accurate understanding of information as compared to simply being given explicitly described statistics. Thus, it will likely be even more effective than a simple ‘fact sheet’ for an HBP that would otherwise be presented to the public. 
+
+# Pilot Study
+
+We initially ran a pilot with a more complex experimental condition, and a 'uninformative' control. Our first hypothesis was that exposure to an explicit health benefit package will improve support for UHC as compared to a control. Our second hypothesis was that the impact of exposure to an HBP on support for UHC would be moderated by whether the exposure was informational or experiential. The purpose of our pilot study was to test our experimental materials, to replicate past research on the usability of the CHAT paradigm, and find preliminary data supporting our hypothesis.
+
+## Summary of Pilot Study Results
+
+Using frequentist methods, we found no statistically evidence at an alpha of 0.05 confirming our initial hypotheses. There was an interaction that trended towards statistical significance between our time measure and our intervention condition, which provides some support for our first hypothesis. Using Bayesian modeling, we found weak evidence supporting our first hypothesis, given a large range of uncertainty in our point estimates of support per condition. Lastly, our simple two-sample t-test found no difference between our two intervention conditions, B and C, when seeing which group would accept/reject the proposed health benefit plan for themselves. 
+
+# Primary Study
+
+As a follow-up to our pilot study, the primary study directly addresses the initial concerns indicated in our previous research. One concern that arose while running our experiment was that our control condition did not contribute any external validity. Because of this, we chose to change our ‘control’ condition in our planned study to more closely reflect ‘standard’ UHC messaging that subjects would see in the world around them, instead of a filler ‘dummy’ exercise.
+
+Additionally, our free-response section indicated that some subjects had trouble comprehending the instructions. Several occasions occurred where the participant asked the administrator how to complete the exercise after being exposed to the instructions. Improving our instructions and/or simplifying the task was necessary before implementation of our primary study. We resolved this concern by adapting our pen and paper exercise into an easy to use web applet.
+
+Lastly, our pilot study was predicated on the assumption that opposition and support for UHC hinged on both the need for equity and/or fairness, and having a system that is comprehendable and understandable. The CHAT intervention in the study was chosen as it directly addresses both of these issues. However, in our pilot study, we did not directly measure these proposed mediating variables. Thus, in our primary study, we added two items on these mediating variables in order to determine the validity of our proposed mediating mechanism.
+
+# Method
+
+## Participants
+	
+Participants were students enrolled in the Psychology 1000 course at a large midwestern university. Our study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. Participants were not given any other incentive for participation in the study. Randomization to different conditions was determined within the online survey software used to deliver the pre and post test measures. Our total number of participants was 412. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
+
+```{r demographic, echo=FALSE, message=FALSE, results="asis"}
+#, tab.cap= "Demographics of Subjects"
+demog<-UHC[,c(25:28,15)]
+
+demog %>%
+  tbl_summary(
+    by = condition,
+    statistic = list(all_continuous() ~ "{mean} ({sd})",
+                     all_categorical() ~ "{n} / ({p}%)"),
+    digits = all_continuous() ~ 2,
+    label = School_Year ~ "School Year",
+    missing_text = "(Missing)",
+    sort = list(everything() ~ "frequency")
+  ) %>% add_p() %>% bold_labels() %>% bold_p ()
+#   as_gt() %>%
+#  gt::gtsave(filename = "demog.html")
+```
+>                       Table 1: Demographic Information of Subjects
+
+## Measures
+
+There are five main measures used for the primary study. 
+
+Our first three measures directly examine support for UHC and our two proposed mediating variables. The first is a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Each item was selected using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Cronbach's alpha for the items in this measure was 0.85. The second is a single item measure of our equity/fairness mediating variable, adapted from @Netemeyer1996, using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree). Our second measure was a 2 item measure of our understandability mediating variable, adapted from @VanMulken2010. Both items were scored using a sliding scale that went from 0 (strongly disagree) to 100 (strongly agree), and the measure is a simple average of these, Cronbach's alpha for the items in this measure was 0.92.
+
+Our last two measures examined subjective and objective numeracy. Our subjective numeracy measure was the Subjective Numeracy Scale created by @Fagerlin2007. This measure is a simple average consisting of eight items, with the seventh item reverse scored. Each item was selected using a likert scale that went from 1 (generally poor with numbers) to 7 (generally prefer numbers). The Cronbach's alpha for these items is 0.84. An example item is "How good are you at calculating a 15% tip?".
+
+The objective numeracy measure was the Rasch Numeracy Scale, created by @Weller2013. This measure consists of 8 items, all math problems of varying complexity, generally using some amount of algebra, percentiles, and table reading skill. This measure was scored from 0 to 8, with the sum of all correct answers to the individual items as the subject's objective numeracy score. The Cronbach's alpha for these items is 0.71. An example item is "If it takes five machines 5 minutes to make five widgets, how long would it take 100 machines to make 100 widgets?"
+
+Additionally, note that we did not initially collect data on subjective and objective numeracy until part-way through the data collection. Thus, the first 68 subjects do not have this data recorded.
+
+## Materials and Procedure
+
+Each participant begins clicking a link to the online survey software “Qualtrics”, which is used to distribute every element in our study. Our pre-test measure is then given, consisting of the Support for UHC measure, fairness of UHC measure, and comprehensibility of UHC measure. After the pre-test measure, Qualtrics randomizes our participants to either our intervention or control condition. 
+
+Participants in our intervention condition were directed to a web-exercise adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by @Danis2002 . CHAT consists of participants designing their own Universal Health Care plan by trading off limited "points". Most groups of medical care are represented, costing different amounts of points. Some care options also had greater levels of intensity offered for correspondingly higher amounts of points. As compared to the pilot study, the web-exercise for our intervention condition requires no mathematical calculation and is much simpler to administer. Participants in our control condition were directed to ‘traditional’ messaging on the benefits of UHC, as presented from trusted sources including the World Bank and the World Health Organization. For either condition, the subjects are asked to consider how the universal health care would affect their own lives. 
+
+Afterwards, participants receive a post-test measure, consisting of three main sections. The first is the mostly the same as our pre-test section (support for UHC, perception of UHC equality, understanding of UHC). There are additional items inquiring as to whether or not individuals pay for their own health insurance, or if they have been uninsured, and the intervention condition was asked if they would be happy having the plan they built as their own health insurance. The second section is a simple free-response question asking about the subjects thoughts about the exercise they just completed. The third section is demographic information, including sex, age, and current year of schooling. 
+
+Finally, our participants read a one page paper debriefing them of the purpose and theory behind the research, and is then granted 1 credit in the Psych 1000 system. This entire process should take 20-25 minutes on average, as evinced in our pilot study.
+
+## Design
+
+The design of this experiment is as a multi-level model. The multi-level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x2 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the second ‘2’ is our two experimental conditions, the control and the intervention. Our primary dependent variable was support for UHC, with two mediating variables on comprehensibility and equity. I believe that there should be no extraneous variables that might influence our results.
+
+# Results
+
+## Quantitative Results
+
+```{r frequentist models, echo=FALSE}
+#first basic mlm of UHC supp, no slope, intercept varies by subj, w/ condit, time, and intrxn.
+m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+#summary(m1)
+
+#secondary mod of if understanding predicts UHC supp
+m2 <-lm(UHC_Support ~ Understanding, data = UHC_model_long)
+
+#secondary mod of if equity predicts UHC supp
+m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
+
+#numeracy model
+m4<-lm(UHC_Support~ SNS_score + RNS_score, data = UHC_model_long)
+
+#bonus model? effect of y/n on ins pay or uninsured q
+m5<-lm(UHC_Support~ ins_score_1+ins_score_2, data = UHC_model_long)
+#summary(m5)
+#significant sure, but doesn't explain enough variance for me to give a shit
+
+#plot3<-ggplot(UHC_final, aes(x=variable, y=value, shape=condition, color=condition)) +geom_boxplot()
+#plot3 + facet_wrap(~ condition)
+#ggplot(UHC_final, aes(value, fill = variable)) + geom_histogram(binwidth = .5) + facet_grid(condition ~ ., margins = TRUE, scales = "free")
+```
+
+A total of 412 subjects completed our exercise. Our final sample in our primary study included 195 participants in our control condition, and 217 participants in our intervention condition, and was approximately 67% female. Additional demographic information can be found in Table 1 above.
+
+Table 2 presents the results of the primary analysis of our primary study, the effect of our intervention on support for UHC as modelled by a 2x2 multi-level model. Unexpectedly, we see that individuals in our control condition trended towards larger values than those in our intervention condition, the opposite of what we hypothesized.
+
+```{r freq-graph1, echo=FALSE}
+plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
+  geom_boxplot() 
+plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Support for UHC", title = "Effect of Intervention on Support for UHC", caption="No significant main effect of intervention condition on support for UHC")
+#do we want to add fig caps? like fig.cap= "Frequentist Model of Intervention on UHC Support"
+```
+```{r freq-table1, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
+       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Interevention and Post-Measurement"),
+       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table1",
+       ci.force = TRUE) 
+##note need to fix this a lil'
+```
+
+Our secondary hypothesis was that our two moderating variables would be the mechanism that predicts increased support for UHC. The first element of our secondary hypothesis can be seen in table 3. We can clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Furthermore, we see that while pre-measurement understanding is roughly equal in both groups, post-measurement understanding has increased in both groups, with larger variance in score for our control condition.
+
+```{r equity-diff, include=FALSE}
+#do we include this?
+UHC_equity<-filter(UHC_model_long, Time =='post')
+res <- var.test(Equality ~ condition, data = UHC_equity)
+res
+```
+
+```{r freq-graph2, echo=FALSE}
+plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
+  geom_boxplot() 
+plot2 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC", caption="Understanding increases across conditions, less variance in control condition")
+```
+
+```{r freq-table2, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m2, custom.model.names = "Effect of Understanding on UHC Support",
+       custom.coef.names = c("Intercept","Understanding"),
+       caption = "Table of Linear Model - Understanding Predicting UHC Support", label = "tab:freq-table2",
+       ci.force = TRUE) 
+```
+The second element of our secondary hypothesis can be seen in table 4. We can clearly see in this second table that there seems to be a statistically significant effect wherein increased perception of equity predicts increased support for UHC. It is very apparent as well that in our post-intervention measurement, that our control group had a significantly increased perception of equity as compared to our intervention.
+
+```{r freq-graph3, echo=FALSE}
+plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
+  geom_boxplot() 
+plot3 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC", caption="Percieved equity change only significant in control condition")
+
+```
+
+```{r freq-table3, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
+       custom.coef.names = c("Intercept","Equity"),
+       caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
+       ci.force = TRUE) 
+```
+
+```{r freq-graph4, echo=FALSE, message=FALSE, warning=FALSE}
+plot4<-ggplot(UHC_model_long, aes(x=SNS_score, y=UHC_Support, color=condition)) +
+  geom_point()+geom_smooth(method="lm") 
+plot4 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Subjective Numeracy", y = "Support for UHC", title = "Effect of Subjective Numeracy on Support for UHC",subtitle="With added linear regression line at 95% confidence interval", caption="No difference in subjective numeracy effect across conditions")
+```
+Looking at the effect of numeracy on support for UHC, we can see the presence of significant effects in table 5. The first conclusion we reach upon examining this table is that there is no statistically significant effect of subjective numeracy on support for UHC. The graph above illustrates this further. 
+
+```{r freq-graph5, echo=FALSE, message=FALSE, warning=FALSE}
+plot5<-ggplot(UHC_model_long, aes(x=RNS_score, y=UHC_Support, color=condition)) +
+  geom_jitter(width=0.1) +geom_smooth(method="lm")
+plot5 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Objective Numeracy", y = "Support for UHC", title = "Effect of Objective Numeracy on Support for UHC", subtitle="With added linear regression line at 95% confidence interval", caption="Objective numeracy effect significant in intervention")
+```
+ However, when we examine the effect of objective numeracy, we see a clear association between increased performance and increasing support for UHC. Furthermore, when examining how this effect propagates through our two conditions, it is extremely clear that this significant effect is driven almost entirely by the strong association in objective numeracy increasing support for UHC in our intervention condition.
+
+```{r freq-table4, echo=FALSE, message=FALSE, warning=FALSE, results="asis", tab.cap="Frequentist Model of Numeracy on UHC Support"}
+texreg(m4, custom.model.names = "Effect of Numeracy on UHC Support",
+       custom.coef.names = c("Intercept","Subjective Numeracy Score", "Objective Numeracy Score"),
+       caption = "Table of Linear Model - Numeracy Predicting UHC Support", label = "tab:freq-table4",
+       ci.force = TRUE) 
+```
+
+## Qualitative Results
+
+In addition to our statistical modeling work on our quantitative data, we did some preliminary naive text analysis on our free-response section.
+
+Primarily, our responses fell into 3 rough categories. The first, the difficulty category, contained responses that conveyed a belief that the exercise was difficult, hard to complete, or otherwise problematic. In our intervention condition, 23% of our free responses were categorized in this way. In our control condition, 0% of our responses were categorized in this way. Some examples of this category of responses:
+
+>"it was much more difficult than I thought it was going to be; I had to compromise points in some places to be able to get at least basic coverage in other areas"
+
+>"It's hard for me to think about people having to pick and choose which parts of healthcare they'll have access to when they're all important. It makes me wish healthcare would be reformed for the good of everyone and not just those who can afford it."
+
+Our second category were responses that conveyed a belief that the exercise was interesting, engaging, or "eye-opening". 49.8% of our responses in the intervention condition, and 53.2% of our responses in our control condition were categorized in this way. An example of these responses:
+
+>"Interesting that my answers changed. I would be interested in seeing someone against Universal Health Care make a study, too."
+
+Our final category were responses that conveyed the perception that this exercise was enjoyable, worked well, or convinced them to support UHC. 18.4% of the responses in our Intervention, and 8.7% of our responses in our control condition were categorized. An example is:
+
+> "Enjoyed it, overall I believe that there should be Universal Health Care, but I did not realize how complicated it was. This exercise showed me how complicated it will be if the US decides to go through with something like this."
+
+# Discussion
+
+## Relate Results to Past Research
+
+Given the results of our pilot study, we expected a strong effect confirming our hypothesis. However, we did not find a statistically significant main effect of our intervention in our primary study from the perspective of a 2x2 multi-level model. 
+
+Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority (69% of our subjects) of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. We replicated the findings of Danis, Biddle & Goold that the majority of individuals exposed to a health benefit package would be willing to use the health package for themselves.
+
+Furthermore, our results were different from Weiger, Armstrong & Shaffer, 2019. In our primary study, we were interested in seeing if our results from our pilot study replicated. Specifically, we wanted further confirmation on whether or not an experiential intervention would be more effective than an informational intervention. Compared to our pilot study, while we did not have two interventions, our control condition was a pseudo 'information only intervention', as it was presenting commonly accepted facts about UHC from well trusted sources. Given that support for UHC was higher in our information only based control condition than it was in our experiential intervention, we replicated our preliminary results indicating that to be the case from our pilot study.
+
+Interestingly, there was significant evidence supporting our secondary hypothesis. When directly measuring our proposed mediating variables, we see that both percieved equality as well as understanding of UHC strongly predicted support for UHC. Furthermore, our mediating variables indicated that while our control condition increased both perceived equality as well as increased understanding, our intervention condition only increased understanding. Thus, the gap in perceptions of increased equality is likely the mechanism by which our intervention was unsuccessful at increasing support for UHC. Lastly, while we did see an increase in variance in perceptions of equality between our control and intervention, the difference was not statistically significant, and the group mean of both conditions was extremely similar.
+
+The effect of numeracy on support for UHC was quite unexpected. Firstly, I had assumed that both objective and subjective numeracy would have similar effects, if any effect was extant at all. Secondly, I had assumed that the effect of numeracy would be the same across both categories. Neither of these two assumptions was correct. We saw very clearly in table 5 that there was a significant effect of objective, not subjective numeracy. Also, the impact of objective numeracy was significantly greater in our intervention than in our control. Considering the impact of objective and subjective numeracy, it is fairly obvious that our intervention skill required some larger amount of comfort with numbers, given that the core of the exercise was trading off various health benefits using a limited pool of resources. However, while our pilot study initially required manual calculation with physical calculators, the web-exercise that was designed for the primary study was constructed such as to minimize required calculations. Perhaps one reasonable supposition is that without sufficiently great objective numeracy, it was difficult for an exercise primarily centered on numbers to be effective. An alternative supposition would be that highly numerate individuals were significantly more engaged with an exercise that let them use their numeracy, leading to more attention paid, resulting in a larger effect of our intervention.
+
+With regards to our qualitative data, we saw a significant difference in the proportion of types of content in both intervention and control condition. Unsurprisingly, no individuals in our control condition had any difficulty with the very simple exercise (reading multiple fliers). In comparison, after reading the responses, it seemed very clear that the main source of difficulty for individuals in the intervention condition was 'agonizing' over the optimal distribution of resources so as to have the most preferred health plan. Conceptually, this seems more like a feature than a bug. Confronting individuals with a realistic and difficult choice similar to those for health-care policy officials is exactly the purpose of the exercise. Additionally, over double the number of individuals in our intervention condition expressed active support and appreciation for the purpose of the exercise, that it improved their understanding of the problem and that it was a fun and enjoyable exercise. 
+
+However, one consistent category of responses across both conditions were subjects that believed that the exercise was either politically motivated, or had a strong intentional bias in it's construction. This lead to some subjects expressing suspicion or lack of belief in the presented information. Perhaps a reasonable extension would be to present HBP for a UHC in comparison to a set of standard private insurance plans. Additionally, it would be interesting to see how much this correlates with or against political affiliation, which was not measured in the primary study.
+
+
+# Limitations
+	
+Our primary and pilot studies both recruited participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. The design of this study required a reasonable amount of familiarity with internet and online survey platform technology, which may make it difficult to adapt to older or less tech-savvy populations. Some subjects indicated in the free-response section that the information presented was biased towards support for UHC and did not paint the whole picture of arguments supporting our current private care system. Therefore, we were unable to derive potential insights comparing to see if positive messaging on private health care would reduce support for UHC.
+
+# References

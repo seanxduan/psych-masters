@@ -138,7 +138,7 @@ demog %>%
     sort = list(everything() ~ "frequency")
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
 ```
->           Table 1: Demographic Information of Subjects
+>                       Table 1: Demographic Information of Subjects
 
 ## Measures
 
