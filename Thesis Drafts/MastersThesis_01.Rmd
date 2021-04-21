@@ -55,6 +55,9 @@ sum(UHC_model_long$Post_Int_Accept_1>50, na.rm=TRUE)
 UHC_model_long$ins_score_1<-ordered(UHC_model_long$ins_score_1, levels = c("No", "Yes"))
 UHC_model_long$ins_score_2<-ordered(UHC_model_long$ins_score_2, levels = c("No", "Yes"))
 
+s1_d<-read.csv("study_1_demog.csv")
+s1_d<-s1_d[,-1]
+
 ```
 
 
@@ -101,15 +104,49 @@ While HBPs address issues that would lead to opposition to UHC in the US, HBPs h
 	
 When communicating the essence of an HBP, it is important to ensure that what is being presented is clear and easy to understand, as well as emphasizing the necessary nature of tradeoffs or compromises in medical care. Developed by @Goold2005, the Choosing Healthplans All Together exercise exhibits these traits perfectly. The central tenet of the CHAT exercise is to use a ‘gamification’ of what actually occurs when deciding insurance spending; Participants chose components for their own health plan, by selecting categories of services at various levels of ‘rationing’ (e.g. generics instead of name-brand drugs, copayments, etc.). The purpose of the exercise was initially to help explain how trade-offs in medicine are necessary, given limited resources. Conveniently, the final chosen plan is clear and explicit in what care is offered and at what level, neatly answering the issue of consumer confusion at the specifics. Another factor is that CHAT is understandable, with a stunning 97% of participants finding the task easy to do [@Danis2002]. Furthermore, the CHAT exercise has been adapted twice to the specific scenario of a government funded health plan. The first, by Danis et al. [-@Danis2004], was letting Medicare enrollees come to a consensus on what services they prioritize, under the financial restraints of government funded Medicare. While a sizeable portion of participants felt that what was chosen was different than what they would have chosen for themselves (41%) surprisingly, 86% were still satisfied with the plan they got. The second adaptation, by Hurst, Schindler, and Goold [-@Hurst2018], was looking at what types of care that Swiss citizens’ citizens would prioritize in their already extant HBP. The participants had no trouble using the exercise to improve their understanding of the Swiss HBP, were easily able to make trade-offs and set priorities, and found “the degree of consensus despite differing opinions surprising and valuable”. Lastly, the CHAT exercise is particularly valuable in that it is a hands-on exercise as compared to a simple informational intervention. Work by Wegier et al. [-@Wegier2019] found that a simulated experience lead to more accurate understanding of information as compared to simply being given explicitly described statistics. Thus, it will likely be even more effective than a simple ‘fact sheet’ for an HBP that would otherwise be presented to the public. 
 
-# Pilot Study
+# Study 1
 
-We initially ran a pilot with a more complex experimental condition, and a 'uninformative' control. Our first hypothesis was that exposure to an explicit health benefit package will improve support for UHC as compared to a control. Our second hypothesis was that the impact of exposure to an HBP on support for UHC would be moderated by whether the exposure was informational or experiential. The purpose of our pilot study was to test our experimental materials, to replicate past research on the usability of the CHAT paradigm, and find preliminary data supporting our hypothesis.
+For our first study, we decided on three conditions, one active intervention, one passive intervention, and a 'uninformative' control. Our first hypothesis was that exposure to an explicit health benefit package (either intervention) would improve support for UHC as compared to a control. Our second hypothesis was that the impact of exposure to an HBP on support for UHC would be moderated by whether the exposure was informational (passive intervention) or experiential (active intervention). The purpose of study one was to test our experimental materials, to replicate past research on the usability of the CHAT paradigm, and find data supporting our hypothesis.
+
+# Method
+
+## Participants
+
+Our participants were students enrolled in the Psychology 1000 course at a large midwestern university. The study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. In total, there were approximately 20,000 student hours available for the 2019 fall semester this data was collected in. Participants were not given any other incentive for participation in the study. Participants were randomized into different conditions within the online survey software used to administer the pre and post test measures. Our total number of participants was 189. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
+
+```{r demographic std1, echo=FALSE, message=FALSE, results="asis"}
+s1_d %>%
+  tbl_summary(
+    by = condition,
+    statistic = list(all_continuous() ~ "{mean} ({sd})",
+                     all_categorical() ~ "{n} / ({p}%)"),
+    digits = all_continuous() ~ 2,
+    label = Year ~ "School Year",
+    missing_text = "(Missing)",
+    sort = list(everything() ~ "frequency")
+  ) %>% add_p() %>% bold_labels() %>% bold_p ()
+```
+## Measures
+
+There was one primary measure used for study one. We chose to use a 4 item measure of support for UHC, adapted from Shen & Labouff (2013) that is taken as a simple average, with the third item reverse scored. Each item was selected on a 7 point likert scale from 1 (strongly disagree) to 7 (strongly agree). Cronbach's alpha for the items in this measure was 0.85. This was the only measure used in our pre-test, and was also the primary measure used in our post-test.
+
+Additionally, we also measured  whether or not individuals pay for their own health insurance, or if they have been uninsured, and the active intervention condition was asked if they would be happy having the plan they built as their own health insurance. Additionally, there was a free-response question asking about the subjects thoughts about the exercise they just completed. Finally, we also measured demographic information, including sex, age, and current year of schooling. 
+
+## Materials and Procedure
+
+Each participant began by being seated at a computer cubicle with running the online survey software “Qualtrics”, which was used to deliver the pre and post test measures, instructions on how to complete the measures, and the condition exercise. Our pre-test measure was then given to subjects.
+	
+Next, each participant was given a packet of exercises adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by Danis, Biddle & Goold (2002). Our adaptation of this exercise consists of participants designing their own explicit HBP. Participants had 49 ‘points’ to purchase medical care. Complete coverage would require 79 points, thus trade-offs are enforced. Different groups of medical care are represented by costing different amounts of markers, with some groups having up to two greater levels of intensity offered for correspondingly higher amounts of markers. The core of the exercise consists of determining priorities for a health care system and considering how the specifics of a given plan would affect individual health outcomes. For our study one, this version of the exercise has been adapted in three ways for our three experimental conditions. Our control condition replaces mentions of health care with pizza meal packages instead, resulting in an exercise of similar length and intensity that is ultimately uninformative.  For both our control and our active condition, subjects were given pencil, paper, and calculators to complete the exercise. In our passive condition, subjects were given a completed CHAT exercise filled out according to the consensus options in the initial deployment of the CHAT exercise by Danis et al. (2002). The subjects are then asked to examine this sheet in detail and consider how these guaranteed health benefits would affect their own lives. 
+
+Lastly, our participants received the post-test measure, consisting of two items. The first is our post-test measure of support for UHC, using the Shen et al. measurement tool. Our second item was demographic information, including sex, age, and current year of schooling. 
+
+##### BREAK ###
 
 ## Summary of Pilot Study Results
 
 Using frequentist methods, we found no statistically evidence at an alpha of 0.05 confirming our initial hypotheses. There was an interaction that trended towards statistical significance between our time measure and our intervention condition, which provides some support for our first hypothesis. Using Bayesian modeling, we found weak evidence supporting our first hypothesis, given a large range of uncertainty in our point estimates of support per condition. Lastly, our simple two-sample t-test found no difference between our two intervention conditions, B and C, when seeing which group would accept/reject the proposed health benefit plan for themselves. 
 
-# Primary Study
+# Study 2
 
 As a follow-up to our pilot study, the primary study directly addresses the initial concerns indicated in our previous research. One concern that arose while running our experiment was that our control condition did not contribute any external validity. Because of this, we chose to change our ‘control’ condition in our planned study to more closely reflect ‘standard’ UHC messaging that subjects would see in the world around them, instead of a filler ‘dummy’ exercise.
 
@@ -137,6 +174,8 @@ demog %>%
     missing_text = "(Missing)",
     sort = list(everything() ~ "frequency")
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
+#   as_gt() %>%
+#  gt::gtsave(filename = "demog.html")
 ```
 >                       Table 1: Demographic Information of Subjects
 
@@ -257,9 +296,9 @@ plot4 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = 
 Looking at the effect of numeracy on support for UHC, we can see the presence of significant effects in table 5. The first conclusion we reach upon examining this table is that there is no statistically significant effect of subjective numeracy on support for UHC. The graph above illustrates this further. 
 
 ```{r freq-graph5, echo=FALSE, message=FALSE, warning=FALSE}
-plot4<-ggplot(UHC_model_long, aes(x=RNS_score, y=UHC_Support, color=condition)) +
+plot5<-ggplot(UHC_model_long, aes(x=RNS_score, y=UHC_Support, color=condition)) +
   geom_jitter(width=0.1) +geom_smooth(method="lm")
-plot4 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Objective Numeracy", y = "Support for UHC", title = "Effect of Objective Numeracy on Support for UHC", subtitle="With added linear regression line at 95% confidence interval", caption="Objective numeracy effect significant in intervention")
+plot5 + facet_wrap(~ condition) + scale_color_brewer(palette = "Set1")+labs(x = "Objective Numeracy", y = "Support for UHC", title = "Effect of Objective Numeracy on Support for UHC", subtitle="With added linear regression line at 95% confidence interval", caption="Objective numeracy effect significant in intervention")
 ```
  However, when we examine the effect of objective numeracy, we see a clear association between increased performance and increasing support for UHC. Furthermore, when examining how this effect propagates through our two conditions, it is extremely clear that this significant effect is driven almost entirely by the strong association in objective numeracy increasing support for UHC in our intervention condition.
 
