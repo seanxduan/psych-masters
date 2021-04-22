@@ -239,6 +239,20 @@ plot6 + stat_summary(fun.y = mean, geom = "line") + stat_summary(fun.data = mean
   geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .3, size = .3)
 #use either this or the other oen
 
+#non moderating fx
+plot7 <- ggplot(UHC_model_long,aes(x = SNS_score, y = UHC_Support, color = condition)) +
+  theme_bw() +
+  labs(x = "Subjective Numeracy Score",
+       y = "Support for UHC",
+       color = "Condition",  title = "Moderating Effect of Subjective Numeracy on Support for UHC",
+       subtitle="With added linear regression line at 95% confidence interval",
+       caption="Subjective numeracy effect not significant in intervention")
+plot7 + scale_color_brewer(palette = "Set1")+
+  geom_point(alpha = .6, size = .9) +
+  geom_smooth(method = "lm", alpha =.3)
+
+
+
 #mediating analysis!
 #first step is linear regression of our IV (intervention or not)
 #on our mediator!
@@ -264,18 +278,86 @@ summary(med2_m)
 #for equality
 med3_m<-lm(UHC_Support~condition+Equality,UHC_model_long)
 summary(med3_m)
+
 #for understanding
 med4_m<-lm(UHC_Support~condition+Understanding,UHC_model_long)
 summary(med4_m)
 #we see that there is a crit fx of understanding... but not a mediational relationship
 
 #lets finish ittttt
-install.packages("mediation")
+
 library(mediation)
 
 results<-mediate(med1_m, med3_m, treat='condition', mediator='Equality', boot=T)
 summary(results)
+library(texreg)
+
+
 #so mediational relationship b/w equality! but NOT understanding?
 
 results2<-mediate(med2_m, med4_m, treat='condition', mediator='Understanding', boot=T)
 summary(results2)
+
+#ok THIS WORKS but can we do it in another way to integrate our desired SEM output?
+
+mediation.model <- "
+  UHC_Support ~ Equality + condition
+  Equality ~ condition
+"
+UHC_model_long$condition<-as.factor(UHC_model_long$condition)
+library(sem)
+?sem
+library(lavaan)
+mediation.fit <- sem(mediation.model, data=UHC_model_long)
+
+install.packages("semPlot")
+library(semPlot)
+
+semPlot::semPaths(mediation.fit, "par",
+                  sizeMan = 12, sizeInt = 12, sizeLat = 12,
+                  edge.label.cex=1.5,
+                  fade=FALSE)
+
+#for underst
+
+mediation.model <- "
+  UHC_Support ~ Understanding + condition
+  Understanding ~ condition
+"
+mediation.fit <- sem(mediation.model, data=UHC_model_long)
+
+semPlot::semPaths(mediation.fit, "par",
+                  sizeMan = 12, sizeInt = 12, sizeLat = 12,
+                  edge.label.cex=1.5,
+                  fade=FALSE)
+
+#ok want to try a plot for our mediational analysis as well (need plot #3)
+med_plot_1<- ggplot(UHC_model_long,aes(x = Equality, y = UHC_Support, color = condition)) +
+  theme_bw() +
+  labs(x = "Percieved Equality",
+       y = "Support for UHC",
+       color = "Condition",  title = "Effect of Percieved Equality on Support for UHC",
+       subtitle="While controlling for effect of condition",
+       caption="Effect of Equality isn't affected by condition")
+med_plot_1 + scale_color_brewer(palette = "Set1")+
+  geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .6, size = .9) +
+  geom_smooth(method = "lm", alpha =.2)
+
+med_plot_2<- ggplot(UHC_model_long,aes(x = Understanding, y = UHC_Support, color = condition)) +
+  theme_bw() +
+  labs(x = "Understanding",
+       y = "Support for UHC",
+       color = "Condition",  title = "Effect of Understanding on Support for UHC",
+       subtitle="While controlling for effect of condition",
+       caption="Effect of Understanding")
+med_plot_2 + scale_color_brewer(palette = "Set1")+
+  geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .6, size = .9) +
+  geom_smooth(method = "lm", alpha =.2)
+
+plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
+  geom_boxplot() 
+plot3  + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC", caption="Condition has significant effect on Percieved Equity")
+
+plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
+  geom_boxplot() 
+plot2 + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC", caption="Condition does not have significant effect on Understanding")
