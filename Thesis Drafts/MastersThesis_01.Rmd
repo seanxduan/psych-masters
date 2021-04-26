@@ -55,9 +55,19 @@ sum(UHC_model_long$Post_Int_Accept_1>50, na.rm=TRUE)
 UHC_model_long$ins_score_1<-ordered(UHC_model_long$ins_score_1, levels = c("No", "Yes"))
 UHC_model_long$ins_score_2<-ordered(UHC_model_long$ins_score_2, levels = c("No", "Yes"))
 
+#study 1 data
 s1_d<-read.csv("study_1_demog.csv")
 s1_d<-s1_d[,-1]
 
+UHC_final<-read.csv("study_1_final.csv")
+#changing to allow the correct levels
+UHC_final$variable <- factor(UHC_final$variable, levels = c("PRESCORE","POSTSCORE"), labels = c("PRE", "POST"))
+#rename our condition var's to have actual names
+UHC_final$condition <- factor(UHC_final$condition)
+levels(UHC_final$condition) <- c("No Intervention", "Active Intervention","Passive Intervention")
+
+study_1_m <- lmer(value ~  condition*variable + (1|SUBJECT), data    = UHC_final)
+study_1_m_sum <- summary(study_1_m)
 ```
 
 
@@ -140,7 +150,44 @@ Next, each participant was given a packet of exercises adapted from the Choosing
 
 Lastly, our participants received the post-test measure, consisting of two items. The first is our post-test measure of support for UHC, using the Shen et al. measurement tool. Our second item was demographic information, including sex, age, and current year of schooling. 
 
-##### BREAK ###
+
+## Design
+
+The design of this experiment is as a multi-level model. The multi-level structure consisted of UHC measures (either pre or post intervention), nested within each subject. The experiment was thus a 2x3 between subjects design. While our time variable (pre or post intervention) is ‘within’ our subjects, any given subject will only be exposed to one of the experimental conditions, thus it is ‘between’ subjects. The first ‘2’ is our independent variables of time of measurement (pre or post intervention), the ‘3’ is our three experimental conditions, the control, the active intervention, and the passive intervention. Our primary dependent variable was support for UHC. I believe that there should be no extraneous variables that might influence our results.
+
+# Results
+
+## Quantitative Results
+
+```{r Splot1, fig.cap="(ref:Sfig1cap)", echo=FALSE}
+
+## Graphs with pre vs post data, boxplot
+
+plot3<-ggplot(UHC_final, aes(x=variable, y=value, color=condition)) +
+  geom_boxplot() + labs(title="", x = "Timepoint", y = "Support for UHC") + 
+  scale_color_manual(labels = c("No Intervention", "Active Intervention", "Passive Intervention"), 
+                     values=c("red", "blue", "black")) 
+plot3 + facet_wrap(~ condition) + theme(legend.position="none")
+
+```
+
+```{r study_1_tabs, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+texreg(study_1_m, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
+       custom.coef.names = c("Control","Active Intervention ","Passive Intervention","Post-Measurement Effect", "Interaction between Active Intervention and Post-Measurement", "Interaction between Passive Intervention and Post-Measurement"),
+       caption = "Frequentist Table of Intervention on UHC", label = "tab:study_1_tabs",
+       ci.force = TRUE) 
+##note need to fix this a lil'
+summary(study_1_m)
+```
+Descriptive statistics are summarized in table 2 above. Our data was analyzed using a 2x3 ANOVA with one within subjects factor (time of measurement, pre or post intervention) and one between subjects factor (experimental intervention type). Our main effect for our ‘passive’ intervention was not significant (p > .05) with our estimate being that participants in the passive intervention having greater support for UHC than those in the control condition. Our main effect for our ‘active’ intervention was also not significant (p > .05) with our estimate being that participants in the active intervention having greater support for UHC than those in the control condition as well. 
+	
+There was a significant interaction for the effect of time and our intervention. Participants only had an increase in support for UHC from pre to post measure when they were assigned to one of the two intervention conditions, specifically the interaction between being assigned to our passive intervention , and the post-intervention measure of support for UHC (p = 0.095).
+
+Looking at our graph, we see in our box and whisker plot, that there does seem to be a trend towards increased scores on support for UHC from the pre to the post for our two experimental interventions. Just as importantly, we also see a strong lack of change from pre to post intervention support for UHC in our control condition.
+
+## Qualitative Results
+
+We used very naive analysis for our qualitative response section, simply looking at our responses and examining to see if any trends existed. We found that participants occasionally had difficulty understanding the instructions. Several occasions occurred where the participant asked the administrator how to complete the exercise, after being exposed to the instructions. Taken all together, we found that improving our instructions and potentially clarifying or simplifying the task was important before implementation of our actual study. 
 
 ## Summary of Pilot Study Results
 
