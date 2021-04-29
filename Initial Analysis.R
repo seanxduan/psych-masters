@@ -331,6 +331,7 @@ semPlot::semPaths(mediation.fit, "par",
                   edge.label.cex=1.5,
                   fade=FALSE)
 
+library(ggplot2)
 #ok want to try a plot for our mediational analysis as well (need plot #3)
 med_plot_1<- ggplot(UHC_model_long,aes(x = Equality, y = UHC_Support, color = condition)) +
   theme_bw() +
