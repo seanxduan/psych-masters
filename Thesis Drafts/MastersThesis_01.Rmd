@@ -27,6 +27,7 @@ library(gtsummary)
 setwd("D:/Grad School/2020-2021/psych-masters")
 UHC<-read.csv("UHC_rdy_for_analysis_2020.csv")
 UHC_model<-UHC[,c(11:15,23:35)]
+
 UHC_model_long <- reshape(
   data = UHC_model,
   varying = list(c("Prescore","Postscore"),
@@ -177,7 +178,6 @@ texreg(study_1_m, custom.model.names = "Multi Level Model - Intercept Varies by 
        caption = "Frequentist Table of Intervention on UHC", label = "tab:study_1_tabs",
        ci.force = TRUE) 
 ##note need to fix this a lil'
-summary(study_1_m)
 ```
 Descriptive statistics are summarized in table 2 above. Our data was analyzed using a 2x3 ANOVA with one within subjects factor (time of measurement, pre or post intervention) and one between subjects factor (experimental intervention type). Our main effect for our ‘passive’ intervention was not significant (p > .05) with our estimate being that participants in the passive intervention having greater support for UHC than those in the control condition. Our main effect for our ‘active’ intervention was also not significant (p > .05) with our estimate being that participants in the active intervention having greater support for UHC than those in the control condition as well. 
 	
@@ -375,6 +375,39 @@ texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
        caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
        ci.force = TRUE) 
 ```
+lets add some areas where we can show our path diagrams!
+
+```{r path_dia_equity, fig.cap="Path Diagram showing the effect of condition on UHC Support and Percieved Equity. Note that there is a mediational relationship between condition and UHC through the effect of percieved equity. Increased percieved equity increases support for UHC, message=FALSE, warning=FALSE, and the control condition both has greater support for UHC, as well as greater percieved equity.", echo=FALSE}
+
+med1_m<-lm(Equality~condition,UHC_model_long)
+#summary(med1_m)
+med3_m<-lm(UHC_Support~condition+Equality,UHC_model_long)
+#summary(med3_m)
+library(sem)
+library(lavaan)
+library(semPlot)
+UHC_model<-UHC[,c(11:15,23:35)]
+
+UHC_model_long <- reshape(
+  data = UHC_model,
+  varying = list(c("Prescore","Postscore"),
+                 c("Pre_Equality","Post_Equality"),
+                 c("Pre_Understanding","Post_Understanding")),
+  idvar = 'Subject',
+  v.names = c('UHC_Support', 'Equality', 'Understanding'),
+  timevar = 'Time',
+  times = c('pre', 'post'),
+  direction = 'long'
+)
+UHC_model_long$condition<-as.factor(UHC_model_long$condition)
+mediation.model <- "UHC_Support ~ Equality + condition
+Equality ~ condition"
+
+mediation.fit <- sem(mediation.model, data=UHC_model_long)
+
+semPlot::semPaths(mediation.fit, "par", sizeMan = 8, sizeInt = 8, sizeLat = 8, edge.label.cex=1.5,fade=FALSE)
+```
+
 ## Moderating Effect of Numeracy
 
 ```{r freq-graph4, echo=FALSE, message=FALSE, warning=FALSE}
