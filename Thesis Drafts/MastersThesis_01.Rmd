@@ -125,7 +125,7 @@ For our first study, we decided on three conditions, one active intervention, on
 
 Our participants were students enrolled in the Psychology 1000 course at a large midwestern university. The study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. In total, there were approximately 20,000 student hours available for the 2019 fall semester this data was collected in. Participants were not given any other incentive for participation in the study. Participants were randomized into different conditions within the online survey software used to administer the pre and post test measures. Our total number of participants was 189. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
 
-```{r demographic std1, echo=FALSE, message=FALSE, results="asis"}
+```{r demographic std1, echo=FALSE, message=FALSE, results="asis", tab.cap="Demographic information for Study 1"}
 s1_d %>%
   tbl_summary(
     by = condition,
@@ -160,12 +160,12 @@ The design of this experiment is as a multi-level model. The multi-level structu
 
 ## Quantitative Results
 
-```{r Splot1, fig.cap="(ref:Sfig1cap)", echo=FALSE}
+```{r Splot1, fig.cap="Boxplot showing effect of interventions on support for UHC", echo=FALSE}
 
 ## Graphs with pre vs post data, boxplot
 
 plot3<-ggplot(UHC_final, aes(x=variable, y=value, color=condition)) +
-  geom_boxplot() + labs(title="", x = "Timepoint", y = "Support for UHC") + 
+  geom_boxplot() + labs(title="", x = "Time-point (pre or post intervention)", y = "Support for UHC") + 
   scale_color_manual(labels = c("No Intervention", "Active Intervention", "Passive Intervention"), 
                      values=c("red", "blue", "black")) 
 plot3 + facet_wrap(~ condition) + theme(legend.position="none")
@@ -177,13 +177,15 @@ texreg(study_1_m, custom.model.names = "Multi Level Model - Intercept Varies by 
        custom.coef.names = c("Control","Active Intervention ","Passive Intervention","Post-Measurement Effect", "Interaction between Active Intervention and Post-Measurement", "Interaction between Passive Intervention and Post-Measurement"),
        caption = "Frequentist Table of Intervention on UHC", label = "tab:study_1_tabs",
        ci.force = TRUE) 
-##note need to fix this a lil'
+
 ```
 Descriptive statistics are summarized in table 2 above. Our data was analyzed using a 2x3 ANOVA with one within subjects factor (time of measurement, pre or post intervention) and one between subjects factor (experimental intervention type). Our main effect for our ‘passive’ intervention was not significant (p > .05) with our estimate being that participants in the passive intervention having greater support for UHC than those in the control condition. Our main effect for our ‘active’ intervention was also not significant (p > .05) with our estimate being that participants in the active intervention having greater support for UHC than those in the control condition as well. 
 	
 There was a significant interaction for the effect of time and our intervention. Participants only had an increase in support for UHC from pre to post measure when they were assigned to one of the two intervention conditions, specifically the interaction between being assigned to our passive intervention , and the post-intervention measure of support for UHC (p = 0.095).
 
 Looking at our graph, we see in our box and whisker plot, that there does seem to be a trend towards increased scores on support for UHC from the pre to the post for our two experimental interventions. Just as importantly, we also see a strong lack of change from pre to post intervention support for UHC in our control condition.
+
+Lastly, we did a simple two-sample t-test to determine if there was any difference in our two intervention groups regarding willingness to use the selected plan for themselves. Both groups were relatively willing to use the selected plan for themselves, but there was no difference between the two intervention groups on the amount of willingness.
 
 ## Qualitative Results
 
@@ -221,7 +223,7 @@ Lastly, our pilot study was predicated on the assumption that opposition and sup
 	
 Participants were students enrolled in the Psychology 1000 course at a large midwestern university. Our study fulfilled 1 credit requirement for students in the course, of which students were required to obtain 7 credit hours. Participants were not given any other incentive for participation in the study. Randomization to different conditions was determined within the online survey software used to deliver the pre and post test measures. Our total number of participants was 412. This study was advertised on the university credit hours tracking software alongside other qualifying studies, but received no other advertisement. 
 
-```{r demographic, echo=FALSE, message=FALSE, results="asis"}
+```{r demographic, tab.cap="Demographic Information for Study 2", echo=FALSE, message=FALSE, results="asis"}
 #, tab.cap= "Demographics of Subjects"
 demog<-UHC[,c(25:28,15)]
 
@@ -282,7 +284,11 @@ m2 <-lm(UHC_Support ~ Understanding, data = UHC_model_long)
 m3 <-lm(UHC_Support ~ Equality, data = UHC_model_long)
 
 #numeracy model
-m4<-lm(UHC_Support~ SNS_score + RNS_score, data = UHC_model_long)
+#m4<-lm(UHC_Support~ SNS_score + RNS_score, data = UHC_model_long)
+m4<-lm(UHC_Support~ SNS_score*condition, data = UHC_model_long)
+
+m4_2<-lm(UHC_Support~ RNS_score*condition, data = UHC_model_long)
+#we need to have intrxn
 
 #bonus model? effect of y/n on ins pay or uninsured q
 m5<-lm(UHC_Support~ ins_score_1+ins_score_2, data = UHC_model_long)
@@ -298,22 +304,20 @@ A total of 412 subjects completed our exercise. Our final sample in our primary 
 
 Table 2 presents the results of the primary analysis of our primary study, the effect of our intervention on support for UHC as modelled by a 2x2 multi-level model. Unexpectedly, we see that individuals in our control condition trended towards larger values than those in our intervention condition, the opposite of what we hypothesized.
 
-```{r freq-graph1, echo=FALSE}
+```{r freq-graph1, fig.cap="No significant main effect of intervention condition on support for UHC", echo=FALSE}
 plot1<-ggplot(UHC_model_long, aes(x=Time, y=UHC_Support, color=condition)) +
   geom_boxplot() 
-plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Support for UHC", title = "Effect of Intervention on Support for UHC", caption="No significant main effect of intervention condition on support for UHC")
+plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Support for UHC", title = "Effect of Intervention on Support for UHC")
 #do we want to add fig caps? like fig.cap= "Frequentist Model of Intervention on UHC Support"
 ```
-```{r freq-table1, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+```{r freq-table1, tab.cap="Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
 texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
-       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Interevention and Post-Measurement"),
-       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table1",
+       custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Intervention and Post-Measurement"),
        ci.force = TRUE) 
-##note need to fix this a lil'
 ```
 ## Mediational Effect of Understanding and Percieved Equity
 
-Our secondary hypothesis was the existence of a mediational effect of understanding and percieved equity predicting increased support for UHC. The first element of our secondary hypothesis can be seen in table 3. We clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Additionally, while accounting for the effect of both understanding and our intervention, we see that there is a statistically significant effect of both understanding, and our intervention. However, while  understanding has increased in both groups from our pre-measurement to our post-measurement, there is no statistically significant difference in the increase in understanding across both groups. Thus, given the lack of difference in the increase in understanding scores across the two conditions, we can conclude that there likely is not a mediating effect of understanding on the increase in UHC support from our intervention.
+Our secondary hypothesis was the existence of a mediational effect of understanding and perceived equity predicting increased support for UHC. The first element of our secondary hypothesis can be seen in table 3. We clearly see in this second table that there seems to be a statistically significant effect wherein increased understanding predicts increased support for UHC. Additionally, while accounting for the effect of both understanding and our intervention, we see that there is a statistically significant effect of both understanding, and our intervention. However, while  understanding has increased in both groups from our pre-measurement to our post-measurement, there is no statistically significant difference in the increase in understanding across both groups. Thus, given the lack of difference in the increase in understanding scores across the two conditions, we can conclude that there likely is not a mediating effect of understanding on the increase in UHC support from our intervention.
 
 ```{r equity-diff, include=FALSE}
 #do we include this?
@@ -322,47 +326,45 @@ res <- var.test(Equality ~ condition, data = UHC_equity)
 res
 ```
 
-```{r freq-graph2, echo=FALSE}
+```{r freq-graph2, fig.cap="Condition does not have significant effect on Understanding", echo=FALSE}
 plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
   geom_boxplot() 
-plot2 + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC", caption="Condition does not have significant effect on Understanding")
+plot2 + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC")
 
 ```
-```{r med_g_1, echo=FALSE}
+```{r med_g_1, echo=FALSE, fig.cap="No significant difference in effect of understanding on support for UHC across conditions", message=FALSE}
 med_plot_2<- ggplot(UHC_model_long,aes(x = Understanding, y = UHC_Support, color = condition)) +
   theme_bw() +
   labs(x = "Understanding",
        y = "Support for UHC",
        color = "Condition",  title = "Effect of Understanding on Support for UHC",
-       subtitle="While controlling for effect of condition",
-       caption="Effect of Understanding")
+       subtitle="While controlling for effect of condition")
 med_plot_2 + scale_color_brewer(palette = "Set1")+
   geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .6, size = .9) +
   geom_smooth(method = "lm", alpha =.2)
 ```
 
-```{r freq-table2, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+```{r freq-table2, tab.cap="Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
 texreg(m2, custom.model.names = "Effect of Understanding on UHC Support",
        custom.coef.names = c("Intercept","Understanding"),
        caption = "Table of Linear Model - Understanding Predicting UHC Support", label = "tab:freq-table2",
        ci.force = TRUE) 
 ```
-The second element of our secondary hypothesis can be seen in table 4. We clearly see in this table that there seems to be a statistically significant effect wherein an increase in percieved equity  predicts increased support for UHC. Additionally, while accounting for the effect of both perceived equity and our intervention, we see that there is a statistically significant effect of both understanding, and our intervention. Furthermore, perceived equity has increased only in our control group, and not in our intervention. There is a statistically difference in the increase in perceived equity across both groups. Thus, given the difference in the increase in percieved equity across the two conditions, we can conclude that there likely is a mediating effect of understanding on the increase in UHC support from our intervention.
+The second element of our secondary hypothesis can be seen in table 4. We clearly see in this table that there seems to be a statistically significant effect wherein an increase in percieved equity  predicts increased support for UHC. Additionally, while accounting for the effect of both perceived equity and our intervention, we see that there is a statistically significant effect of both understanding, and our intervention. Furthermore, perceived equity has increased only in our control group, and not in our intervention. There is a statistically difference in the increase in perceived equity across both groups. Thus, given the difference in the increase in perceived equity across the two conditions, we can conclude that there likely is a mediating effect of understanding on the increase in UHC support from our intervention.
 
-```{r freq-graph3, echo=FALSE}
+```{r freq-graph3,fig.cap="Condition has significant effect on Percieved Equity", echo=FALSE}
 plot3<-ggplot(UHC_model_long, aes(x=Time, y=Equality, color=condition)) +
   geom_boxplot() 
-plot3  + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC", caption="Condition has significant effect on Percieved Equity")
+plot3  + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Perception of Equity in UHC", title = "Effect of Intervention on Perception of Equity in UHC")
 
 ```
-```{r med_g_2, echo=FALSE}
+```{r med_g_2, echo=FALSE,fig.cap="No significant difference in effect of percieved equity on support for UHC across conditions", message=FALSE}
 med_plot_1<- ggplot(UHC_model_long,aes(x = Equality, y = UHC_Support, color = condition)) +
   theme_bw() +
   labs(x = "Percieved Equality",
        y = "Support for UHC",
        color = "Condition",  title = "Effect of Percieved Equality on Support for UHC",
-       subtitle="While controlling for effect of condition",
-       caption="Effect of Equality isn't affected by condition")
+       subtitle="While controlling for effect of condition")
 med_plot_1 + scale_color_brewer(palette = "Set1")+
   geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .6, size = .9) +
   geom_smooth(method = "lm", alpha =.2)
@@ -375,9 +377,9 @@ texreg(m3, custom.model.names = "Effect of Percieved Equity on UHC Support",
        caption = "Table of Linear Model - Percieved Equity Predicting UHC Support", label = "tab:freq-table3",
        ci.force = TRUE) 
 ```
-lets add some areas where we can show our path diagrams!
 
-```{r path_dia_equity, fig.cap="Path Diagram showing the effect of condition on UHC Support and Percieved Equity. Note that there is a mediational relationship between condition and UHC through the effect of percieved equity. Increased percieved equity increases support for UHC, message=FALSE, warning=FALSE, and the control condition both has greater support for UHC, as well as greater percieved equity.", echo=FALSE}
+
+```{r path_dia_equity, fig.cap="Path Diagram showing the effect of condition on UHC Support and Percieved Equity",message=FALSE, warning=FALSE, echo=FALSE}
 
 med1_m<-lm(Equality~condition,UHC_model_long)
 #summary(med1_m)
@@ -408,7 +410,11 @@ mediation.fit <- sem(mediation.model, data=UHC_model_long)
 semPlot::semPaths(mediation.fit, "par", sizeMan = 8, sizeInt = 8, sizeLat = 8, edge.label.cex=1.5,fade=FALSE)
 ```
 
+We choose to parameterize our proposed mediational relationship using a path diagram, as seen above. This directly accounts for the effects of our measure of UHC being predicted by both percieved equality and experimental condition, as well as our measure of percieved equality being directly predicted only by our experimental condition. We see that there is a mediational relationship between condition and UHC through the effect of percieved equity. Increased percieved equity increases support for UHC, and the control condition both has greater support for UHC, as well as greater percieved equity. Thus, this path diagram indicates what we believe to be a mediational relationship.
+
 ## Moderating Effect of Numeracy
+
+Our final hypothesis was whether or not there was a moderating effect of numeracy on increased support for UHC. We examined both subjective numeracy, as well as objective numeracy, in relation to our intervention condition.
 
 ```{r freq-graph4, echo=FALSE, message=FALSE, warning=FALSE}
 plot7 <- ggplot(UHC_model_long,aes(x = SNS_score, y = UHC_Support, color = condition)) +
@@ -422,7 +428,15 @@ plot7 + scale_color_brewer(palette = "Set1")+
   geom_point(alpha = .6, size = .9) +
   geom_smooth(method = "lm", alpha =.3)
 ```
-Looking at the effect of numeracy on support for UHC, we can see the presence of significant effects in table 5. The first conclusion we reach upon examining this table is that there is no statistically significant effect of subjective numeracy on support for UHC. The graph above illustrates this further. 
+Looking at the effect of subjective numeracy on support for UHC, We see that there is no significant interaction, or even direct effect, of subjective numeracy on support for UHC. Given the lack of direct effect and interaction, we can safely conclude that there is no moderating effect of subjective numeracy on support for UHC.
+
+```{r freq-table4, echo=FALSE, message=FALSE, warning=FALSE, results="asis", tab.cap="Frequentist Model of Numeracy on UHC Support"}
+texreg(m4, custom.model.names = "Effect of Numeracy on UHC Support",
+       custom.coef.names = c("Intercept","Subjective Numeracy Score", "Effect of Condition", "Interaction between condition and SNS"),
+       caption = "Table of Linear Model - Moderating Effect of Subjective Numeracy Predicting UHC Support", label = "tab:freq-table4",
+       ci.force = TRUE) 
+```
+
 
 ```{r freq-graph5, echo=FALSE, message=FALSE, warning=FALSE}
 plot6 <- ggplot(UHC_model_long,aes(x = RNS_score, y = UHC_Support, color = condition)) +
@@ -436,12 +450,12 @@ plot6 + scale_color_brewer(palette = "Set1")+
   geom_point(position = position_jitter(w = 0.1, h = 0), alpha = .6, size = .9) +
   geom_smooth(method = "lm", alpha =.3)
 ```
-However, when we examine the effect of objective numeracy, we see a clear association between increased performance and increasing support for UHC. Furthermore, when examining how this effect propagates through our two conditions, it is extremely clear that this significant effect is driven almost entirely by the strong association in objective numeracy increasing support for UHC in our intervention condition.
+Comparatively, looking at our effect of objective numeracy on support for UHC, we see completely different results. Firstly, there does indeed seem to be a direct effect of objective numeracy on support for UHC, wherein increased objective numeracy predicts greater support for UHC. Additionally, we see that there is a significant interaction between the effect of objective numeracy and the condition. Examining the graph above, it is very clear that there is a significant effect of objective numeracy on support for UHC primarily driven by the strong effect of objective numeracy in interaction with our intervention condition.
 
-```{r freq-table4, echo=FALSE, message=FALSE, warning=FALSE, results="asis", tab.cap="Frequentist Model of Numeracy on UHC Support"}
-texreg(m4, custom.model.names = "Effect of Numeracy on UHC Support",
-       custom.coef.names = c("Intercept","Subjective Numeracy Score", "Objective Numeracy Score"),
-       caption = "Table of Linear Model - Numeracy Predicting UHC Support", label = "tab:freq-table4",
+```{r mod-table2, echo=FALSE, message=FALSE, warning=FALSE, results="asis", tab.cap="Frequentist Model of Numeracy on UHC Support"}
+texreg(m4_2, custom.model.names = "Effect of Numeracy on UHC Support",
+       custom.coef.names = c("Intercept","Objective Numeracy Score", "Effect of Condition", "Interaction between condition and ONS"),
+       caption = "Table of Linear Model - Moderating Effect of Objective Numeracy Predicting UHC Support", label = "tab:mod-table2",
        ci.force = TRUE) 
 ```
 
@@ -467,23 +481,32 @@ Our final category were responses that conveyed the perception that this exercis
 
 ## Relate Results to Past Research
 
-Given the results of our pilot study, we expected a strong effect confirming our hypothesis. However, we did not find a statistically significant main effect of our intervention in our primary study from the perspective of a 2x2 multi-level model. 
+Given the results of study 1, we expected a strong effect confirming our hypothesis. However, we did not find a statistically significant main effect of our intervention in our primary study from the perspective of a 2x2 multi-level model. 
 
 Keeping in track with previous research, we did find that overall there was a reasonable level of support for UHC as the majority (69% of our subjects) of our participants found the plan acceptable. We also replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. We replicated the findings of Danis, Biddle & Goold that the majority of individuals exposed to a health benefit package would be willing to use the health package for themselves.
 
-Furthermore, our results were different from Weiger, Armstrong & Shaffer, 2019. In our primary study, we were interested in seeing if our results from our pilot study replicated. Specifically, we wanted further confirmation on whether or not an experiential intervention would be more effective than an informational intervention. Compared to our pilot study, while we did not have two interventions, our control condition was a pseudo 'information only intervention', as it was presenting commonly accepted facts about UHC from well trusted sources. Given that support for UHC was higher in our information only based control condition than it was in our experiential intervention, we replicated our preliminary results indicating that to be the case from our pilot study.
+Furthermore, our results were different from Weiger, Armstrong & Shaffer, 2019. In study 2, we were interested in seeing if our results from our study 1 replicated. Specifically, we wanted further confirmation on whether or not an experiential intervention would be more effective than an informational intervention. Compared to study 1, while we did not have two interventions, our control condition was a pseudo 'information only intervention', as it was presenting commonly accepted facts about UHC from well trusted sources. Given that support for UHC was higher in our information only based control condition than it was in our experiential intervention, we replicated our preliminary results indicating that to be the case from study 1.
 
-Interestingly, there was significant evidence supporting our secondary hypothesis. When directly measuring our proposed mediating variables, we see that both percieved equality as well as understanding of UHC strongly predicted support for UHC. Furthermore, our mediating variables indicated that while our control condition increased both perceived equality as well as increased understanding, our intervention condition only increased understanding. Thus, the gap in perceptions of increased equality is likely the mechanism by which our intervention was unsuccessful at increasing support for UHC. Lastly, while we did see an increase in variance in perceptions of equality between our control and intervention, the difference was not statistically significant, and the group mean of both conditions was extremely similar.
+Interestingly, there was significant evidence supporting our secondary hypothesis. When directly measuring our proposed mediating variables, we see that both percieved equality as well as understanding of UHC strongly predicted support for UHC. Furthermore, our mediating variables indicated that while our control condition increased both perceived equality as well as increased understanding, our intervention condition only increased understanding. Indeed, after conducting a mediational analysis, we could plausibly conclude that since there was an effect of condition on perceived equity, and since we did see a difference in support for UHC across conditions, that this mediational relationship was the mechanism by which our difference in support manfisted. Lastly, while we did see an increase in variance in perceptions of equality between our control and intervention, the difference was not statistically significant, and the group mean of both conditions was extremely similar.
 
-The effect of numeracy on support for UHC was quite unexpected. Firstly, I had assumed that both objective and subjective numeracy would have similar effects, if any effect was extant at all. Secondly, I had assumed that the effect of numeracy would be the same across both categories. Neither of these two assumptions was correct. We saw very clearly in table 5 that there was a significant effect of objective, not subjective numeracy. Also, the impact of objective numeracy was significantly greater in our intervention than in our control. Considering the impact of objective and subjective numeracy, it is fairly obvious that our intervention skill required some larger amount of comfort with numbers, given that the core of the exercise was trading off various health benefits using a limited pool of resources. However, while our pilot study initially required manual calculation with physical calculators, the web-exercise that was designed for the primary study was constructed such as to minimize required calculations. Perhaps one reasonable supposition is that without sufficiently great objective numeracy, it was difficult for an exercise primarily centered on numbers to be effective. An alternative supposition would be that highly numerate individuals were significantly more engaged with an exercise that let them use their numeracy, leading to more attention paid, resulting in a larger effect of our intervention.
+The effect of numeracy on support for UHC was quite unexpected. Firstly, we had assumed that both objective and subjective numeracy would have similar effects, if any effect was extant at all. Secondly, we had assumed that the effect of numeracy would be the same across both categories. Neither of these two assumptions was correct. We saw very clearly in table 5 that there was a significant effect of objective, not subjective numeracy. Also, the impact of objective numeracy was significantly greater in our intervention than in our control. Considering the impact of objective and subjective numeracy, it is fairly obvious that our intervention skill required some larger amount of comfort with numbers, given that the core of the exercise was trading off various health benefits using a limited pool of resources. However, while study 1 initially required manual calculation with physical calculators, the web-exercise that was designed for study 2 was constructed such as to minimize required calculations. Perhaps one reasonable supposition is that without sufficiently great objective numeracy, it was difficult for an exercise primarily centered on numbers to be effective. An alternative supposition would be that highly numerate individuals were significantly more engaged with an exercise that let them use their numeracy, leading to more attention paid, resulting in a larger effect of our intervention.
 
 With regards to our qualitative data, we saw a significant difference in the proportion of types of content in both intervention and control condition. Unsurprisingly, no individuals in our control condition had any difficulty with the very simple exercise (reading multiple fliers). In comparison, after reading the responses, it seemed very clear that the main source of difficulty for individuals in the intervention condition was 'agonizing' over the optimal distribution of resources so as to have the most preferred health plan. Conceptually, this seems more like a feature than a bug. Confronting individuals with a realistic and difficult choice similar to those for health-care policy officials is exactly the purpose of the exercise. Additionally, over double the number of individuals in our intervention condition expressed active support and appreciation for the purpose of the exercise, that it improved their understanding of the problem and that it was a fun and enjoyable exercise. 
 
 However, one consistent category of responses across both conditions were subjects that believed that the exercise was either politically motivated, or had a strong intentional bias in it's construction. This lead to some subjects expressing suspicion or lack of belief in the presented information. Perhaps a reasonable extension would be to present HBP for a UHC in comparison to a set of standard private insurance plans. Additionally, it would be interesting to see how much this correlates with or against political affiliation, which was not measured in the primary study.
 
-
-# Limitations
+## Limitations
 	
 Our primary and pilot studies both recruited participants from a large midwestern university located in a medium sized midwestern city. This is not necessarily reflective of the majority of the insurance buying population, or those individuals able to effect change on UHC. The design of this study required a reasonable amount of familiarity with internet and online survey platform technology, which may make it difficult to adapt to older or less tech-savvy populations. Some subjects indicated in the free-response section that the information presented was biased towards support for UHC and did not paint the whole picture of arguments supporting our current private care system. Therefore, we were unable to derive potential insights comparing to see if positive messaging on private health care would reduce support for UHC.
+
+## Future Directions
+
+There are a great deal of interesting and clearly worthwhile directions to use moving forward. The lowest-hanging fruit would be to execute a replication of the study, providing further evidence of our proposed mediating relationship and moderating effects, on a group that more closely mimics the insurance buying public. Perhaps this could be done through Amazon's mechanical turk, or through another recruitment avenue. This would provide additional external validity to the study, as the primary decision-makers around health insurance are not university students. Something that would also be very simple for any replications or pseudo-replications of this research moving forward, would be to develop a structured plan for qualitative analysis. A potential avenue would be to use various forms of semantic text analysis, LIWC specifically.
+
+Additionally, there are several modifications of the experimental materials that would be of interest to examine. Primary in my thoughts is to determine if our current allotment of resources would have greater or lesser support as compared to our current allotment of 49 units out of 79 potential units. If there is no significant difference in either greater or lesser amounts, that would perhaps provide evidence indicating that the structure of the UHC as presented through a HBP is has greater salience in determining approval versus simply the objective healthcare options available.
+
+There are other additional measures that would be worthwhile to measure as well, to see if there is any moderating effects. Our naive qualitative analysis indicated that many participants were skeptical of a potential political agenda from the researchers, or were otherwise concerned about the 'neutrality' or 'objectivity' of our material. This would be something we could examine by measuring political orientation and polarization. Related to our previous point, we could also design experimental material that explicitly promotes 'standard' private health insurance as it exists in the USA, or compare to negative messaging on 'standard' private health care without having positive information about UHC. Lastly, if we could find some way of measuring actual equity of a given plan, and to see if different distributions of elements in a plan (actual equity) has similar effects to percieved equity of UHC.
+
+Lastly, I believe that the main thing of value to explore next would be to determine to see if there is some execution of the HBP that would be similarly effective to our current one, with individuals that have lower objective numeracy. Low objective numeracy is fairly common in the US population, and having an intervention that does indeed work to increase support for UHC only in individuals with high-objective numeracy is definitionally a problem with regards to the scope of the population that we wish to influence. Some considerations would be perhaps be a simplified version of the exercise, or to clearly indicate the trade-offs using a computer activity that doesn't explicitly reference numbers or calculation. 
 
 # References
