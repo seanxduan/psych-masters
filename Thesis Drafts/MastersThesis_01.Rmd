@@ -175,7 +175,7 @@ plot3 + facet_wrap(~ condition) + theme(legend.position="none")
 ```{r study_1_tabs, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
 texreg(study_1_m, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
        custom.coef.names = c("Control","Active Intervention ","Passive Intervention","Post-Measurement Effect", "Interaction between Active Intervention and Post-Measurement", "Interaction between Passive Intervention and Post-Measurement"),
-       caption = "Frequentist Table of Intervention on UHC", label = "tab:study_1_tabs",
+       caption = "Frequentist Table of Intervention on UHC Support", label = "tab:study_1_tabs",
        ci.force = TRUE) 
 
 ```
@@ -240,7 +240,7 @@ demog %>%
 #   as_gt() %>%
 #  gt::gtsave(filename = "demog.html")
 ```
->                       Table 1: Demographic Information of Subjects
+>                       Table 3: Demographic Information of Subjects
 
 ## Measures
 
@@ -313,7 +313,8 @@ plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "
 ```{r freq-table1, tab.cap="Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
 texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
        custom.coef.names = c("Control","Intervention ","Post-Measurement","Interaction of Intervention and Post-Measurement"),
-       ci.force = TRUE) 
+       caption = "Frequentist Table of Intervention on UHC Support", label = "tab:freq-table1",
+       ci.force = TRUE)
 ```
 ## Mediational Effect of Understanding and Percieved Equity
 
@@ -330,8 +331,9 @@ res
 plot2<-ggplot(UHC_model_long, aes(x=Time, y=Understanding, color=condition)) +
   geom_boxplot() 
 plot2 + scale_color_brewer(palette = "Set1")+labs(x = "Time of Measurement", y = "Percieved Understanding of UHC", title = "Effect of Intervention on Understanding of UHC")
-
 ```
+
+
 ```{r med_g_1, echo=FALSE, fig.cap="No significant difference in effect of understanding on support for UHC across conditions", message=FALSE}
 med_plot_2<- ggplot(UHC_model_long,aes(x = Understanding, y = UHC_Support, color = condition)) +
   theme_bw() +
