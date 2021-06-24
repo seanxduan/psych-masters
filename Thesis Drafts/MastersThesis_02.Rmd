@@ -1,9 +1,12 @@
 ---
-title: 'Impact of Explicit Health Benefits Package on Support for Universal Health Care'
-subtitle: 'Masters Thesis'
+title: Impact of Explicit Health Benefits Package on Support for Universal Health
+  Care
 author: "Sean Duan"
 date: "April 9, 2021"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
+subtitle: Masters Thesis
 bibliography: library.bib
 ---
 
