@@ -72,6 +72,7 @@ levels(UHC_final$condition) <- c("No Intervention", "Active Intervention","Passi
 
 study_1_m <- lmer(value ~  condition*variable + (1|SUBJECT), data    = UHC_final)
 study_1_m_sum <- summary(study_1_m)
+s_1_b<-lm(value ~ condition*variable, data =UHC_final)
 ```
 
 
@@ -282,6 +283,8 @@ The design of this experiment is a multi-level model. The multi-level structure 
 ```{r frequentist models, echo=FALSE}
 #first basic mlm of UHC supp, no slope, intercept varies by subj, w/ condit, time, and intrxn.
 m1 <- lmer(UHC_Support ~ 0 + condition*Time + (1|Subject), data    = UHC_model_long)
+#do we want this instead?
+#m1 <- lmer(UHC_Support ~ condition*Time + (1|Subject), data    = UHC_model_long)
 #summary(m1)
 
 #secondary mod of if understanding predicts UHC supp

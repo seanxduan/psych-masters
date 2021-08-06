@@ -31,8 +31,17 @@ m3<-lmer(value ~ condition*variable + (1|SUBJECT), data    = UHC_final)
 
 myprior<-prior(normal(0,2.5), class ="Intercept")
 
+UHC_final_long$time<-as.factor(UHC_final_long$time)
+
+UHC_final_long$condition<-as.factor(UHC_final_long$condition)
+levels(UHC_final_long$time) <- c("pre", "post")
+levels(UHC_final_long$condition) <- c("A", "B", "C")
+UHC_final_long$measurement<-as.numeric(UHC_final_long$measurement)
+
 m8<-brm(measurement ~ condition*time + (1|SUBJECT), data = UHC_final_long, family = cumulative("logit"), prior = myprior)
 
+
+m9<-brm(measurement ~ condition*time + (1|SUBJECT), data = UHC_final_long, family = gaussian(), prior = myprior)
 ```
 
 
