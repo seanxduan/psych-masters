@@ -1,0 +1,395 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  editor_options: 
+    chunk_output_type: console
+  chunk_output_type: console
+---
+
+# Example 1: Support for Universal Health Care
+
+```{r moresetup, include = FALSE}
+
+```
+
+Our initial example involves data from a study concerning the usage of explicit health benefit plans and support for universal health care (UHC). An explicit plan would make the meaning of `universal coverage' clearer as well as the resources used [@Huebner2006, @Shen2016, @Glassman2016]. Despite this evidence, there has been no research examining if support for UHC is increased by implementation of an explicit health benefit plan.
+
+Study participants were exposed to a health benefit plan via a hands on activity. Previous research indicates that a simulated experience exercise can be more impactful than a simple educational activity where facts are presented to the participant [@Wegier2019]. Participants participated in a decision exercise known as the “Choosing Healthplans All Together” (CHAT) in order to implement this simulated learning. Participants use limited resources to purchase different levels and categories of healthcare coverage. CHAT has been used in the Swiss UHC system to help set priorities [@Hurst2018]. The goal of CHAT is to make the complicated prospect of developing Universal Health Care understandable, and is considered easy and fun to use [@Danis2002].
+
+## General Method
+
+For the purposes of this paper, we used mixed-effects models to analyze these data using frequentist and then Bayesian approaches. While we expect the overall results from the study to be similar using both approaches, we will highlight the unique aspects of each (Duan, S. (2021). Impact of Health Benefit Plan on Support for UHC [Unpublished Manuscript]. Department of Psychology, University of Missouri).
+
+### Participants
+
+The sample included 184 participants (65.8% women, 78.3% Caucasian/White) ranging in age from 18 to 21 and enrolled in an introductory psychology course at a large midwestern university. All participants received one credit hour for their required research participation as part of a psychology course in exchange for their enrollment in the study. 
+
+### Materials
+
+#### Support for UHC
+The survey was conducted using the Qualtrics survey platform. Example items measuring support for UHC include "Our government needs health reform because the underprivileged are not getting their basic needs met", and "Universal health care is just designed to make the hard-working people of America pay for the health care of the lazy people of America" (reverse scored). Support for UHC was an aggregation of these 4 items ($\alpha$ = .73), each on a 7-point Likert scale (1 = *Strongly Disagree*, to 7 = *Strongly Agree*)(@Shen2016).
+
+#### CHAT intervention
+The intervention had three experimental conditions. First, the *active intervention* condition was a web-based exercise adapted from the CHAT paradigm developed by @Danis2002. This exercise consists of participants ‘filling out’ a game board by spending up to 49 ‘points’ in a maximum of 79 spaces, with different types of medical care costing various amounts of points. The exercise was designed such that due to limited 'points', participants could not have every option at the highest level, and are forced to trade off options. Second, individuals in the *passive intervention* condition were given a completed health benefits package, consisting of the most commonly chosen options in @Danis2002. Third, individuals in the *no intervention* condition did a 'dummy' activity using the same CHAT paradigm, but with a completely non-health related focus.
+ 
+### Procedure
+
+Following informed consent and instruction, participants were seated at a computer cubicle free of distractions. All participants completed a pre-intervention measure of support for UHC before being randomly assigned to either the active intervention, passive intervention, or no intervention condition. Individuals in the active or passive intervention conditions then completed their respective tasks, while individuals in the no intervention condition were given their non-health related exercise. After completion, all participants then completed a post-intervention measure of support for UHC. Individuals were then debriefed and credited for their participation.
+
+
+## Frequentist Approach
+
+```{r freq_model, echo=FALSE}
+## Run frequentist model 
+
+## Running library(lmerTest) before lmer() produces p-values
+## but avoiding the use of these values in the write-up
+
+m3 <- lmer(value ~ 0 + condition*variable + (1|SUBJECT), data    = UHC_final)
+m3_sum <- summary(m3)
+
+```
+
+### Method
+
+Though categorically part of the family of mixed-effects models, the specific design of this study is better described as a multi-level model due to the importance of nesting. Our multi-level model structure consisted of measures of support for UHC pre- and post-intervention nested within each participant, then nested within one of three experimental conditions. This resulted in a $2\times3$ design, which, in this case, was analogous to a mixed ANOVA. Specifically, our timepoint variable (pre- and post-intervention) was within-subject and since each participant was only exposed to one experimental condition (active intervention, passive intervention, or no intervention), this made experimental condition a between-subjects variable. The dependent variable was one's support for UHC, measured pre- and post-intervention. 
+
+### Results
+
+All of the estimated parameters for these data are reported on the left side of Table \@ref(tab:Stable1). Using mixed-effects, and given the design of the study, the only source of randomness was attributable to the intercept of each participant. This means, that unlike a more traditional mixed ANOVA, the singular repeated measure here is being accounted for by allowing each participant to have a unique intercept. Furthermore, for the current example, we opted to set the value of the model intercept to zero since this would provide two advantages. First, it would simplify parameter interpretation. Each experimental condition would now have its own mean value presented without the need for adding or subtracting from the intercept. Second, this will simplify the assignment of prior distributions in the following Bayesian re-visitation of these data.
+
+For the current example, results were as follows. The pre-intervention average for UHC support was 4.79 for the no intervention condition, meaning it was slightly above the center of the utilized 7-point scale. Pre-intervention averages for the active and passive intervention conditions were 5.03 and 5.00, respectively. Inspecting Table \@ref(tab:Stable1) for the standard errors of these three estimated averages shows that they were not especially apart from each other, which was expected for scores collected before intervention. For post-intervention scores, all levels increased by 0.06, but the two estimated interaction parameters indicated that both active and passive intervention conditions increased slightly more than the no intervention condition. Specifically, there was an additional 0.10 increase for the active intervention and a 0.14 increase for the passive intervention. These latter three parameter values were interpreted as only slight increases in support for UHC since standard errors suggested that these values did not substantially differ from zero. Lastly, for our model, the amount of randomness attributable to the individual participants in this study was 1.06 standard deviations from the average of each group, which was large given that the residual error was 0.34. As seen in Figure \@ref(fig:Splot1), support for UHC slightly increased after the active and passive interventions, though there was little to no difference between interventions. As for the no intervention condition, there was a negligible degree of change, as expected.  
+
+
+## Bayesian Approach
+
+```{r Bayes, include=FALSE, cache=TRUE}
+
+sean_priors <-  c(prior(normal(4,1), class = b, coef= conditionNoIntervention),
+                  prior(normal(4,1), class = b, coef= conditionActiveIntervention), 
+                  prior(normal(4,1), class = b, coef = conditionPassiveIntervention), 
+                  prior(normal(0,1), class = b, coef = variablePOST), 
+                  prior(normal(1,1), class = b, coef = conditionActiveIntervention:variablePOST), 
+                  prior(normal(.75,1), class = b, coef = conditionPassiveIntervention:variablePOST), 
+                  prior(exponential(1), class = sigma),
+                  prior(exponential(1), class = sd))
+
+sean_bmodel <- brm(value ~ 0 + condition*variable + (1 | SUBJECT), data = UHC_final,
+    prior = sean_priors, sample_prior = TRUE, iter = 3000, warmup = 1000)
+
+##RF: Separated priors from model to troubleshoot small issue. May also separate in EX2 since multiple Bayes models will now be compared.
+## Also copy-pasted below chunk. Might be able to omit running it using code from EX2 but have not tried yet.
+
+sean_priors_samp <- brm(value ~ 0 + condition*variable + (1 | SUBJECT),data = UHC_final,
+    prior = sean_priors, sample_prior = "only", iter = 3000, warmup = 1000)
+#setting sample_prior to "only" and getting the conditional effects lets us get our sample of our priors!
+
+
+```
+
+
+### Method
+
+Following the initial analysis using frequentist statistics, a Bayesian approach was utilized. We expected the overall results to be similar but we will highlight the differences unique to this section. To begin, we first detail the process of selecting priors for each of the model parameters. This process requires careful consideration and practice. For interested readers, we suggest reviewing (\readme{Ed, please help us add some reference material here for selecting priors}) for a deeper understanding of the logic underlying this process. 
+
+For our Bayesian model, prior distributions were based on expectations of how the interventions would affect support for UHC. Given that a 7-point Likert scale was used, we assumed that pre-intervention scores for all three experimental conditions would be normally distributed around the same center value, thus we chose $Normal(4, 1)$ as the prior distribution for all three conditions. Since experimental condition was dummy-coded with the no intervention condition as the reference group, this meant that the same prior was applied to the intercept and parameters associated with the two dummy codes comparing that lack of intervention to the  active and passive interventions. Next, given that pre- to post-intervention scores were not expected to differ for the no intervention group, we chose $Normal(0, 1)$ as the prior for the parameter associated with data collection timepoint. For the active and passive intervention conditions, however, we hypothesized an increase in support for UHC in comparison to pre-intervention. Specifically, we hypothesized that the active intervention would have a greater increase in support for UHC as compared to the passive intervention. Thus, for post-intervention scores, we assigned $Normal(1, 1)$ to the active intervention and $Normal(0.75, 1)$ to the passive intervention. This was specifically applied to their respective intervention by timepoint interaction terms. Lastly, for our random error term, we chose a commonly used prior distribution option: $Exponential(1)$. This was chosen since it assigns higher occurrence rates to errors close to zero, and lower rates to errors farther away from zero. The prior for the variability of intercepts across participants was also set to $Exponential(1)$. The anticipated impact of these prior assignments is depicted in Figure \@ref(fig:Splot2), which shows that their combination yields sensible ranges of values even before viewing the data. This was done by randomly sampling from the set of priors outlined above.
+
+With prior distributions assigned to each model parameter, we now progress to MCMC parameter estimation. MCMC was briefly described in the introduction and we will now showcase its use in parameter estimation for our first example by using the *brms* R package. We will utilize four chains for each estimated parameter and each will have the *brms* default of 1,000 per chain. Preliminary results suggested we increase the total length for each chain to 3,000 (from the default of 2,000) to obtain better coverage of each parameter's posterior distribution. 
+
+### Results
+
+The summary of our Bayesian model parameters can be found on the right side of Table \@ref(tab:Stable1). Overall, estimated parameter values appeared reliable. This was indicated by the R-hat and ESS values associated with each parameter. For R-hat, all values were either 1.00 or 1.01, meaning that all four chains converged on the same parameter values. All posterior distributions (Figure \@ref(fig:Splot4)) appeared to be well defined since ESS values were all in the hundreds. This was tabulated as *bulk* and *tail* ESS values---the former pertaining to the center of the posterior distribution and the latter to its tails. This meant that distributions were continuous and smooth. Traceplots for each parameter (Figure \@ref(fig:Splot3)) also indicated reliable convergence. Complementary to R-hat, traceplots showed that our four chains per parameter all hovered around the same estimated value.  
+
+As expected, Bayesian parameter estimates were similar to frequentist estimates, and the general interpretation remained identical. For pre-intervention scores, there was no notable difference between groups, as expected. For post-intervention scores, all groups slightly increased but active and passive intervention groups increased more than the no intervention condition. In comparison to the frequentist version of this analysis, the main difference here was the use of Bayesian credible intervals for these estimates. Using this approach, we no longer relied on theoretical asymptotic properties of sampling to calculate margins of error. We instead relied on the generated posterior distribution of each model parameter and based our margins of error on them. As stated in the introduction, credible intervals are analogous to frequentist confidence intervals, but unlike confidence intervals, sometimes credible intervals can vary substantially from computed standard error values. This was not the case using these data. In summary, our calculated credible intervals tell us that the first three parameters in Table \@ref(tab:Stable1) clearly differed from zero, whereas the following three did not. However, unique to the Bayesian approach, the singular source of randomness within our mixed-effects model (individual differences between participants) now had its own credible interval. We can now state that this estimate of variability between individual participants was significantly different from zero. 
+
+\readme{RF: I'll update this to reflect Chris' figure.} Lastly, as previously stated in the introduction, a Bayesian model is generative and capable of making hypothetical predictions through simulation. This is possible because our Bayesian model has learned unique properties about the three experimental conditions, the observed measurement change over time, and the individual differences between participants. In Figure \@ref(fig:Splot5), we show how additional participants may have responded in each of the three experimental conditions. Unlike frequentist model predictions, which are usually only relevant in comparison to the observed data (i.e., deviations between predicted and observed values), these data are simulated, and we could continue generating more data points. For example, the original data consisted of ### participants, but the data in Figure \@ref(fig:Splot5) is for ### simulated participants. 
+
+
+## Discussion
+
+We hypothesized that participants who engaged in an active intervention would demonstrate a greatest increase in support for UHC following the intervention of the experimental conditions, and that those exposed to a passive intervention would show more modest increase in support. We found a slight effect when exposing individuals to a health benefit plan, but there was significant uncertainty regarding our result. We replicated the generally positive level of support found by @Huebner2006, but in a non-medical student population. Results differed from @Wegier2019. According to @Wegier2019, a stronger effect should have emerged in the experiential intervention compared to the informational intervention. Results indicated relatively little difference in support between the two interventions. 
+
+The main differences between the frequentist and Bayesian approaches was the addition of significant assumptions regarding the distribution of each of our effects.\readme{ed: I think you are talking about priors, but this paragraph might be revised/expanded} The purpose for these assumptions was to allow us to account for uncertainty in the parameters in our model explicitly.
+
+When considering the benefits of the frequentist model for this data, we can say that it was significantly easier to build the model and complete the analysis. Additionally, interpretation of results is far simpler for a frequentist model given that there is a simple 'hard' cutoff with regards to p-value for our models. Lastly, frequentist models have the advantage of being more commonly used, and thus having greater acknowledgment, acceptance, and interpretability in the research community.
+
+As compared to our frequentist model, our Bayesian model required additional time and careful consideration to prepare the model. Thinking critically about how we believed our two interventions would effect our score was integral to designing reasonable priors. We get additional information about the uncertainty of our results, specifically, the uncertainty in our parameter values. Unlike in a frequentist model, we can interpret our results with more fidelity than using a hard p-value cutoff, although it is more difficult to parse weak and strong effects as compared to a binary outcome. Lastly, being able to directly sample our prior values was important for establishing confidence in the reasonability of our assumptions.
+
+
+(ref:table1-note) Displays the parameters for our focal models in Example 1 as well as some convergence diagnostics for the Bayesian model [as described by @Vehtari2020].  Dummy codes are used to represent Condition (No Intervention vs. Active Intervention vs. Passive Intervention) and Timepoint (Pre-Test vs. Post-Test) effects. Note that the Random/Group-Level Effect and the Residual Effect are both reported as standard deviations; standard errors for these estimates are lacking from the frequentist model because frequentist methods do not allow for such a calculation. Freq. = Frequentist, Est = Parameter Estimate, ESS = Effective Sample Size.  
+\textsuperscript{a} This is a dummy-coded variable (0 = False, 1 = True)  
+\textsuperscript{b} This variable represents an interaction between two dummy-coded variables (i.e., the product of those variables) 
+
+```{r Stable1, echo = FALSE, message = FALSE, warning=FALSE}
+
+#Model Parameter Comparison Table (includes both Freq model and Bayes model parameters) 
+
+#Frequentist sub-table
+tmp1S <- rbind(
+  format(round(as.data.frame(coefficients(m3_sum)), 2), nsmall = 2),
+  cbind(
+    Estimate = format(round(as.data.frame(VarCorr(m3))[,5], 2), nsmall = 2),
+    matrix(data = "", nrow = 2, ncol = 2, dimnames = list(NULL, colnames(as.data.frame(coefficients(m3_sum)))[-1]))
+  )
+)
+tmp1S <- matrix(
+  c(paste0(tmp1S[1:6,1], "(", tmp1S[1:6,2], ")"), tmp1S[7:8,1]),
+  nrow = 8, ncol = 1
+)
+rownames(tmp1S) <- c("Condition = No Intervention\\textsuperscript{a}", "Condition = Active Intervention\\textsuperscript{a}", "Condition = Passive Intervention\\textsuperscript{a}", "Timepoint = Post-Test\\textsuperscript{a}", "Active Intervention $\\times$ Post-Test\\textsuperscript{b}", "Passive Intervention $\\times$ Post-Test\\textsuperscript{b}", "Intercept|Participant", "Sigma")
+colnames(tmp1S) <- c("Est($SE$)")
+
+#Bayesian sub-table
+
+sean_bmodelsumm <- summary(sean_bmodel)
+
+tmp2S <- rbind(
+  sean_bmodelsumm$fixed,
+  as.data.frame(sean_bmodelsumm$random$SUBJECT),
+  sean_bmodelsumm$spec_pars
+)
+tmp2S[,1:5] <- format(round(tmp2S[,1:5], 2), nsmall = 2)
+tmp2S <- cbind(
+  paste0(tmp2S[,1], "(", tmp2S[,2], ")"),
+  paste0("[", tmp2S[,3], ", ", tmp2S[,4], "]"),
+  tmp2S[,5:7]
+)
+tmp2S <- tmp2S[,-2]
+rownames(tmp2S) <- rownames(tmp1S)
+colnames(tmp2S) <- c("Est($SE$)", "R-hat", "Bulk-ESS", "Tail-ESS")
+
+tmp2S[,4] <- as.character(tmp2S[,4])
+tmp2S[,3] <- as.character(tmp2S[,3])
+
+#cbind() sub-tables, add sub-headings and column spanners, print 
+
+tmp <- cbind(tmp1S, tmp2S)
+
+apa_table(
+  list(
+    `Fixed/Population-Level Effects` = tmp[1:6,],
+    `Random/Group-Level Effect ($SD$)` = tmp[7,],
+    `Residual ($SD$)` = tmp[8,]
+  ),
+  align = c("l", rep("c", 4)),
+  escape = F,
+  col_spanners = list(
+    `Freq. Model` = c(2,2),
+    `Bayesian Model` = c(3,6)
+  ),
+  caption = "Parameter Estimates for Focal Multilevel Models, Example 1",
+  note = "(ref:table1-note)",
+  landscape = F
+)
+
+```
+
+
+(ref:Sfig1cap) We see here that support for UHC trends after our survey in our active and passive intervention conditions, whereas the level of support for UHC in the no intervention condition does not seem to change.
+
+```{r Splot1, fig.cap="(ref:Sfig1cap)", echo=FALSE}
+
+## Graphs with pre vs post data, boxplot
+
+plot3<-ggplot(UHC_final, aes(x=variable, y=value, color=condition)) +
+  geom_boxplot() + labs(title="", x = "Timepoint", y = "Support for UHC") + 
+  scale_color_manual(labels = c("No Intervention", "Active Intervention", "Passive Intervention"), 
+                     values=c("red", "blue", "black")) 
+plot3 + facet_wrap(~ condition) + theme(legend.position="none")
+
+```
+
+
+(ref:Sfig2cap) Samples from priors in Example 1
+
+```{r Splot2, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="(ref:Sfig2cap)"}
+
+plot(conditional_effects(sean_priors_samp, effects = "condition:variable"))
+
+#setting sample_prior to "only" and getting the conditional effects lets us get our sample of our priors!
+
+
+```
+
+
+(ref:Sfig3cap) Traceplots for each parameter in Example 1.
+
+```{r Splot3, eval=TRUE, fig.cap="(ref:Sfig3cap)"}
+
+#Traceplots 
+
+posterior <- as.array(sean_bmodel)
+mcmc_trace(posterior, pars = c("b_conditionNoIntervention",
+                               "b_conditionActiveIntervention",
+                               "b_conditionPassiveIntervention",
+                               "b_variablePOST",
+                               "b_conditionActiveIntervention:variablePOST",
+                               "b_conditionPassiveIntervention:variablePOST",
+                               "sd_SUBJECT__Intercept",
+                               "sigma"))
+
+
+```
+
+
+(ref:Sfig4cap) Posterior distributions for each parameter in Example 1 (50% and 90%CIs).
+
+```{r Splot4, eval=TRUE, fig.cap="(ref:Sfig4cap)"}
+
+#Posterior distributions for our parameters
+
+posterior <- as.array(sean_bmodel)
+plot <- mcmc_intervals(posterior, pars = c("b_conditionNoIntervention",
+                               "b_conditionActiveIntervention",
+                               "b_conditionPassiveIntervention",
+                               "b_variablePOST",
+                               "b_conditionActiveIntervention:variablePOST",
+                               "b_conditionPassiveIntervention:variablePOST",
+                               "sd_SUBJECT__Intercept",
+                               "sigma"))
+
+plot + scale_y_discrete(
+  labels = c(
+    b_conditionNoIntervention = "Condition = No Intervention",
+    b_conditionActiveIntervention = "Condition = Active Intervention",
+    b_conditionPassiveIntervention = "Condition = Passive Intervention",
+    b_variablePOST = "Timepoint = Post-Test",
+    `b_conditionActiveIntervention:variablePOST` = "Active X Post-Test",
+    `b_conditionPassiveIntervention:variablePOST` = "Passive X Post-Test",
+    sd_SUBJECT__Intercept = "Intercept|Participant (SD)",
+    sigma = "Sigma (SD)"),
+  limits=rev
+)
+```
+
+
+(ref:Sfig5cap) Posterior prediction of twelve random participants drawn from Example 1 (each plot is a separate participant). Solid points represent observed data, circles represent point estimates, error bars represent the 95% credible interval around those estimates.
+
+```{r Splot5, eval = T, fig.cap="(ref:Sfig5cap)"}
+
+subdat <- subset(UHC_final, SUBJECT %in% sample(unique(UHC_final$SUBJECT), 12))
+subdat <- cbind(subdat, predict(sean_bmodel, newdata=subdat, re_formula = ~ (1 | SUBJECT)))
+
+ggplot(data = subdat, aes(x = variable, y = value, color = condition)) +
+  geom_point(aes(y = Estimate), shape = 1, size = 2) +
+  geom_errorbar(aes(ymin = Q2.5, ymax = Q97.5), width = .2) +
+  geom_point() +
+  facet_wrap(~ SUBJECT) +
+  theme_bw() + 
+  scale_color_manual(labels = c("No Intervention", "Active Intervention", "Passive Intervention"), 
+                     values=c("red", "blue", "black")) +
+  labs(x="Timepoint", y="Support for UHC", color="Condition", title="")
+```
+
+
+
+
+
+
+
+
+
+```{r Splot4prev, eval=TRUE, fig.cap="(ref:Sfig4cap)", include=FALSE}
+
+#Posterior distributions for our parameters
+
+#1.extract samples (i.e., the last 2000 samples from the posterior)
+post1 <- posterior_samples(sean_bmodel)
+post2 <- post1[6001:8000,]
+
+#2.restructure data 
+post3 <- rbind.data.frame(
+  cbind("Condition = No Intervention", post2[,1]),
+  cbind("Condition = Active Intervention", post2[,2]),
+  cbind("Condition = Passive Intervention", post2[,3]),
+  cbind("Timepoint = Post-Test", post2[,4]),
+  cbind("Active X Post-Test", post2[,5]),
+  cbind("Passive X Post-Test", post2[,6]),
+  cbind("Intercept|Participant (SD)", post2[,7]),
+  cbind("Sigma (SD)", post2[,8])
+)
+post3$V1 <- factor(post3$V1, levels = unique(post3$V1))
+post3$V2 <- as.numeric(post3$V2)
+
+#3.plot 
+ggplot(post3, aes(x = V2)) +
+  geom_density(fill = "lightblue") +
+  theme_minimal() +
+  scale_y_continuous(breaks = NULL) +
+  xlab("Estimate") +
+  facet_wrap(~ V1, scales = "free_y", strip.position = "bottom") +
+  ggtitle("Estimated Bayesian Posterior Distributions, Example 2")
+
+#(ref:Sfig4cap) Posterior distributions for each parameter in Example 1.
+```
+
+```{r freq-table2, tab.cap= "Frequentist Table of Intervention on UHC Support", echo=FALSE, results="asis", include=FALSE, eval=FALSE}
+#Using texreg instead of apa_table
+texreg(m3, custom.model.names = "Frequentist Model",
+       custom.coef.names = c("Intercept","Intervention (Active)","Intervention (Passive)","Control Post-score","Intervention Post-score (Active)", "Intervention Post-score (Passive)"),
+       caption = "Frequentist Table of Intervention on UHC", label = "tab:freq-table2",
+       ci.force = TRUE)
+#this code generates LaTeX direct importation of our integral units we care about!
+```
+
+```{r bayes-table, echo=FALSE, tab.cap="Bayesian", include=FALSE, eval=FALSE}
+tab_model(sean_priors,
+          pred.labels = c("Control Condition", "Intervention (Active)", "Intervention (Passive)", "Control Post-score",
+                               "Intervention Post-Score (Active)", "Intervention Post-Score (Passive)"),
+          dv.labels = c("Bayesian Model"),
+          string.pred = "Coefficient",
+          string.ci = "Conf. Int (95%)")
+```
+
+```{r bayes-table2, echo=FALSE, warning=FALSE, results="asis", tab.cap="Bayesian Table of Intervention on UHC Support", include=FALSE, eval=FALSE}
+#texreg instead
+
+texreg(sean_priors, custom.model.names = "Bayesian Model",
+       custom.coef.names = c("Intercept","Intervention (Active)","Intervention (Passive)","Control Post-score","Intervention Post-score (Active)", "Intervention Post-score (Passive)"),
+       caption = "Bayesian Table of Intervention on UHC", label = "tab:bayes-table2",
+       ci.force = TRUE)
+```
+
+```{r prePostPred, eval=FALSE, fig.cap="(ref:Sfig2cap)", include=FALSE}
+#additional graph - predicted vs data - titled predVsAct
+UHC_final$pred<-predict(m3, newdata = UHC_final)
+predVsAct <- ggplot(data = UHC_final, aes(x = value, y = pred, color = condition),) + geom_point() + facet_wrap(~condition) + labs(title= "Relationship between predicted vs. actual support for UHC", x = "Actual Support for Universal Healthcare", y = "Predicted Support for Universal Healthcare") + scale_color_manual(labels = c("No Intervention", 
+  "Active Intervention", "Passive Intervention"), values=c("red", "blue", "black"))
+
+predVsAct 
+
+#SD: After looking at our graphs, I agree that we do not need this figure, removing it by setting include = false for now, once we reach a consensus on figures I will keep, alter, or delete it as requested.
+#RF: Thanks Sean, let's talk about this soon though, before our next meeting
+
+#(ref:Sfig2cap) We see here that for both our intervention conditions, as well as our control, that our model predicts support for UHC well, being well correlated with our measured support for UHC.
+
+```
+
+```{r BayesGraphPrior1, eval=FALSE, fig.cap="(ref:Sfig3cap)", include=FALSE}
+plot(conditional_effects(sean_priors_samp, effects = "condition"))
+#setting sample_prior to "only" and getting the conditional effects lets us get our sample of our priors!
+
+#(ref:Sfig3cap) Here, we see samples from our priors for our pre-intervention values on support for UHC are all roughly similar. This is what we would expect, given that individuals are randomly assigned to a condition, and ideally should not show differences in support for UHC at this juncture.
+```
+
+```{r BayesGraphPrior2, eval=FALSE, fig.cap="(ref:Sfig4cap)", include=FALSE}
+plot(conditional_effects(sean_priors_samp, effects = "variable"))
+#setting sample_prior to "only" and getting the conditional effects lets us get our sample of our priors!
+
+#(ref:Sfig4cap) Here, we see samples from our priors regarding the increase in support for UHC after the intervention time, which is what we would expect to happen if our intervention has an effect.
+```
+
+```{r BayesGraph1, echo=FALSE, fig.cap="(ref:Sfig7cap)", include=FALSE}
+#These are the posteriors
+#conditional_effects(sean_priors, "condition", categorical = FALSE)
+#add in a few color commands to make it look nice?
+
+#ALSO!
+#We can talk about 'functions' of our effects, the combination of our base prediction and our effect of the intervention (4.78 + 0.07 #for example in the control vs 4.97 + 0.14 for the passive intervention)
+
+#(ref:Sfig7cap) We see here after building our bayesian model, that the effects of our intervention are very clear to see. As expected, there is an increase in support for UHC throughout both intervention conditions, as compared to the control.
+
+##RF: Shutting off for now until Sean, Chris, and I discuss final figures before 3/24 meeting.
+
+```
