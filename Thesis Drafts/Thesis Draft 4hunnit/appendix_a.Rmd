@@ -1,0 +1,12 @@
+# Appendix A
+
+#not done yet
+
+```{r appendix_a, echo=FALSE, message=FALSE"}
+
+![Caption for the picture.](/path/to/image.png)
+```
+
+```{r appendix_a1, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics("temp.png")
+```

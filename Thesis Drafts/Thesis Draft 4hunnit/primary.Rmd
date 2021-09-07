@@ -93,6 +93,9 @@ library("texreg")
 ```{r child = "study2_discussion"}
 ```
 
+```{r child = "appendix_a"}
+```
+
 
 # Computational Details
 All results were obtained using the R system for statistical
