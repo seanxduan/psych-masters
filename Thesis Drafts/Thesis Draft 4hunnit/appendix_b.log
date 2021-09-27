@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.23)  8 SEP 2021 15:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.23)  10 SEP 2021 14:09
 entering extended mode
 **./appendix_b.tex
 (appendix_b.tex
@@ -630,31 +630,63 @@ Package pdftex.def Info: appendix_b_5.png  used on input line 94.
 
 LaTeX Warning: Float too large for page by 23.94394pt on input line 95.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
+<appendix_b_6.png, id=9, 537.207pt x 584.1825pt>
+File: appendix_b_6.png Graphic file (type png)
+<use appendix_b_6.png>
+Package pdftex.def Info: appendix_b_6.png  used on input line 98.
+(pdftex.def)             Requested size: 469.76807pt x 510.84644pt.
+<appendix_b_7.png, id=10, 498.06075pt x 111.41624pt>
+File: appendix_b_7.png Graphic file (type png)
+<use appendix_b_7.png>
+Package pdftex.def Info: appendix_b_7.png  used on input line 102.
+(pdftex.def)             Requested size: 469.78072pt x 105.09pt.
+<appendix_b_8.png, id=11, 486.01575pt x 242.70676pt>
+File: appendix_b_8.png Graphic file (type png)
+<use appendix_b_8.png>
+Package pdftex.def Info: appendix_b_8.png  used on input line 106.
+(pdftex.def)             Requested size: 469.76611pt x 234.59198pt.
+<appendix_b_9.png, id=12, 498.06075pt x 457.71pt>
+File: appendix_b_9.png Graphic file (type png)
+<use appendix_b_9.png>
+Package pdftex.def Info: appendix_b_9.png  used on input line 110.
+(pdftex.def)             Requested size: 469.78072pt x 431.72112pt.
+<appendix_b_10.png, id=13, 532.389pt x 585.98924pt>
+File: appendix_b_10.png Graphic file (type png)
+<use appendix_b_10.png>
+Package pdftex.def Info: appendix_b_10.png  used on input line 114.
+(pdftex.def)             Requested size: 469.76292pt x 517.05804pt.
+<appendix_b_11.png, id=14, 509.5035pt x 604.659pt>
+File: appendix_b_11.png Graphic file (type png)
+<use appendix_b_11.png>
+Package pdftex.def Info: appendix_b_11.png  used on input line 118.
+(pdftex.def)             Requested size: 469.7518pt x 557.48323pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
 [1
 
 {C:/Users/Sean/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./appendix_b
 _1.png>] [2 <./appendix_b_2.png>] [3 <./appendix_b_3.png>] [4 <./appendix_b_4.p
-ng>] [5 <./appendix_b_5.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
+ng>] [5 <./appendix_b_5.png>] [6 <./appendix_b_6.png>] [7 <./appendix_b_7.png> 
+<./appendix_b_8.png>] [8 <./appendix_b_9.png>] [9 <./appendix_b_10.png>] [10 <.
+/appendix_b_11.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
 (appendix_b.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 97.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 13076 strings out of 492484
- 185778 string characters out of 3138795
- 299104 words of memory out of 3000000
- 17245 multiletter control sequences out of 15000+200000
+ 13135 strings out of 492484
+ 186763 string characters out of 3138795
+ 301553 words of memory out of 3000000
+ 17293 multiletter control sequences out of 15000+200000
  16551 words of font info for 21 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,6n,42p,811b,335s stack positions out of 5000i,500n,10000p,200000b,50000s
 {E:/Tecx/fonts/enc/dvips/lm/lm-ec.enc}<E:/Tecx/fonts/type1/public/lm/lmbx10.p
 fb><E:/Tecx/fonts/type1/public/lm/lmbx12.pfb><E:/Tecx/fonts/type1/public/lm/lmr
 10.pfb>
-Output written on appendix_b.pdf (5 pages, 10815883 bytes).
+Output written on appendix_b.pdf (10 pages, 11035418 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 2090 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
+ 2120 words of extra memory for PDF output out of 10000 (max. 10000000)
 

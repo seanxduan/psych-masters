@@ -1,0 +1,7 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{primary_files/figure-latex/study1_plot1-1.pdf}
+\caption{(\#fig:study1\_plot1)Boxplot showing effect of interventions on support for UHC}
+\end{figure*}

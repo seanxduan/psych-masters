@@ -1,0 +1,35 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\begin{center}
+\begin{tabular}{l c}
+\hline
+ & Multi Level Model - Intercept Varies by Subject \\
+\hline
+Control                                                       & $4.79^{*}$       \\
+                                                              & $ [ 4.51; 5.07]$ \\
+Active Intervention                                           & $0.25$           \\
+                                                              & $ [-0.15; 0.64]$ \\
+Passive Intervention                                          & $0.21$           \\
+                                                              & $ [-0.18; 0.60]$ \\
+Post-Measurement Effect                                       & $0.06$           \\
+                                                              & $ [-0.06; 0.18]$ \\
+Interaction between Active Intervention and Post-Measurement  & $0.10$           \\
+                                                              & $ [-0.07; 0.27]$ \\
+Interaction between Passive Intervention and Post-Measurement & $0.14$           \\
+                                                              & $ [-0.02; 0.31]$ \\
+\hline
+AIC                                                           & $830.98$         \\
+BIC                                                           & $862.25$         \\
+Log Likelihood                                                & $-407.49$        \\
+Num. obs.                                                     & $368$            \\
+Num. groups: SUBJECT                                          & $184$            \\
+Var: SUBJECT (Intercept)                                      & $1.12$           \\
+Var: Residual                                                 & $0.11$           \\
+\hline
+\multicolumn{2}{l}{\scriptsize{$^*$ 0 outside the confidence interval.}}
+\end{tabular}
+\caption{Frequentist Table of Intervention on UHC Support}
+\label{tab:study_1_tabs}
+\end{center}
+\end{table*}

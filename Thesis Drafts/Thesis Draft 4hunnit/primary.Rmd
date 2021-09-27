@@ -25,7 +25,7 @@ abstract: |
 keywords          : "Bayesian, statistical modeling, frequentist, applied statistics"
 
 
-bibliography      : ["references.bib", "r-references.bib"]
+#bibliography      : ["references.bib", "r-references.bib"]
 
 floatsintext      : no
 figurelist        : no
@@ -40,7 +40,7 @@ classoption       : "man"
 output            :
   papaja::apa6_pdf:
     includes:
-      in_header: preamble.tex
+      #in_header: preamble.tex
 ---
 
 ```{r setup}
@@ -70,45 +70,36 @@ library("texreg")
 ```
 
 
-```{r child = "study1_methods"}
+```{r child = "study1_methods.Rmd"}
 ```
 
 
-```{r child = "study1_results"}
+```{r child = "study1_results.Rmd"}
 ```
 
 
-```{r child = "study1_discussion"}
+```{r child = "study1_discussion.Rmd"}
 ```
 
 
-```{r child = "study2_methods"}
+```{r child = "study2_methods.Rmd"}
 ```
 
 
-```{r child = "study2_results"}
+```{r child = "study2_results.Rmd"}
 ```
 
 
-```{r child = "study2_discussion"}
+```{r child = "study2_discussion.Rmd"}
 ```
 
-```{r child = "appendix_a"}
+
+```#{r child = "appendix_a.Rmd"}
 ```
 
-```{r child = "appendix_b"}
+
+```#{r child = "appendix_b.Rmd"}
 ```
 
-# Computational Details
-All results were obtained using the R system for statistical
-computing [@R-base], version `r paste(R.Version()[6:7], collapse = ".")`,
-especially employing the add-on packages lme4 [@R-lme4] and brms [@R-brms_a;@R-brms_b] for model estimation.
 
-\newpage
 
-# References
-```{r create_refs}
-r_refs(file = "r-references.bib")
-```
-\setlength{\parindent}{-0.5in}
-\setlength{\leftskip}{0.5in}

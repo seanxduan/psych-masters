@@ -1,0 +1,9 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  editor_options: 
+    chunk_output_type: console
+  chunk_output_type: console
+---
+

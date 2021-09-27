@@ -1,0 +1,16 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  editor_options: 
+    chunk_output_type: console
+  chunk_output_type: console
+---
+
+# Discussion
+
+The purpose of Study 1 was to determine if an HBP based intervention would lead to increased support for UHC (H1a). Our secondary aim was to determine if our active intervention condition would have a greater increase in support for UHC than participants in our passive intervention condition (H1b). The results of our linear-mixed model did not support either of our two hypotheses, as the HBP based intervention did not lead to increased support for UHC, and our active and passive intervention conditions had indistinguishable impact. Our Bayesian estimation provided support of our first hypothesis (H1a), indicating that participants in both our intervention conditions had greater support for UHC as compared to our control. However, our Bayesian estimation did not support our second hypothesis (H1b); Participants in our active intervention condition did not have a greater increase in support for UHC compared to our passive condition. 
+
+One plausible explanation regarding our conflicting results is the confusion regarding the experimental procedure and materials for participants in our active intervention condition. Primarily, our qualitative free-response section indicated that a significant portion of participants in our active intervention condition did not fully understand the instructions necessary. Considering the complexity and numerical engagement necessary to participate, a lack of understanding could plausibly blunt the impact of the intervention. Furthermore, if participants in our active intervention exhibited confusion, while participants in our passive intervention did not, as they had much simpler instructions, that would be a confounding variable when attempting to determine if active instruction is superior for communicating on UHC as compared to passive instruction. 
+
+A significant portion of our participants had expressed difficulties with the experimental protocol and materials. This adds avoidable stochasticity to our data and hinders reproducibility. Therefore, the single largest priority in moving from Study 1 to Study 2 was improving the experimental design and materials. Executing a pseudo-replication of the study, with a protocol that is designed to reduce confusion would significantly reduce potential confounding variables. Additionally, our control condition in Study 1 was an uninformative control, which is not necessarily a realistic comparison point regarding commonly available information on UHC. Thus, the second priority was to alter our control condition to reflect the messaging more accurately on UHC that is already available to improve external validity.
