@@ -1,57 +1,26 @@
 ---
-title             : "The Use of Explicit Health Benefits Packages Increases Support for Universal Health Care for People with High Objective Numeracy"
-shorttitle        : "Effect of HBPs on UHC"
-
-author: 
-  - name          : "Sean Xiaohao Duan"
-    affiliation   : "1"
-    email         : "sxdff5@mail.missouri.edu"
-    corresponding : yes    # Define only one corresponding author
-
-affiliation:
-  - id            : "1"
-    institution   : "University of Missouri"
-
-
-authornote: |
-  
-  This paper was prepared as part of a semester-long, PhD-level seminar at the University of Missouri on Bayesian methods in psychology.
-
+title: The Use of Explicit Health Benefits Packages Increases Support for Universal
+  Health Care for People with High Objective Numeracy
+author:
+- name: Sean Xiaohao Duan
+  affiliation: 'University of Missouri, Columbia - Department of Psychology'
+  url: sxdff5@mail.missouri.edu
+shorttitle: Effect of HBPs on UHC
+bibliography: library.bib
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
 
 abstract: |
   Bayesian methods are becoming increasingly used in applied psychology research. Previous researchers have thoroughly written about much of the details already, including the philosophy underlying Bayesian methods, computational issues associated with Bayesian model estimation, Bayesian model development and summary, and the role of Bayesian methods in the so-called replication crisis. We do not attempt to rehash these topics in this paper, but instead seek to provide case studies comparing the use of frequentist methods to the use of Bayesian methods in applied psychological research. These case studies are intended to "illustrate by example" the ways that Bayesian modeling differs from frequentist modeling, and the differing conclusions that one may arrive at using the two methods. The intended audience is applied psychology researchers who have been trained in the traditional frequentist framework, and who are curious about how statistical results might look different in a Bayesian context. Along with our case studies, we provide general opinions and guidance on the use of Bayesian methods in applied psychology research.
-  
-  
-keywords          : "Bayesian, statistical modeling, frequentist, applied statistics"
-
-
-#bibliography      : ["references.bib", "r-references.bib"]
-
-floatsintext      : no
-figurelist        : no
-tablelist         : no
-footnotelist      : no
-linenumbers       : yes
-mask              : no
-draft             : no
-
-documentclass     : "apa6"
-classoption       : "man"
-output            :
-  papaja::apa6_pdf:
-    includes:
-      #in_header: preamble.tex
 ---
 
-```{r setup}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
-knitr::knit_hooks$set(purl = knitr::hook_purl)
-```
 
 
 ```{r pkgload, include = FALSE}
+#lets teach ourselves how to do this shit using the 'distill' package
+library("distill")
 library("papaja")
 r_refs("r-references.bib")
 library("ggplot2")
@@ -100,6 +69,3 @@ library("texreg")
 
 ```#{r child = "appendix_b.Rmd"}
 ```
-
-
-

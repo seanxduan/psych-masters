@@ -1,0 +1,81 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  editor_options: 
+    chunk_output_type: console
+  chunk_output_type: console
+---
+
+
+```{r study1_method_setup, include = FALSE}
+library(lme4)
+library("texreg")
+library(ggplot2)
+library(tidyverse)
+library(gtable)
+library(gtsummary)
+
+
+#study 1 data
+setwd("D:/Grad School/2020-2021/psych-masters")
+s1_d<-read.csv("study_1_demog.csv")
+s1_d<-s1_d[,-1]
+
+UHC_final<-read.csv("study_1_final.csv")
+#changing to allow the correct levels
+UHC_final$variable <- factor(UHC_final$variable, levels = c("PRESCORE","POSTSCORE"), labels = c("PRE", "POST"))
+#rename our condition var's to have actual names
+UHC_final$condition <- factor(UHC_final$condition)
+levels(UHC_final$condition) <- c("No Intervention", "Active Intervention","Passive Intervention")
+
+study_1_m <- lmer(value ~  condition*variable + (1|SUBJECT), data    = UHC_final)
+study_1_m_sum <- summary(study_1_m)
+s_1_b<-lm(value ~ condition*variable, data =UHC_final)
+```
+
+# Method
+
+## Participants
+
+Our participants were 189 students enrolled in a Psychology course at a Midwestern University. Our participants were primarily white (76%), female (68%), and freshmen (80%); further demographic information can be found in [Table here]. Participants received course credit for participation in the study. 
+
+```{r study1_methods_demographics, echo=FALSE, message=FALSE, results="asis", tab.cap="Demographic information for Study 1"}
+s1_d %>%
+  tbl_summary(
+    by = condition,
+    type = "Age" ~ "continuous",
+    statistic = list(all_continuous() ~ "{mean} ({sd})",
+                     all_categorical() ~ "{n} / ({p}%)"),
+    digits = all_continuous() ~ 2,
+    label = Year ~ "School Year",
+    missing_text = "(Missing)",
+    sort = list(everything() ~ "frequency")
+  ) %>% add_p() %>% bold_labels() %>% bold_p ()
+```
+
+## Procedure
+
+Participants were randomly assigned to one of three conditions representing different exposure to health benefits information. Our three conditions were an ‘active’ intervention condition (n=60), a ‘passive’ intervention condition (n=62), and our control condition (n=63).  The two intervention conditions consisted of a packet of exercises adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by Danis, Biddle & Goold (2002). CHAT is a simulation exercise where participants construct their own HBP by allocating a limited set of resources to benefit types (e.g. dental) and choosing scope of coverage (basic-to-high). The HBP as a whole is represented by a ‘game board’ with several sections representing the different benefit types and with the scope of coverage represented by subdivisions in those sections. Each of these sections can be added to the HBP by paying a cost in markers representative of it’s approximate relative cost in the US. For example, if a subject desired ‘basic’ dental care (regular cleanings and examinations every 6 months, with minimal dental care), it would cost 2 markers. If the participant desired to upgrade to ‘medium’ dental care (everything in ‘basic’, plus complete dental care including repairs and crowns), that would cost 4 additional markers, bringing the total cost to 6 markers. Participants have a total of 47 markers to use to design their HBP. Trade-offs are enforced as complete coverage is not possible with the limited resources. The core of the exercise is a simplified version of choosing priorities for a health care system. 
+
+Our active  intervention condition had participants creating their own HBP through the CHAT exercise, while our passive intervention condition had participants being given a completed CHAT exercise. The HBP in our passive intervention condition, consisted of the consensus choices for health insurance found by Danis et al. (2002). Our control condition was similar to the active intervention condition, but mentions of health care are replaced with pizza topping choices instead. Trade-offs are still enforced due to limited resources. This results in an exercise of similar length and intensity that is intentionally uninformative; see Appendix [LETTER HERE] for Study 1 active intervention materials, and [LETTER HERE] for passive intervention materials. Study 1 used a 2 (pre-post) x 3 (condition) mixed-subjects design, where condition was a between-subjects factor and participant were assigned to one of the three conditions. Time was a within-subjects factor with the primary outcome, support for UHC, measured before and after participants completed the control or one of the two intervention conditions.
+
+## Measures
+
+The primary outcome measure was the support for UHC scale, adapted from Shen & Labouff (2013), measured both pre and post-test. The scale was comprised of 4 items measuring support for UHC, which were averaged after reverse scoring the third item (e.g. “Access to medical care and insurance is a basic, inherent right of man”)   .Each item was measured on a 7 point Likert scale from 1 (strongly disagree) to 7 (strongly agree); see Table [LETTER HERE] for item wording.
+
+Participants also responded to several items about their experience with health. Participants were asked whether they paid for their own health insurance and if they had ever been uninsured. Participants in the active intervention condition were also asked if they would be happy having the plan they built as their own health insurance. Each of these three items was measured as a ‘yes’ or ‘no’ response. Additionally, there was a free-response question asking about the subjects thoughts about the exercise they just completed. Finally, we also measured demographic information, including gender identity, age, race/ethnicity, and year in school.
+
+## Power and Statistical Analyses
+
+We planned to recruit 180 participants. Sample size was determined a-priori using G-power with the following parameters: greater than 90% power to determine a significant large-sized effect (Cohen’s f = 0.10) at an alpha level of .05, for a linear multiple regression. Support for UHC outcome was treated as a continuous variable. We examined the effects of experimental condition (active intervention, passive intervention, and control ) and time (pre vs. post) on our outcome variable by testing multi-level models with random and fixed intercepts. The linear mixed model we constructed had condition, time, and the condition x time interaction as our fixed effects. A random intercept for each of the subjects was included to account for within-subject correlation in scores. We examined the main effect and the 2-way interaction between our two predictors. Additionally, we also  All tests were conducted in R and were considered statistically significant when P < .05.
+
+Additionally, we fitted  Bayesian linear multivariate multilevel models to our support for UHC outcome variable as a function of dummy-coded factors ‘condition’ (reference level ‘control’), and ‘time’ (reference level ‘pre’) as well as the ‘condition x time’ two way interaction using the Stan modeling language and the R package brms.  Condition, time, and their interaction were our fixed effects, with a random intercept for subjects as our random effect. Our priors were a normal distribution with a mean of 0 and a standard deviation of 2.5 for the mean of our reference levels for our three fixed effects. We used the brms package’s default priors for standard deviations of our random effects (Student’s t-distribution with nu = 3, mu = 0 and sigma = 20), as well as for correlation coefficients in interaction models. 
+
+## Study 1 Hypothesis:
+
+Hypothesis 1 – The experimental groups will differ in support for UHC. 
+
+> H1a: Participants in the two intervention conditions will have greater increases in support for UHC compared to those in the control condition. We believe this to be the case due to HBPs directly addressing several common sources for opposition to UHC.
+
+> H1b: Participants in the active intervention condition will have greater increases in support for UHC than participants in the passive intervention condition. We believe this to be the case as previous research indicates that complex, subject specific, numerical information is more easily learned through active engagement with the material.

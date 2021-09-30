@@ -50,13 +50,11 @@ For our Bayesian estimation, we had four sampling chains, each with 2000 iterati
 ```{r study1_plot1, fig.cap="Boxplot showing effect of interventions on support for UHC", echo=FALSE}
 
 ## Graphs with pre vs post data, boxplot
-
 plot3<-ggplot(UHC_final, aes(x=variable, y=value, color=condition)) +
-  geom_boxplot() + labs(title="", x = "Time-point (pre or post intervention)", y = "Support for UHC") + 
+  geom_boxplot() + labs(title="Effect of Intervention on Support for UHC - Study 1", x = "Time-point (pre or post intervention)", y = "Support for UHC") + 
   scale_color_manual(labels = c("No Intervention", "Active Intervention", "Passive Intervention"), 
                      values=c("red", "blue", "black")) 
 plot3 + facet_wrap(~ condition) + theme(legend.position="none")
-
 ```
 
 ## Qualitative results

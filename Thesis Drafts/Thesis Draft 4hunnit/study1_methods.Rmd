@@ -44,6 +44,7 @@ Our participants were 189 students enrolled in a Psychology course at a Midweste
 s1_d %>%
   tbl_summary(
     by = condition,
+    type = "Age" ~ "continuous",
     statistic = list(all_continuous() ~ "{mean} ({sd})",
                      all_categorical() ~ "{n} / ({p}%)"),
     digits = all_continuous() ~ 2,

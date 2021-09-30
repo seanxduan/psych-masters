@@ -1,0 +1,71 @@
+---
+title: The Use of Explicit Health Benefits Packages Increases Support for Universal
+  Health Care for People with High Objective Numeracy
+author:
+- name: Sean Xiaohao Duan
+  affiliation: 'University of Missouri, Columbia - Department of Psychology'
+  url: sxdff5@mail.missouri.edu
+shorttitle: Effect of HBPs on UHC
+bibliography: UHC_citations.bib
+output:
+  word_document:
+    toc: true
+    toc_depth: 2
+
+abstract: |
+  Bayesian methods are becoming increasingly used in applied psychology research. Previous researchers have thoroughly written about much of the details already, including the philosophy underlying Bayesian methods, computational issues associated with Bayesian model estimation, Bayesian model development and summary, and the role of Bayesian methods in the so-called replication crisis. We do not attempt to rehash these topics in this paper, but instead seek to provide case studies comparing the use of frequentist methods to the use of Bayesian methods in applied psychological research. These case studies are intended to "illustrate by example" the ways that Bayesian modeling differs from frequentist modeling, and the differing conclusions that one may arrive at using the two methods. The intended audience is applied psychology researchers who have been trained in the traditional frequentist framework, and who are curious about how statistical results might look different in a Bayesian context. Along with our case studies, we provide general opinions and guidance on the use of Bayesian methods in applied psychology research.
+---
+
+
+
+```{r pkgload, include = FALSE}
+#lets teach ourselves how to do this shit using the 'distill' package
+library("distill")
+library("papaja")
+r_refs("r-references.bib")
+library("ggplot2")
+library("lme4")
+library("brms")
+library("sjPlot")
+library("psych")
+library("bayesplot")
+library("effects")
+library("texreg")
+```
+
+
+
+```{r child = "introduction.Rmd"}
+```
+
+
+```{r child = "study1_methods.Rmd"}
+```
+
+
+```{r child = "study1_results.Rmd"}
+```
+
+
+```{r child = "study1_discussion.Rmd"}
+```
+
+
+```{r child = "study2_methods.Rmd"}
+```
+
+
+```{r child = "study2_results.Rmd"}
+```
+
+
+```{r child = "study2_discussion.Rmd"}
+```
+
+
+```#{r child = "appendix_a.Rmd"}
+```
+
+
+```#{r child = "appendix_b.Rmd"}
+```

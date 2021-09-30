@@ -1,0 +1,52 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Appendix B
+
+### Experimental Materials for Study 2
+
+```{r appendix_b1, echo=FALSE, fig.cap="Screenshot of Web Exercise for Intervention Condition", out.width = '100%'}
+knitr::include_graphics("appendix_b_1.png")
+```
+
+```{r appendix_b2, echo=FALSE, fig.cap="Screenshot showing legend and web exercise for intervention condition", out.width = '100%'}
+knitr::include_graphics("appendix_b_2.png")
+````
+
+```{r appendix_b3, echo=FALSE, fig.cap="1st Infographic for control condition", out.width = '100%'}
+knitr::include_graphics("appendix_b_3.png")
+````
+
+```{r appendix_b4, echo=FALSE, fig.cap="2nd Infographic for control condition", out.width = '100%'}
+knitr::include_graphics("appendix_b_4.png")
+````
+
+```{r appendix_b5, echo=FALSE, fig.cap="3rd Infographic for control condition", out.width = '100%'}
+knitr::include_graphics("appendix_b_5.png")
+````
+
+```{r appendix_b6, echo=FALSE, fig.cap="Support for UHC Measure - Scale and Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_6.png")
+````
+
+```{r appendix_b7, echo=FALSE, fig.cap="Percieved Equity Measure - Scale and Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_7.png")
+````
+
+```{r appendix_b8, echo=FALSE, fig.cap="Percieved Understanding Measure - Scale and Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_8.png")
+````
+
+```{r appendix_b9, echo=FALSE, fig.cap="Subjective Numeracy Scale Part 1 - Scale and Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_9.png")
+````
+
+```{r appendix_b10, echo=FALSE, fig.cap="Subjective Numeracy Scale Part 2 - Scale and Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_10.png")
+````
+
+```{r appendix_b11, echo=FALSE, fig.cap="Rasch Numeracy Scale (Objective Numeracy) - Item wording", out.width = '100%'}
+knitr::include_graphics("appendix_b_11.png")
+````
