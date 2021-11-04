@@ -1,0 +1,413 @@
+"","ResponseId","Post_Int_Accept_1","Subject","SNS_score","RNS_score","condition","ins_score_1","ins_score_2","Age","Gender","Race","School_Year","Free_Response","Prescore","Postscore","Pre_Equality","Post_Equality","Pre_Understanding","Post_Understanding"
+"1","R_1kYVTpRlZMjTeDv",50,8,NA,NA,"Intervention","No","No",19,"Female","White","Sophmore","It was very insightful to learn more about healthcare and insurance ",55.75,47.5,0,0,0,40.5
+"2","R_ONLOceQmwSO5DaN",80,10,NA,NA,"Intervention","No","Yes",18,"Female","White","Freshman","It was very straightforward and enlightening. ",58.75,60,50,30,38.5,72.5
+"3","R_31crvS36XlH3NgO",70,12,NA,NA,"Intervention","No","No",18,"Male","White","Freshman","It was fine, kinda interesting opened my eyes to the ammount of insurance that I will need ",90,96.25,100,100,10,57.5
+"4","R_20URAsA34E3n25K",90,14,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I feel very privileged, and feel like I need to do research on our universal healthcare system to see if its fair in my eyes.",78.75,84,50,50,25,44
+"5","R_eW0h8vxJFAITELD",50,16,NA,NA,"Intervention","No","No",21,"Male","White","Senior","I think everyone should have a right to be healthy however it does suck that other people have to pay for it from there own money they make :( Also the government sucks at most things they do I wouldnt trust my healthcare with them...",61.25,57.5,20,20,10,40
+"6","R_3PpiaoMqA3nCObr",100,17,NA,NA,"Intervention","No","Yes",20,"Female","White","Junior","You can't have everything that you want",99.75,99.5,65,25,51.5,52.5
+"7","R_26fnu9ItFZx4yst",82,19,NA,NA,"Intervention","No","No",18,"Female","APAC","Freshman","I thought it was informative in telling you what goes into healthcare and how you cannot cover everything.",73,70.75,50,50,20,45.5
+"8","R_3iV9Zgo2wr6Mwo8",61,21,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I think this is a great way to get people to understand what goes into the government paying for medical bills. ",23.75,28.5,30,50,50,34.5
+"9","R_1QckwlsVzag0nWl",65,23,NA,NA,"Intervention","No","No",18,"Female","APAC","Freshman","Some categories were easy to prioritize, but others were harder based on how it could help our society as a whole.",61.25,76.25,60,60,20,62.5
+"10","R_URswhMgWNrEIBwt",84,24,NA,NA,"Intervention","No","No",20,"Female","White","Freshman","It was difficult to figure out what was most important in a plan.",96,93.75,77,85,62.5,77.5
+"11","R_3QXagY3yLrLJ0PH",66,25,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I think it made me realize the amount of things that go into a health care plan and that it's hard to put everything you need into a single healthcare plan.",91.25,90.25,25,39,27.5,55
+"12","R_3kGFU7vGk1W9Xry",95,28,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","Healthcare is an essential service and the medical advances that we have are a blessing that should be shared. ",93.75,95.75,90,95,95,86
+"13","R_3fPMJSdu2E1vSCY",50,29,NA,NA,"Intervention","No","No",18,"Male","White","Freshman","Fairly interesting in completing the tables, and opened my mind a little more",57.5,60,20,40,20,30
+"14","R_TiklvweRrTT5ZbH",70,30,NA,NA,"Intervention","Yes","No",18,"Female","Hispanic/Latino","Freshman","it makes me think about something I really don't  think about much often.",87.5,87.5,51,52,50,49.5
+"15","R_10MmrdIc50w0pcP",80,31,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I realized the importance of having health care and how controversial the health care system is set up now. ",57.75,62.5,40,78,61,62.5
+"16","R_2BqXEit0DyWH3mb",50,34,NA,NA,"Intervention","Yes","Yes",19,"Female","White","Sophmore","universal healthcare isn't that straight forward",64.25,60,20,8,8.5,40
+"17","R_aV0qzPpiYrihK25",94,36,NA,NA,"Intervention","Yes","No",24,"Male","White","Other","I thought it was very interesting.",71.25,83.75,35,50,40,71.5
+"18","R_qCKYbzcmBvO8kk9",70,39,NA,NA,"Intervention","No","No",19,"Male","White","Sophmore","It helped me realize what goes into healthcare",65,60,70,60,35,40
+"19","R_T7QDKmIWwDzDZ1D",30,41,NA,NA,"Intervention","No","Yes",18,"Male","White","Freshman","It was good as I got to explore about universal health care",45,45,30,40,45,45
+"20","R_D01K4om1FdPADaV",95,42,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","It wasn't as difficult of a choice as I was expecting",82.5,86.75,60,70,20,56
+"21","R_e9XKSIdDY9MjgTn",90,44,NA,NA,"Intervention","No","Yes",18,"Male","White","Freshman","I wish that I could sign up for insurance and etc. as straight forward as this.",81.25,80,44,33,23,53.5
+"22","R_3FPbBGRzlQcC71h",100,46,NA,NA,"Intervention","No","Yes",18,"Female","Black","Freshman","Universal Health Care is vital to our society",100,100,100,100,100,100
+"23","R_37PtIYDm6xEsjh7",49,47,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","Pretty well thought questions",46.5,48,100,100,94.5,91.5
+"24","R_2w4sqZ3etpJjeLV",92,49,NA,NA,"Intervention","No","No",18,"Male","APAC,Hispanic/Latino","Freshman","This opened up my perspective on health care.",85.25,67.25,11,48,37.5,65
+"25","R_3QESbykbt1cECz1",40,50,NA,NA,"Intervention","No","No",19,"Female","White","Sophmore","it was much more difficult than I thought it was going to be; I had to compromise points in some places to be able to get at least basic coverage in other areas",93.25,85.25,50,25,52,45
+"26","R_3KN1jj9dqtuWnnn",50,53,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","It was extremely hard to not choose high for every option because it really does seem like the morally right option.",60,63.75,70,60,50.5,61
+"27","R_3iJP6wbc9Eljkyi",90,54,NA,NA,"Intervention","No","Yes",19,"Female","White","Sophmore","This gave me a new perspective on how insurance policies are implemented.",93.75,90,100,100,62.5,75
+"28","R_1dayjT7ubF2uVxC",80,56,NA,NA,"Intervention","Yes","No",20,"Male","White","Junior","enjoyed it, overall I believe that there should be Universal Health Care, but I did not realize how complicated it was. This exercise showed me how complicated it will be if the US decides to go through with something like this.",88.5,89.75,95,98,36.5,54.5
+"29","R_3MS6j2JY6tjVMsp",48,58,NA,NA,"Intervention","No","No",20,"Female","White","Junior","I thought it was very interesting and i really enjoyed it",61.5,50.25,52,50,52,50.5
+"30","R_3OqfauOoqY52jtt",89,60,NA,NA,"Intervention","No","Yes",18,"Female","Black","Freshman","I think it was very informational.",62.25,65.5,49,52,44.5,67.5
+"31","R_2uJwsTwS7I77jdM",30,63,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I never realized how expensive all of the insurances added up was.  ",68.75,75.75,63,50,50.5,66
+"32","R_2e8MEWtveFIZPRH",9,65,NA,NA,"Intervention","No","No",19,"Female","Other","Sophmore","I don't think Universal Health Care should be implemented.",26.25,27,25,24,12.5,24.5
+"33","R_3QF9nLGFdRd15Jv",45,66,NA,NA,"Intervention","No","No",18,"Female","White","Freshman","I do not know much about medical insurance because I have never had to worry about it personally",66,71.25,25,16,4,32.5
+"34","R_2c8A7rpjgHO3fPy",79,69,NA,NA,"Intervention","Yes","No",37,"Female","APAC","Junior","knowledgable ",62.5,69,62,73,72,78
+"35","R_2QMtj7P75of06P9",98,71,NA,NA,"Intervention","No","No",20,"Female","White,Hispanic/Latino","Sophmore","I think it is important. People should have to think about these questions, especially privileged people such as myself.",93.75,96.5,100,100,95,95.5
+"36","R_2Qoo9DeoZOP5z4i",78,73,NA,NA,"Intervention","No","Yes",19,"Female","White","Sophmore","Does not give the whole picture of affordable care act and what all is does to every american, not just the ones getting the medical care coverage.",38.25,35,55,45,14.5,32.5
+"37","R_3NKXmnN8OfL0Xxb",51,74,NA,NA,"Intervention","No","No",18,"Male","White","Freshman","It made me realize that universal healthcare, although not perfect, will save lives and create a better America for the next generations.",59,80.5,20,14,0,25
+"38","R_7PQn1JMPuaplNoR",50,76,2.875,1,"Intervention","No","No",19,"Female","White","Freshman","Didn't now all what goes into health expenses",62.25,50.25,50,50,50,40
+"39","R_3LX2MJYkeQaVMj1",25,77,5.125,7,"Intervention","Yes","No",18,"Male","White","Freshman","It was difficult to determine what was best not only for me but for everyone",47.5,52,20,10,15,44.5
+"40","R_3nvFpUDGuRdBJYJ",60,79,3.125,5,"Intervention","No","No",18,"Female","White","Freshman","I thought it was informative and offered insight into the costs of health insurance.",94.25,97,100,100,84.5,88
+"41","R_1KwD2aPwcOJ5cid",60,81,2.875,2,"Intervention","No","No",19,"Female","Hispanic/Latino","Sophmore","I found it hard to only have 47pts.",39.25,58.25,38,40,28,45.5
+"42","R_2ZEx2eQpbJZokS6",50,83,3.375,4,"Intervention","No","No",19,"Female","White","Freshman","eye-opening",88.75,96,20,1,0.5,1.5
+"43","R_r2a0YpwDdg3B7Dr",71,84,3.375,5,"Intervention","No","No",19,"Male","White","Freshman","It was an interesting way to state your opinion through healthcare.",63,74,10,38,52,69.5
+"44","R_2wiC9TPYn36O9Qd",57,86,3.625,2,"Intervention","No","No",19,"Male","White,Hispanic/Latino","Freshman","It was intresting because it made me think how I would want things covered. I have CF so I know what it's like to have an expensive medicine and problems with the insurance company.  ",53,52,25,36,7,42
+"45","R_2xyJGhPR7gFs9Pw",55,88,5,5,"Intervention","No","No",18,"Female","APAC","Freshman","I think it shows how much insurance costs and how important a health care plan is",51.5,51,49,54,51.5,54.5
+"46","R_1LwdAVZ5mIzqx9c",82,91,4.75,6,"Intervention","No","Yes",18,"Male","White","Freshman","It gives good insight on the state and use of healthcare",92.75,93.5,100,92,0,50
+"47","R_2wjDbcUiBOZFk7k",40,93,4.5,5,"Intervention","Yes","No",19,"Female","White","Sophmore","It was alot to take in because I knew less about the subject than I previously thought.",75,70,50,30,40,80
+"48","R_31d7QnKPjI5G27I",70,95,5.125,4,"Intervention","No","Yes",18,"Female","White","Freshman","health care will always be very important to me",48,52,85,15,89.5,80.5
+"49","R_3kctRSUOCo5hagk",50,96,2.875,5,"Intervention","No","Yes",21,"Female","Black","Junior","Interesting to think about ",66.5,64.5,40,51,15.5,39.5
+"50","R_2TZBE6MXsDmC93q",80,98,4.75,5,"Intervention","No","No",18,"Female","White","Freshman","weird to see what you have to pick and choose from because the future is unpredictable",50,61,42,50,39.5,57
+"51","R_8GnDYZE9wkTCSqd",61,99,4,4,"Intervention","No","No",18,"Female","White","Freshman","There is a lot that health insurance covers and it is not affordable for all ",75.25,75.25,71,71,65,76
+"52","R_21tSXOk49badhSS",100,102,4.25,2,"Intervention","No","No",18,"Female","Black","Freshman","Interesting",45.25,75,30,10,29.5,54.5
+"53","R_2qx8m0P57BG6oY1",100,105,3.75,5,"Intervention","No","No",20,"Female","White","Junior","it was hard to pick what was the most important",99,99.75,8,8,8,52
+"54","R_2DSMz786g5MRJ5K",87,107,5.125,3,"Intervention","No","No",NA,"Female","Other","Freshman","Makes me rethink how others without insurance values certain medical services",77.25,77.75,81,86,60,76
+"55","R_sngFVTr3pzeOJoZ",64,108,4.375,5,"Intervention","Yes","No",18,"Female","White,American Indian/Alaska Native","Freshman","Informative on what is being payed for",97.25,92.25,70,62,65,64.5
+"56","R_3D2C3IyvTPPtnrt",100,110,4.875,6,"Intervention","No","No",20,"Male","White","Junior","It was alright, just wish the mini list we filled out could actually happen",97.25,97.25,100,100,80,95
+"57","R_1FOL0FNwaYTlzhb",53,112,5,7,"Intervention","No","No",18,"Female","Other","Freshman","Universal health care is incredibly important to me, and I would entirely support a bill that allowed for religious/cultural exemptions",90.75,88,68,52,48,59
+"58","R_C81byLPYe8qU5wZ",1,114,4.625,6,"Intervention","No","No",18,"Male","White","Freshman","Teachs you quite a bit",22.75,20.5,6,36,29,37.5
+"59","R_OJvpCXUkZiKXJ73",67,115,4.125,4,"Intervention","No","No",18,"Female","White","Freshman","I think it is important that everyone has access to not only equal, and affordable healthcare, but also quality healthcare is important.",67.75,65.5,26,34,24,46
+"60","R_2ALwGYVB1y6Z3MQ",60,118,3.75,6,"Intervention","No","Yes",18,"Female","White","Freshman","very difficult ",91.25,93.5,100,100,100,100
+"61","R_25LxpJRsbluy3TT",50,119,4.125,2,"Intervention","No","No",19,"Female","White","Sophmore","I honestly dont know much about health care ",50,55,70,50,61,65
+"62","R_C1aDAG4aCZevdLj",39,121,2.875,3,"Intervention","No","No",19,"Female","White","Freshman","It surprised me",43,77.75,38,85,41,66.5
+"63","R_s83SSTlpPpfwS6l",44,123,3.625,0,"Intervention","No","No",20,"Male","White","Junior","helpful",49.75,58.5,33,47,69,48.5
+"64","R_2AYE1gos95N3lO2",61,125,4.375,5,"Intervention","No","Yes",19,"Male","White","Sophmore","This exercise makes you really look at universal health care.",45.5,56.5,51,50,50.5,52.5
+"65","R_Rt21NLFhHWwQawF",53,126,5.125,5,"Intervention","No","No",18,"Female","White","Freshman","i didn’t know what some of the questions were asking",79.25,42.25,22,23,15,36
+"66","R_1lbnagraCjLNCHs",100,128,3.875,6,"Intervention","No","Yes",18,"Female","White","Freshman","I didn't find it hard to complete the 47 points exercise which made my belief in universal healthcare stronger",82.75,97,91,98,40,76.5
+"67","R_2dup2wnExkEI801",100,129,2.875,2,"Intervention","No","No",20,"Male","White","Sophmore","It is okay",3.25,2.5,2,6,3.5,7
+"68","R_3mfwnSUO6QDXZ4i",46,131,3.75,3,"Intervention","No","No",18,"Female","White","Freshman","It is intresting to see all of the things that is covered in health care and I didn't realize how it all adds up so fast like that. ",39.75,44,50,45,37,34
+"69","R_vdWDdtG86Ja35wR",61,134,4.125,3,"Intervention","No","No",18,"Female","Black","Freshman","It was challenging",81.5,82.25,86,80,25.5,51
+"70","R_1MRNUhuuaYy36vl",80,135,4.625,4,"Intervention","No","No",18,"Female","White","Freshman","It was interesting to see the different categories that are considered when talking about health benefits and it was hard to pick which ones were more important because I feel like all of them are essential to some extent ",95,100,0,0,25,60
+"71","R_C3yhqvt5p2ewE5X",100,139,5.375,4,"Intervention","No","No",19,"Male","White","Freshman","informative",100,100,100,100,80.5,85.5
+"72","R_eFkHjJM6bM0dYlj",10,140,4.625,5,"Intervention","Yes","No",20,"Female","White","Junior","I think a lot of these questions are phrased in a way to get a specific response.",28,21.5,3,14,24,36.5
+"73","R_2QtWGud9o0jDFzW",75,141,3.875,4,"Intervention","No","No",19,"Female","White","Freshman","It was quick and simple",55,39.75,30,30,10.5,20
+"74","R_3KBZWjzRBhkOLYr",51,143,4.625,6,"Intervention","No","Yes",18,"Female","Other","Freshman","It made me realize how many different health services there are to consider.",55,42,50,50,34.5,42.5
+"75","R_3QXVtsDnhJJ7kpt",100,145,4.625,4,"Intervention","No","No",19,"Male","White","Freshman","Insightful",85,87,100,100,80,100
+"76","R_SZue0JKptErNy49",51,147,3.75,3,"Intervention","No","No",18,"Male","Black","Freshman","thought provoking",62.5,50.5,51,51,1,51
+"77","R_2Bgs5ijbNhmHSaS",51,148,5,5,"Intervention","Yes","No",18,"Male","White","Freshman","I found this exercise to be difficult to complete because of the pros and cons that I saw with the free health insurance. There are many people who make a living by working for these insurance companies, but there are also people who need health insurance but lack the money to do so.",40,47.5,49,50,50.5,45.5
+"78","R_3fH3wGTTjOgS17c",30,150,4.875,5,"Intervention","No","No",19,"Female","White","Freshman","It's hard for me to think about people having to pick and choose which parts of healthcare they'll have access to when they're all important. It makes me wish healthcare would be reformed for the good of everyone and not just those who can afford it.",100,100,100,100,65,75
+"79","R_YY4tZwFNWbUeqKR",100,152,1.875,3,"Intervention","No","No",18,"Female","Black","Freshman","it makes me realize that our health care system is messed up and makes me realized that our country do not care about the welfare of its people.",73.25,82.25,0,100,0,50
+"80","R_2pRbxxDIOq4md9X",100,153,3.625,5,"Intervention","No","Yes",18,"Gender Variant/Nonconforming","White","Freshman","Surprising, not a lot of money to go around for medical costs.",90,90,80,100,80,85
+"81","R_AtbdBJT6bqrJa6d",47,155,3.5,2,"Intervention","No","No",18,"Female","White","Freshman","Opened my eyes to how much health care insurance covers",65,64.75,39,33,84,59.5
+"82","R_2zUU08MrucZkGPT",100,157,3.625,3,"Intervention","No","No",18,"Female","Hispanic/Latino","Freshman","I think it was very educational and straightforward.",88.25,87.25,92,78,72,75
+"83","R_Uirsgy7x0LFE1Lr",35,158,4.375,3,"Intervention","No","No",18,"Male","White","Freshman","Interesting",38.75,40,35,35,35,52.5
+"84","R_38lqGejZADzDnPz",93,160,4.75,2,"Intervention","No","No",18,"Female","White","Freshman","Useful",79.75,72.5,92,83,52,59.5
+"85","R_3PMnuSd3MqpMYor",31,161,4.75,7,"Intervention","Yes","Yes",36,"Female","White","Sophmore","It felt like I had to choose only the services I would likely be using in the near future. There was no way to have coverage in everything, which is disheartening because you never know when you might possibly need those services.",85.25,78.25,43,19,14.5,59.5
+"86","R_1oHGld3PNfmoXZq",55,164,4.125,1,"Intervention","No","No",18,"Female","Black,American Indian/Alaska Native","Freshman","straightforward ",99.25,93.5,100,100,41,40.5
+"87","R_1eUxEzSjQZLiwJ9",81,166,4.25,5,"Intervention","No","No",19,"Female","White","Sophmore","interesting ",38.5,41.75,9,9,4.5,33.5
+"88","R_3O33wVpVol8LALD",100,168,4.75,5,"Intervention","No","Yes",19,"Female","White","Freshman","Interesting on how complicated it can be",90.25,90.5,100,100,100,88
+"89","R_1E6iLcJm0nmeF3U",71,171,4.5,6,"Intervention","No","No",18,"Male","White","Freshman","Very straight forward and eye-opening",95,97.25,100,95,50,98
+"90","R_1DumABsh0QyQJtG",6,172,2,3,"Intervention","No","No",18,"Female","White","Freshman","im not sure",26,26.75,2,6,2,5
+"91","R_10OsA7GZhKIgiEb",100,174,4.625,4,"Intervention","No","Yes",29,"Female","White","Junior","If it is this easy to come up with a universal health care plan, then why doesn't America have one?",100,100,100,100,66,95.5
+"92","R_22MvLU7okWqtgIK",91,176,4,6,"Intervention","No","No",18,"Female","APAC","Freshman","It was really interesting learning about the different types of needs that people need and how people would be affected if they didn't have those needs. ",87.5,87.5,85,71,75,82.5
+"93","R_xc6qKPzwW16ZIc1",99,179,3.5,4,"Intervention","No","No",18,"Female","White","Freshman","Eye opening ",93.75,97.5,14,15,21.5,64
+"94","R_b72G1QXgSajZhf3",89,181,5,5,"Intervention","No","No",18,"Female","White","Freshman","I think it shows how much compromise is really needed for healthcare and you have to decide what you think is the most important. ",80.25,82,30,51,0.5,51
+"95","R_UF1hDJt0RsiC1fr",85,182,4.375,4,"Intervention","No","No",18,"Female","White","Freshman","I liked it because you got to pick what type of insurance is important to you based on your beliefs and to what extinct you would like to be covered. I think it's somewhat realistic because not everyone taking this survey will have the same amount of money/funds available for health insurance in reality but overall forms a good idea of how sacrifices have to be made when deciding on health care",45,43.75,70,30,15,30
+"96","R_2rl8NciP4F4AcCp",64,185,4.75,3,"Intervention","No","No",18,"Female","White","Freshman","benifical",63.75,66.25,49,52,78,70.5
+"97","R_3ptHorJi9YeQF4v",81,186,4.75,3,"Intervention","No","No",18,"Female","White","Freshman","benifical",70,62.75,50,60,68.5,84
+"98","R_YRA8MjFELaiyavT",62,188,3.125,2,"Intervention","No","Yes",18,"Female","White,APAC","Freshman","it's important",61.5,73.5,44,43,49,63
+"99","R_dolvFRM5yV0qPn3",100,191,3.875,3,"Intervention","No","No",18,"Male","White","Freshman","Doesn't change anything for me",8.75,6.25,0,0,0,0
+"100","R_3Jwn5ekSiFJEEeO",38,193,4.25,1,"Intervention","Yes","Yes",18,"Gender Variant/Nonconforming","Other","Freshman","eye opening",40.75,44.5,32,35,25,43.5
+"101","R_24pyEy8PkOlPwEf",47,196,4,2,"Intervention","No","No",18,"Female","White","Freshman","helpful to draw my attention about how important health care is",44.5,47.75,50,49,38.5,53.5
+"102","R_1KcXUjqnK57kvku",61,197,4.375,4,"Intervention","No","Yes",19,"Female","White","Sophmore","Why are so many different types of insurance separate? Vision and Dental for example. ",77.25,83.25,87,71,49,51
+"103","R_2QmNbfHdRqnIR1p",72,199,4.5,3,"Intervention","No","No",18,"Female","White","Freshman","straightforward",35.75,45.5,41,61,5.5,36.5
+"104","R_3NDjYAEYHd832MV",30,200,5.75,2,"Intervention","No","No",21,"Male","White","Junior","honestly im just doing it to pass the class im in",2.75,4.25,9,5,19.5,16
+"105","R_dnW5dMT0UZtmneN",34,203,4.75,3,"Intervention","No","No",18,"Female","White","Freshman","eye opening",61.25,68.5,55,48,40,44
+"106","R_2QiBZcMcZH4Tx80",78,204,3.5,2,"Intervention","No","No",18,"Male","White","Freshman","What i got was what i got. If I have more money then i expect to get better health care than those that don't. There is a order to things and health care is not an exception.",11.75,8,25,1,1,15.5
+"107","R_2aOUxQUb37KULCq",75,207,3.875,6,"Intervention","No","Yes",19,"Male","White","Sophmore","It was very interesting and it makes it obvious that not everything is simple and can be done easily. It also shows some limitations of universal healthcare. ",65,65,80,80,2,1
+"108","R_UW6GOkpPY7yMYpP",44,208,4.5,4,"Intervention","No","No",18,"Female","White","Freshman","It was straightforward",46.25,59,35,54,6,44.5
+"109","R_3fQ7jFPWAN5BYMH",80,210,4,4,"Intervention","No","No",20,"Male","White","Junior","I think it is important that all students understand the necessity and importance of healthcare",63.5,62.75,53,74,34,77
+"110","R_pRbNzPNFDueNZrr",27,212,2.875,1,"Intervention","No","No",19,"Female","Black","Sophmore","It was a good way to view how much I felt like I would need certain health needs",70,69.5,1,1,1,50.5
+"111","R_1OSIo34TwrPncEy",70,216,3.625,6,"Intervention","No","No",18,"Female","White","Freshman","I felt I had more than enough points to complete a package.",16.25,18.25,20,30,9.5,17.5
+"112","R_3TYijcUrx0RwMeZ",28,218,3.25,4,"Intervention","No","No",18,"Female","Black,Hispanic/Latino","Freshman","Easy to follow through and understand",77.25,71,49,40,54,55
+"113","R_2xY1rlAiCxaIuBN",50,220,4.5,6,"Intervention","No","No",20,"Female","White","Junior","It was very eye opening and a good exercise to see the complexity of this problem.",73,75.5,71,74,23.5,50.5
+"114","R_2rwlYwHLdR4Y8Io",20,223,3.875,0,"Intervention","No","Yes",18,"Female","Black","Freshman","i like it ",85,76,0,1,0,51
+"115","R_21HYZq8oOoUrz7Q",50,224,4.375,3,"Intervention","No","No",18,"Female","White","Freshman","interesting",89.25,89.75,52,50,50,60.5
+"116","R_3kzlm3LYBOLPdRU",50,227,2.625,1,"Intervention","No","No",20,"Female","White","Sophmore","Health care is very much needed for some whether the more wealthy are paying for it or not.",60,67.75,0,0,0,40.5
+"117","R_tFK4jRPU0MscA25",63,228,4.875,7,"Intervention","No","No",18,"Female","White","Freshman","It made me realize its hard to get all the coverage you want.",53,53,76,61,27.5,38
+"118","R_yF5BXBGxEa2hk9r",0,229,3.625,3,"Intervention","No","No",18,"Female","White","Freshman","i really don't know",17.5,17.5,0,0,0,0
+"119","R_3kIcdjfBvu7AhJZ",1,231,4.75,6,"Intervention","Yes","No",18,"Male","White","Freshman","I think healthcare and insurance should be given to any and all people but penalizing people for buying their own private plan is absurd",2.5,6.5,30,0,2,5
+"120","R_ZpFRBbLeJqaume5",31,234,4,2,"Intervention","No","No",19,"Male","White","Sophmore","fun",90.25,70.75,100,84,65,62
+"121","R_1Falc0WVtzH3cQs",60,236,4.125,2,"Intervention","No","No",19,"Female","White","Freshman"," The exercise was good to understand where our money is lead to in certain categories for health care in our systems and what categories could be more important than others ",72.5,76.5,81,60,51.5,65.5
+"122","R_3n2VzoAs4uGe1OY",85,237,4.125,4,"Intervention","No","Yes",21,"Male","Black","Sophmore","Everyone should have access to some type of health care ",74,67,67,82,62,73.5
+"123","R_O9maUnLmE8BZ4Jj",42,240,2.875,0,"Intervention","No","No",18,"Male","White","Freshman","ok",44,44.25,41,34,59.5,36.5
+"124","R_1PbLsU0PbEOX1tF",50,242,5.625,5,"Intervention","Yes","No",18,"Female","White","Freshman","Puts things in perspective that I haven't thought about before.",56.25,50,70,60,25,40
+"125","R_1Nh8epBYBtexZfg",5,243,4.875,5,"Intervention","No","No",19,"Female","White","Sophmore","This study seemed to be rather limited to one position on the issue of universal health care.There are valid arguments on both sides of this issue and the wording of these questions says otherwise. ",15,13.75,10,5,15,10
+"126","R_Xoztke00DikIPy9",79,245,5.125,5,"Intervention","No","No",19,"Female","White,Hispanic/Latino","Freshman","I don’t feel very confident because I don’t know a lot about insurance or healthcare. ",58,66.5,70,74,75,66.5
+"127","R_3I9SrWBNnpqEQQl",40,246,4.375,5,"Intervention","No","Yes",19,"Male","White","Freshman","This is very eye opening to the values that you have to take in to concideration with what you want covered.",47.5,62.5,40,30,32.5,70
+"128","R_1EbqFZRlMohiiCT",80,249,3.125,2,"Intervention","No","Yes",18,"Female","White","Freshman","It sucked to have to determine some parts of my health are less important than others so I couldn't score it as high as I would like.",78.5,81,83,73,22.5,46
+"129","R_1oBkpmzWlTo77UJ",100,252,3.75,4,"Intervention","No","No",18,"Female","White","Freshman","It feels like it shouldn't be this easy",100,100,100,100,100,100
+"130","R_8eTkbi3QUdSNwYN",57,254,4.125,3,"Intervention","No","Yes",18,"Male","White","Freshman","interesting",57.25,59.25,70,54,39.5,59.5
+"131","R_1hT4hx6yDT8IVmg",100,256,4.625,3,"Intervention","No","No",19,"Female","White","Freshman","It was difficult to choose between everything because they are all important to me. ",91.25,94,50,13,40,58
+"132","R_1lxISSeNixzpIzw",20,259,2.375,0,"Intervention","No","No",19,"Female","White","Sophmore","informative ",34.25,34.5,20,19,19,19.5
+"133","R_dmva0j6YT4Y1IIx",12,260,2,0,"Intervention","No","No",19,"Female","White","Sophmore","informative ",32.75,33.25,16,15,14,13
+"134","R_26gUykADOYq0brn",67,262,3.625,5,"Intervention","No","No",18,"Male","White","Freshman","I thought that it was interesting for me to be able to design my own health care plan, but in reality there is no way a plan like mine would be able to go through.",77.5,76.25,81,72,73,82
+"135","R_Q3y3BUFMIwu4qSR",100,263,4.75,5,"Intervention","No","Yes",18,"Female","Black","Freshman","It showed me (...again) that money hungry companies do not care for basic human rights, they would rather capitalize off of it.",100,99.25,100,100,100,97
+"136","R_cSWcynd7VUSY6JP",62,265,5.625,6,"Intervention","No","No",18,"Male","White","Freshman","important",60.5,51,69,65,62.5,57
+"137","R_31En9SCSY5OA04x",82,268,4.625,6,"Intervention","No","Yes",19,"Male","White","Sophmore","Universal healthcare can be beneficial to all",54.5,67.75,100,100,30.5,51.5
+"138","R_2YmQdMfkrEs5Nvd",48,270,4.5,5,"Intervention","No","No",18,"Male","White","Freshman","it was very confusing as i dont know very much about my insurance situation now",45,47.5,41,19,5,24
+"139","R_2cCuDyXms9uQ7Nl",75,272,5.375,4,"Intervention","No","No",18,"Male","White","Freshman","Good, the UI could have been better",60.75,67.5,92,60,57.5,68
+"140","R_1rB4IEJUzkxzQ9y",100,273,2.75,1,"Intervention","No","Yes",20,"Female","White,Black","Sophmore","It was informative. When I was done I didn't use all of my points",100,100,100,100,100,100
+"141","R_0IXMMluI0Rfw1cR",40,275,3.625,1,"Intervention","No","No",18,"Female","White","Freshman","I liked creating my own plan and seeing what I could and couldn't go without",32,32,50,50,32,29
+"142","R_3MKUlAQI7HA5bUk",100,278,5.25,5,"Intervention","No","No",19,"Female","White","Freshman","It made me see how underprivileged families see health care and the potential stress of it for families.",97.25,100,100,100,100,100
+"143","R_tYPQrWQ8QOsAsUh",68,280,2.375,2,"Intervention","No","No",19,"Female","White","Sophmore","helpful",40.5,26.5,35,13,37,15
+"144","R_3p3J398fchaMZyZ",93,282,5.25,6,"Intervention","No","No",18,"Female","White","Freshman","I would accept this health care plan, I didn't think about there would a budget",86.75,86.5,80,76,72.5,61.5
+"145","R_1jB6Iq0NoQxRn7b",92,284,4.625,7,"Intervention","No","No",18,"Female","White","Freshman","It was really interesting to see what topics mattered to me",97,98,96,95,54.5,74
+"146","R_210oM0y5SzOMOKI",75,285,4.125,5,"Intervention","No","No",19,"Male","White","Freshman","It was very helpful in helping me understand how important Universal Healthcare is, and how difficult it is to design a healthcare plan.",82.25,84.75,82,67,62.5,73
+"147","R_uzbhrBCs2MByiL7",70,288,4.625,2,"Intervention","No","No",18,"Female","White,Black","Freshman","I had no clue as to how vital health care is.",72.5,82.5,50,20,25,45
+"148","R_CgyKVHbqjt1r409",90,290,4.5,3,"Intervention","No","No",18,"Female","White,Black","Freshman","I had no clue as to how vital health care is.",75,72.5,50,50,25,45
+"149","R_3frvgR0LEXqM0Bi",16,291,3,2,"Intervention","No","No",19,"Female","White","Freshman","not surprised ",45.25,28.25,78,11,78.5,34.5
+"150","R_RxxB3tswRat1SfL",100,292,4.625,3,"Intervention","No","No",18,"Female","Black","Freshman","Something to really think about. ",87.5,100,0,0,20,70
+"151","R_1ouMBDjM8S8Znka",87,295,4.25,6,"Intervention","No","No",18,"Male","White","Freshman","Health care is a complicated, politicized problem ",71.5,75.5,81,87,4.5,48
+"152","R_2EAbZCjyFihZFDy",55,297,3.25,4,"Intervention","No","No",20,"Female","White,Hispanic/Latino","Sophmore","You never get everything you want, which can be bad in some situations.",87.75,99.25,20,1,5.5,50.5
+"153","R_3haIJDLQaieaa4K",79,298,5.125,5,"Intervention","No","No",18,"Male","White","Freshman","It is hard to choose which health needs that you want to be insured because everything is so expensive.",72.75,75.75,50,50,38,39.5
+"154","R_3Hzsd3xkyFaYpRn",82,300,4.125,6,"Intervention","No","No",18,"Female","White","Freshman","It's complicated!!",97.75,98.25,100,99,71,86.5
+"155","R_cTo1eWODe6KOAOR",65,303,4.125,7,"Intervention","No","Yes",18,"Female","White,Black","Freshman","That was honestly very enlightening",81.5,82.75,100,64,23,53
+"156","R_Q5Ifgk0gK8FhJ97",20,305,4.5,5,"Intervention","No","Yes",18,"Female","White","Freshman","It puts into perspective how difficult it is to get health insurance in the US and to get proper care.",99.75,99.75,10,1,5.5,50.5
+"157","R_2dj7l4F29LVOjJF",40,307,4.125,5,"Intervention","No","No",20,"Female","White","Freshman","Interesting to see how many different types of insurance go into the Health category.",32,32,36,31,23.5,26
+"158","R_2QEAO7jYNSKU7lz",80,308,3.75,3,"Intervention","Yes","No",20,"Male","White","Junior","Very interesting",65,61.25,60,65,40,50
+"159","R_3LhgkTB36UG4hi6",73,309,3.75,4,"Intervention","No","No",19,"Female","Black","Sophmore","America has a wack health system, I walked to the hospital instead of getting an ambulance kind of garbage.",81.75,82.75,71,74,31,44.5
+"160","R_bqKw4M7gertViBb",71,311,4,4,"Intervention","No","No",18,"Female","Black","Freshman","I liked creating my own health care plan. It is a good exercise to see your health care standards.",80.25,83,44,44,47.5,74
+"161","R_2z7o6pA3HCYTlKT",100,314,4.25,5,"Intervention","No","No",18,"Male","White,Black","Freshman","I think it is important because avoiding the doctor because of a lack of universal healthcare is dangerous and inhumane.",100,100,100,100,75,80
+"162","R_cYIyfiPCHDz6cKZ",50,315,5,3,"Intervention","Yes","No",20,"Female","White","Sophmore","Too complicated for such a short study",100,100,100,70,19.5,60
+"163","R_AzjRLQV7u3NeT9D",90,316,3.5,5,"Intervention","No","No",18,"Female","White","Freshman","It was eye opening and interesting to try and cover what is needed within the budget. ",91.25,96.25,70,31,52.5,70
+"164","R_3fK1GBpqcNPWQkd",70,319,3,6,"Intervention","No","No",18,"Female","White","Freshman","I feel that although Universal Healthcare may pose some difficulties, I still think it would be beneficial. Everyone has different needs, so if we spread the funding out, I think it could work. I personally do not need much care, other than mental health and pharmacy, but I know there are many people who need more, and they should be able to get the care they need.",88.75,88.75,100,65,75,77.5
+"165","R_bBgeCBO49VeZBrX",60,321,3.5,4,"Intervention","No","No",19,"Female","White","Freshman","It helped me understand how insurance is spread out among many different parts of the healthcare system. ",58.25,55.75,61,60,25,35
+"166","R_28CzIBEYzR7iGw1",57,322,3.875,2,"Intervention","No","No",18,"Female","White","Freshman","I found it to be informative",54.25,45.75,50,65,49,54.5
+"167","R_2zO7vWdfUBPMqwR",66,325,3.875,5,"Intervention","No","No",18,"Female","White","Freshman","Eyeopening ",61.75,59,50,42,40.5,57.5
+"168","R_1FQ8lCMqibyWKBp",63,327,2.375,0,"Intervention","No","No",18,"Male","Black","Freshman","great",63.25,47.75,100,99,48.5,45.5
+"169","R_12hGCPmC7H6AKTO",70,329,4.375,4,"Intervention","No","Yes",18,"Male","White","Freshman","You can get full coverage if you just choose basic coverage.",37.5,56.5,20,35,20,38.5
+"170","R_3CBZ0WpXD5YBYf2",51,330,5.25,5,"Intervention","No","No",18,"Male","White","Freshman","I learned about universal health cafre",47.5,47.25,58,53,30,55
+"171","R_pt0jU2GC4xVeghj",19,332,3.75,5,"Intervention","No","No",18,"Male","White","Freshman","Would like to be provided more info about universal health care because a lot of 18 year olds dont know much about it",47.5,25.5,42,57,22.5,26
+"172","R_vwYvcMnNvwFwoCd",70,333,4.625,4,"Intervention","No","No",18,"Female","White","Freshman","very interesting",94.5,99.5,98,100,95,72
+"173","R_1P0peougEOOVzXU",56,336,3.875,4,"Intervention","No","No",18,"Female","White","Freshman","I wasn't sure on a lot of my answers",52.25,42.75,81,40,41,55
+"174","R_UaPmiuGoz3uEfSx",100,337,3.5,6,"Intervention","No","Yes",18,"Female","White,APAC","Freshman","Informative ",87.5,97.25,84,100,16.5,75.5
+"175","R_1opDovY6ktzOotA",86,339,5.125,5,"Intervention","No","Yes",19,"Female","White","Sophmore","I like it because it really indulged into everything that may happen and that healthcare has to offer",33.75,33.5,76,40,50,50
+"176","R_1pSZjgHyXASWeTU",70,340,3.75,2,"Intervention","No","No",19,"Female","White","Freshman","I thought it was interesting to build my own plan and see how everything goes into affect ",52.5,45,50,50,45,45.5
+"177","R_2wtBjHiYhCpcF44",100,342,3.75,0,"Intervention","No","No",18,"Female","White","Freshman","I believe that if people want to be secured medically, they should get a job and work for their safety.",32.25,9.75,20,20,26.5,55
+"178","R_1jYPLKqN0rm6xo7",44,344,4,3,"Intervention","No","No",19,"Female","White","Freshman","It really puts everything into perspective.",53,45.25,28,34,47,40
+"179","R_3L7FIqdYWDixntt",50,346,5.75,6,"Intervention","No","No",19,"Female","White,American Indian/Alaska Native","Sophmore","Very interesting to see the importance of health care",53.75,43.75,40,45,25.5,40
+"180","R_1QMKUkFLqPr5zh2",35,347,3.875,6,"Intervention","No","No",20,"Male","White","Sophmore","It was interesting and made me think about what I value. ",23.5,29.75,45,28,15,22
+"181","R_3QPkw6kpvb3HFkR",76,349,4,0,"Intervention","No","Yes",18,"Female","Other","Freshman","Interesting",44,43,36,66,51.5,71
+"182","R_1Nx2wwN0FGcwT8m",50,352,3.25,2,"Intervention","No","Yes",18,"Female","White,Black","Freshman","Insight on what people may deem as a need or right ",65.25,66.5,55,59,50,53
+"183","R_D1ZyW5BBW3UpTdn",50,353,4,7,"Intervention","No","No",19,"Male","APAC","Freshman","Realized that it will cost a lot of money so only the bare eseentials for not-as-important things don't need to be prioritized ",72.25,70,83,71,82,65
+"184","R_25KNvoSnLsXHWa5",56,356,3.875,6,"Intervention","No","No",19,"Male","APAC","Freshman","That healthcare isn't the silver bullet for everything. some stuff have have to be given up",66.75,70.25,64,73,63.5,65.5
+"185","R_2pKoo5DZlVdGK2c",61,357,5,5,"Intervention","No","No",19,"Male","White","Freshman","It was good to make a health plan, but it really only seemed like I prioritized needs that are evident to myself and family.",21.25,26.5,40,51,60,46
+"186","R_Zg8NydSIL9zOTyp",81,360,3.5,5,"Intervention","Yes","No",18,"Female","White","Freshman","It's a good way to think about our current healthcare",60,67.25,30,42,14.5,64
+"187","R_1Csem2hJKIW17oy",30,362,3.375,5,"Intervention","No","No",20,"Female","White","Sophmore","Liked it",23.25,22.75,51,50,40.5,31
+"188","R_24PfoyXQFzb6IeK",48,364,5.25,3,"Intervention","No","Yes",18,"Female","White","Freshman","Got a lot of information",75.25,57,55,91,48.5,61
+"189","R_10PqqNclr0VqVWd",75,365,3,1,"Intervention","No","No",18,"Female","White","Freshman","I thought they were interesting ",62.75,62,80,52,50,65
+"190","R_1QuRIlRGGXLkwQi",78,367,2.75,5,"Intervention","No","No",19,"Female","White","Freshman","It made me think about my future with health care and how important it is in every humans life. ",75.25,69.5,64,53,70,68.5
+"191","R_2fm4psw241KfM6C",50,368,6,5,"Intervention","No","No",19,"Female","White,American Indian/Alaska Native","Sophmore","It showed me the importance of healthcare and how much everyone needs it",62.5,62.75,51,50,39,50
+"192","R_3sokIGLEi1H5Fv8",53,370,4.5,4,"Intervention","No","No",NA,NA,"Other","Other","Interesting, I never really gave enough thought into health care before this experement ",50.75,72,68,75,51,28.5
+"193","R_2B8KnviYNKNXI2O",61,372,5.125,4,"Intervention","Yes","No",19,"Male","White","Sophmore","Some important topics here ",38,43.5,50,45,35,25.5
+"194","R_3e8GGmuvUK1DSUe",38,373,4.375,4,"Intervention","No","Yes",20,"Female","Black","Junior","WIsh is was that easy",33.75,43.25,31,42,39,48
+"195","R_1CrNtTcotcr8SrW",100,374,4.125,5,"Intervention","No","Yes",18,"Female","White","Freshman","I think it shines attention to a current issue that can be looked over in our country",98.75,86.75,100,100,99.5,100
+"196","R_1QotMgKPn8xiNuc",79,375,2.75,3,"Intervention","No","Yes",18,"Female","White","Freshman","It was dificult to determine which part of your health are worth being covered in the plan or not. ",71.75,74.5,72,49,46.5,49
+"197","R_2pLfe9zyoG6006r",50,378,3,1,"Intervention","No","No",18,"Male","White","Freshman","I think it is beneficial to young adults like myself",50,57.5,50,45,50,60
+"198","R_eKZX5FDN1GU3rBD",40,381,3.875,3,"Intervention","No","No",18,"Male","White","Freshman","Good",65,63,72,49,25.5,42.5
+"199","R_11bfmDtGMDVOD5E",71,382,3.625,6,"Intervention","No","Yes",21,"Male","White","Junior","I don't think it addresses any of of the problems with universal health care. Such as much longer wait times, lack of competition which leads to a decrease in quality of care.",30.5,25.75,82,79,11.5,13
+"200","R_1Q0JlHJCH0hTnT2",3,385,5.125,2,"Intervention","No","No",19,"Male","White","Sophmore","annoying",36,24.25,8,20,40,18.5
+"201","R_2UgBTbcccp0niYG",70,387,4.125,3,"Intervention","No","No",19,"Female","White","Sophmore","It was eye opening",98.25,98,91,82,76.5,90.5
+"202","R_SQd0cl9fBbup9wl",20,390,2.375,2,"Intervention","No","Yes",21,"Male","White","Junior","Very eye opening ",29,26.75,2,19,19.5,30
+"203","R_6LmTsQRlfm23cnD",70,391,4.875,6,"Intervention","No","No",19,"Male","White","Freshman","Effective with the information given, however does not illustrate just how complex the issue of health care is regarding economics and issues of private healthcare options as well. ",67.5,62.5,60,100,60,80
+"204","R_10MM9iIwOdsgOyf",81,393,4.875,7,"Intervention","Yes","Yes",18,"Male","White,APAC","Freshman","It’s hard to cover for everything that could be necessary and there are pitfalls in healthcare with anything less then a universal system. ",90,80.25,100,91,100,78.5
+"205","R_OjulX3y7FJMUxzj",46,395,3.875,1,"Intervention","Yes","Yes",18,"Female","White","Freshman","good",39.25,46.75,53,45,55,46.5
+"206","R_cYBzHmyUT4YjaAF",6,397,4.5,3,"Intervention","No","No",19,"Male","White","Sophmore","it was interesting ",31,27.25,3,11,1.5,11.5
+"207","R_2PtZjZAd0tkeENC",74,400,4.25,4,"Intervention","No","No",18,"Male","White","Freshman","interesting",64,70.25,30,36,35,58.5
+"208","R_xGEA8wCU2lw4qpX",100,401,5.25,7,"Intervention","No","No",20,"Male","White","Junior","Unrealistic",100,100,0,0,0,50
+"209","R_3nwTCiyzcwaQi1Z",60,403,4.25,6,"Intervention","No","No",18,"Female","White","Freshman","Shocking ",40,57.5,40,39,35,40
+"210","R_2PiMuRD7rNIdgxy",40,404,3.875,2,"Intervention","Yes","No",24,"Female","APAC","Junior","difficult",39.75,45,30,49,34.5,55
+"211","R_1rrI7d3Sc04UwFs",42,407,3.125,4,"Intervention","No","No",19,"Female","White","Freshman","Informational",83.25,87,94,90,50.5,64
+"212","R_2wvNkSuzpcwqyEn",64,409,4.125,4,"Intervention","No","No",18,"Female","APAC","Freshman","Certain things need more attention than others, but all of them are important for people.",74.25,74.5,65,22,13,54.5
+"213","R_30l4Ejn69jXMbwC",30,412,4.625,4,"Intervention","No","No",18,"Female","White","Freshman","I've haven't learned much about it so I am 50/50 on a lot of things.",45,50.25,30,30,50,50
+"214","R_PAhQwWK2REhfj9v",50,413,5.125,6,"Intervention","No","No",18,"Male","White","Freshman","I do not have a good enough understanding of the current health care situation in our country to have a valid opinion on the topic",55.5,50.5,75,50,23.5,50
+"215","R_3rzxZ2uIQ5zR0Y1",70,415,5.125,6,"Intervention","No","Yes",18,"Male","APAC","Freshman","It was simple",64.75,57,51,56,16.5,49
+"216","R_2wAkn1SXkLWN7OG",39,416,5,6,"Intervention","No","No",19,"Female","White,Hispanic/Latino","Sophmore","It was interesting because I do not have to think about the topic often.",76.5,76,66,66,23,47
+"217","R_3mf8znk7AK60Ksn",73,417,3.875,5,"Intervention","No","No",20,"Male","White","Sophmore","gave a good look at how people that are less fortunate live",67.75,69.75,33,50,51,61
+"218","R_3h5XGYj7dSRZkQJ",NA,7,NA,NA,"Control","No","No",22,"Male","White","Senior","I do not really understand insurance. I feel like it is incredibly convoluted and it seems like an incredibly predatory industry.",72.5,80,50,50,10,9.5
+"219","R_zclxnz5m0cA7PBD",NA,9,NA,NA,"Control","No","No",18,"Gender Variant/Nonconforming","White","Freshman","Interesting that my answers changed. I would be interested in seeing someone against Universal Health Care make a study, too.",83,85.75,27,67,7,30
+"220","R_WDtaxfMwvcTPFUB",NA,11,NA,NA,"Control","Yes","No",39,"Male","White","Junior","Informative",95,100,100,100,80.5,100
+"221","R_1CdPAWpCcz0y3AW",NA,13,NA,NA,"Control","No","No",18,"Female","White,APAC","Freshman","It helped me understand more about UHC",100,100,49,100,0,34
+"222","R_ZmBBAt2fpuSwRdn",NA,15,NA,NA,"Control","No","No",20,"Male","White","Sophmore","After looking at the facts about healthcare, it makes you question what you previously thought.",43.75,50.25,40,19,40,24.5
+"223","R_2whinccfL4ZpllO",NA,18,NA,NA,"Control","No","No",18,"Female","White","Freshman","Most of ym thoughts did not change throughout the exercise ",32,50.25,76,31,37.5,16.5
+"224","R_3PGHhrOrl6Hjgyi",NA,20,NA,NA,"Control","No","No",18,"Male","White","Freshman","Before beginning the exercise, I strongly supported UHC and this exercise just strengthened that belief.",91,95,87,100,71,91.5
+"225","R_TiR2lcvET3dP3s5",NA,22,NA,NA,"Control","No","No",18,"Female","White","Freshman","Interesting ",57.5,48,35,49,21,19
+"226","R_qCTJchU8E5jGfoB",NA,26,NA,NA,"Control","No","No",18,"Female","White","Freshman","Very controversial questions but good idea to see what a lot of people think",78.25,64.25,31,25,24,55
+"227","R_SW2Hd5LyC4VX5nj",NA,27,NA,NA,"Control","No","No",18,"Female","White","Freshman","I understand the issue, but there may be some better ways to go about it ",49,47.75,50,52,77.5,75
+"228","R_1BY3gyDi0fJEjtw",NA,32,NA,NA,"Control","No","No",18,"Female","APAC","Freshman","N/A",57,60.5,41,68,44.5,47.5
+"229","R_1DGNlOKI3j2Ekn9",NA,33,NA,NA,"Control","No","No",18,"Female","White","Freshman","Great questions, really makes us think about healthcare in a way we might not have before. ",70.5,80.25,61,67,48.5,58.5
+"230","R_3Mb4uN9YEwcADqu",NA,35,NA,NA,"Control","No","Yes",20,"Female","APAC","Junior","The graphics were a great informational pieces to read and learn new information from. ",80.25,82.5,20,9,10,9
+"231","R_UZ29u3V4mu21zBn",NA,37,NA,NA,"Control","No","No",19,"Female","White","Sophmore","very interesting ",52.5,50.25,50,51,31,48.5
+"232","R_2tJtJEfYwFskzay",NA,38,NA,NA,"Control","No","No",18,"Male","White,APAC","Freshman","Although I know health care is not fairly accessable to everyone, the statistics are quite an eye opener. ",91.75,79.5,51,33,46,39
+"233","R_3p9VMlVe4JUAtn2",NA,40,NA,NA,"Control","No","No",18,"Female","White,American Indian/Alaska Native","Freshman","Made me realize more people than I thought don’t have access to healthcare and it is very unfair.",88.25,88.75,86,98,81,93
+"234","R_2wRjOs3BSRBYF3C",NA,43,NA,NA,"Control","No","Yes",18,"Male","White","Freshman","I think that ideally, every human being would be able to have great healthcare coverage. However, coming from a family that exploited the benefits of the 2013 Affordable Healthcare Act, I feel as though there has not been a way in which UHC has been implemented to where it will not cause many families, like mine, to handicap themselves and to remain unemployed. I completely believe that UHC is the best option morally, but in reality I feel that there has not been a way to where it will work to better America or a lot of its people in the way it sounds that it would.",53.75,56.25,70,60,30,40
+"235","R_33vtcs55xJsC0LW",NA,45,NA,NA,"Control","Yes","No",22,"Female","APAC,Other","Senior","useful",60,63.25,32,61,74.5,73
+"236","R_0BZH5CKaUdEwfyp",NA,48,NA,NA,"Control","No","No",18,"Female","Black","Freshman","I think that it is very important for everyone to have medical/health insurance. I think that more people need to be educated on the subject before they make their opinions. ",86.25,92,31,89,12,97
+"237","R_27QN1VQhx8oZggm",NA,51,NA,NA,"Control","No","No",19,"Female","White","Sophmore","I felt that this exercise was very politically motivated. I felt that each question was leaning towards either side of the political spectrum. My answers didn't change much after reading the facts that were given.",27.5,30,50,70,25,30
+"238","R_1gqAyTlNVMigmxG",NA,52,NA,NA,"Control","No","No",18,"Male","White","Freshman","I think it was a good source of information for people who did not already know what was in the exercise, but I knew a lot of it already",90,92.25,91,86,76.5,89.5
+"239","R_3LefVyPKLq3MFRC",NA,55,NA,NA,"Control","No","Yes",18,"Female","White","Freshman","Very educational and help my understanding on how the UHC actually works and it could be a possibility",86.25,92.5,83,92,56,82
+"240","R_2yl5qmYVJQ6Wp6n",NA,57,NA,NA,"Control","No","No",20,"Female","Black","Junior","I think it's an easier way to understand Universal Healthcare and how everyone deserves healthcare no matter their socioeconomic status.",99.75,99.75,100,100,70,100
+"241","R_3L89cdEwmbjAvCp",NA,59,NA,NA,"Control","No","No",19,"Female","White","Freshman","informative ",69.75,77.5,5,10,5,20
+"242","R_28GTn1l82wwIRxw",NA,61,NA,NA,"Control","No","No",18,"Female","White","Freshman","The exercise made me think about our healthcare system in a different light.",67.5,66.5,40,51,25,30
+"243","R_vdmeWTNEfxP1iTf",NA,62,NA,NA,"Control","No","No",19,"Male","White","Freshman","I learned some new information",38.5,70,23,66,29.5,50.5
+"244","R_2ccOKTKljXsGHal",NA,64,NA,NA,"Control","No","No",19,"Female","White","Freshman","I now have a much better understanding of Universal Healthcare and its goals.",89.5,97.25,81,100,29.5,75
+"245","R_1qfdomok8neIHbA",NA,67,NA,NA,"Control","No","Yes",23,"Male","White","Senior","Still confused about most parts. I think that the health care system is awful, however I do not want tax money removed from my paycheck to pay for people that are not working to receive the same benefits as everyone else that actually work.",47.5,51.25,25,20,1,1
+"246","R_1eLz4UyjetFBNrl",NA,68,NA,NA,"Control","No","No",20,"Male","White","Junior","I found it interesting with the statistics but in the end my mind didn't change too much on the topic. I think it was unfair to show only benefits to universal healthcare without explaining what it would take to get there. ",27.25,37.5,50,85,15,30
+"247","R_1OKbVwkOyqc8Gms",NA,70,NA,NA,"Control","No","No",19,"Female","White","Sophmore","I think health care is a really important topic of conversation that isn't discussed in as much urgency as it should be.",92.75,95.5,65,69,57,48
+"248","R_3s03zerHdBVw5pv",NA,72,NA,NA,"Control","No","No",18,"Female","White","Freshman","I think it expanded my knowledge on health care",42.25,63.25,75,85,100,100
+"249","R_3IcNP5XLuCSrljX",NA,75,5,5,"Control","No","No",19,"Male","White","Sophmore","There was a lot of statistics regarding people around the globe but I thought this was gonna be about the US. Also none of the images really explained what universal health care was or how it would be implemented.",49.75,47.5,50,50,15,1
+"250","R_1JEBK07BOvBPxjk",NA,78,5,5,"Control","No","Yes",19,"Female","White","Freshman","crazy how many people are uninsured",99.75,99.75,100,100,71,81.5
+"251","R_2zBWqSWVnahbOf0",NA,80,3.5,3,"Control","No","No",18,"Female","White","Freshman","it enhanced my perspective that universal healthcare needs to be implemented",88,99.75,100,100,19.5,100
+"252","R_7X5ucMAEefQXMf7",NA,82,4,6,"Control","No","Yes",18,"Female","White","Freshman","I think that universal health insurance isn't the answer to fighting the hefty medical bills Americans face.  I think that the solution is to make medical supplies less expensive (for example: Epi pens should not be like $200).  The government needs to put regulations on Big Pharma.",16.75,13.5,30,2,25.5,10.5
+"253","R_x0ces62BUVYXksh",NA,85,5,7,"Control","Yes","Yes",20,"Male","White,American Indian/Alaska Native","Sophmore","Not very effective",8.75,2.5,0,30,50,32
+"254","R_1K45UtphgMsCyjO",NA,87,4.25,5,"Control","No","No",18,"Female","Black","Freshman","I enjoyed it",95,95.25,87,91,93.5,97.5
+"255","R_1qgQK3919fToBBF",NA,89,2.875,1,"Control","No","Yes",18,"Female","White","Freshman","The exercise was very informative on the problems with health care and why they need to be fixed.",71.25,85,20,90,16.5,90
+"256","R_6rr3QDIcoiSw7Sx",NA,90,5,6,"Control","No","No",18,"Male","White","Freshman","I really hope that some of the people that take this survey feel stronger about how healthcare is a basic human right, and it made me angry that it will take up to 2030 to possibly reach the goal. This should've been done years ago.",100,100,100,100,100,100
+"257","R_tSxozQnQfi2HvzP",NA,92,4.25,4,"Control","No","No",18,"Female","White","Freshman","I appreciate being given infographics about healthcare. My views did not change much before and after, however.",51.25,51.5,50,42,80,89.5
+"258","R_2ymkaoY0Xoer2bA",NA,94,3.375,5,"Control","No","No",18,"Female","White","Freshman","I found it very informative",93,96.5,60,92,66.5,76.5
+"259","R_1oGfR7E5vxN8PLK",NA,97,3,1,"Control","No","No",18,"Female","White,Black","Freshman","Informative",80,87.5,80,100,75,82.5
+"260","R_2SuwvahOpm6x9eS",NA,100,5.125,5,"Control","No","No",18,"Male","White","Freshman","I think the as you go through each page it attempts to convince the read of UHC's importance. The ratings at the beginning and end of the survey shows the change of opinion after an individual is taught more about UHC.",91.5,99.75,100,90,1,29.5
+"261","R_3hnFjAjqLYvKIBv",NA,101,4.875,4,"Control","Yes","Yes",20,"Male","Black","Sophmore","I felt that the prompts I read did not change my opinions much",17.5,11,10,20,30,31
+"262","R_3fdWtv1xU0mbI1V",NA,103,4.5,5,"Control","No","Yes",18,"Female","White","Freshman","Very interesting. The infographics definitely helped me learn more. ",69.25,84.5,100,71,60.5,77
+"263","R_2BgFh9sBUi1A3UJ",NA,104,4.125,5,"Control","No","No",19,"Female","White","Sophmore","Really enjoyed the infographics and very easy to understand.",100,100,100,100,100,100
+"264","R_2YWiCPuOlDlMIao",NA,106,4,1,"Control","No","No",18,"Female","Black","Freshman","I think it's very informative.",46.5,51.5,88,73,100,100
+"265","R_2PnFzxRH0BEhcwo",NA,109,4.875,7,"Control","No","Yes",18,"Male","White","Freshman","Universal healthcare is very clearly an absolute necessity and anyone who says otherwise after being presented with the facts is either feigning ignorance or places little to no value on human life.",100,100,100,100,100,100
+"266","R_1JEDyJiXHAYfw1q",NA,111,5.75,7,"Control","No","Yes",18,"Male","White,Black,APAC","Sophmore","interesting",82.5,89,74,100,3,45.5
+"267","R_cMhPykFev69ygUx",NA,113,3.375,1,"Control","Yes","Yes",19,"Male","Other","Freshman","Universal Health Care is a topic I am very passionate about and I was pleased to be apart of this study. I hope that one day we will have Universal Health Care. I was wondering however, will the pay of doctors be reduced if this was put into place? I had a heated debate with one of my good friends and in their argument they stated that if the pay is less it might give doctors less of an incentive to pursue their fields because of how excruciating medical school is. If you can respond to this I would greatly appreciate it you can email me at ashkmw@umsystem.edu Thank you very much",74.25,81.5,81,80,53.5,65.5
+"268","R_3KxcIW1Mwh9jY8g",NA,116,3.75,3,"Control","No","No",19,"Female","White","Sophmore","great informational graphics",50.25,65,30,40,20,30
+"269","R_1f2xbf1Htogzj6l",NA,117,4.125,4,"Control","No","No",19,"Male","White","Sophmore","i thought it was good",51.75,54,79,90,31,17
+"270","R_OGRdIYLwbnQbPwt",NA,120,4.375,3,"Control","No","No",19,"Female","White","Freshman","Universal healthcare has many pros and cons & it's not a simple concept. I realized I wasn't as educated, on this subject, as I thought.",66.25,84.25,89,34,34.5,37
+"271","R_29ocfEkJqe7h5z1",NA,122,3.875,5,"Control","No","No",18,"Female","White","Freshman","I think that it is true that people not having healthcare is a big problem in this world",41.25,43.75,20,40,17.5,45
+"272","R_33wfo8XKAKcwHSw",NA,124,4.125,3,"Control","No","No",18,"Female","White","Freshman","The Healthcare system needs totally reformed. ",87.5,91.5,1,3,16.5,14
+"273","R_1mgYUIehjBGbvPH",NA,127,2.625,1,"Control","No","No",19,"Female","White","Freshman","I didn't know a lot of the statistics, every eye opening about the real world.",73.5,64.5,51,73,40,37.5
+"274","R_w5ytvfcYPgvgEeZ",NA,130,4.125,6,"Control","No","No",18,"Female","White","Freshman","I noticed my answers slightly changed as I became more educated ",85.75,83,40,73,32,67
+"275","R_2zBzlLvmgDYs0l4",NA,132,4.5,5,"Control","No","No",19,"Male","White","Sophmore","It wasn't super enlightening, I felt like I already knew a lot about it. The information didn't make me want to support the Affordable Care Act more, just that something should be done. The information didn't tell me why the Affordable Care Act would be effective.",38.25,51.25,13,56,13.5,21
+"276","R_w1SjQknIHhReif7",NA,133,3.75,4,"Control","No","No",18,"Male","White","Freshman","I found it interesting and insightful",47.5,65,50,70,45,65.5
+"277","R_OcJnCgezbQYNH3j",NA,136,4.25,7,"Control","No","Yes",19,"Female","White","Freshman","It states the facts of the situation",99.25,99.75,100,100,100,100
+"278","R_CfdmUOcWWNMtK5b",NA,137,4.125,3,"Control","No","No",18,"Female","White","Freshman","It taught me a lot",36,42.5,50,30,6,9
+"279","R_2bg0kXZkKRdWp8Z",NA,138,4.75,4,"Control","No","No",19,"Male","White","Freshman","Eye opening on the statistics shown in the given posters",92.5,100,100,100,75,60
+"280","R_12y6TwnKQQ9KYJV",NA,142,4.625,0,"Control","No","No",18,"Female","White,Black,American Indian/Alaska Native,Hispanic/Latino,Other","Freshman","I wish everyone knew about this and I hope that this goes into play very soon.",97.5,100,80,100,9.5,100
+"281","R_2Yn3hJrUcJ0jP5m",NA,144,5,6,"Control","No","No",18,"Female","White","Freshman","It brought a lot of issues regarding health care to my attention. ",38,55.5,47,69,33,54.5
+"282","R_stnGQO4Q7YMrJT3",NA,146,4.875,4,"Control","No","No",18,"Male","APAC,Hispanic/Latino","Freshman","I like the idea of informing the less knowledgeable on UHC.",55,67.5,10,40,10,39.5
+"283","R_3k3X0TWEiF67S4p",NA,149,3,3,"Control","No","No",18,"Female","White","Freshman","I think it was interesting to see the amount of people who do not have access to healthcare systems.",60,78.25,12,37,32.5,44.5
+"284","R_pMNJMN982sR5Oet",NA,151,4,5,"Control","No","No",18,"Female","White","Freshman","It was very informative, I wasn't very educated on a lot of what I read so I'm really glad I took this survey, I didn't change most of my views about health care, but I feel much more educated on the issue",45,55,80,40,19.5,60.5
+"285","R_1hRpJa3WSosmdZR",NA,154,4,3,"Control","No","No",18,"Female","White","Freshman","It was confusing",35.5,29.25,50,35,2.5,5
+"286","R_3fMK6Kd2KfCQQmP",NA,156,3.375,5,"Control","No","No",18,"Female","White","Freshman","Good",70.25,47,42,20,25.5,71
+"287","R_25AOhaBavJaHImG",NA,159,5.25,4,"Control","No","No",18,"Male","White","Freshman","I thought it was very interesting to think about other people who struggle.",60.25,53.25,63,61,34.5,30
+"288","R_2YeOQvZoj9zd5kp",NA,162,3.5,3,"Control","No","No",21,"Female","White","Senior","the information was interesting ",76.25,84.75,75,85,19.5,54
+"289","R_3G1BQA3FDDuABnT",NA,163,5.125,4,"Control","Yes","No",19,"Male","APAC","Freshman","Liberalizing",30,45.25,69,16,22,89.5
+"290","R_22KcMFXcVNvid1M",NA,165,3.875,5,"Control","No","Yes",18,"Female","APAC","Freshman","It's very straight forward",52,51,61,40,47.5,50.5
+"291","R_1jE54jstlerE4UH",NA,167,4.875,7,"Control","No","Yes",18,"Female","White","Freshman","It was informational. ",30,28.5,5,5,10,20
+"292","R_1LXAGaLBIWq7eMm",NA,169,3.625,4,"Control","No","No",18,"Female","Black","Sophmore","informational",77.5,85.25,49,85,49,100
+"293","R_3dNcIJGe3PsIOYa",NA,170,3.125,4,"Control","No","No",18,"Female","White","Freshman","I still am not 100% sure on the exact plan of universal healthcare. The exercise lays out statistics of the debt it causes, but not necessarily the exact plan on how to reach it.",70,90,70,90,30,80
+"294","R_3fGZw9TgggeB7bw",NA,173,4,1,"Control","No","No",18,"Male","Black","Freshman","Support for universal health care",63.5,60.25,50,52,50.5,58.5
+"295","R_3HAHMv6hDDPA4wA",NA,175,5.125,5,"Control","No","No",20,"Female","White","Junior","Eye opening. I have never really been taught about this kind of topic ",77.75,79,34,92,34,89
+"296","R_3HUIYyiMpB7jOpe",NA,177,5.125,3,"Control","No","No",18,"Female","White","Freshman","I thought that it taught me things I did not know.",50.75,72.25,69,100,95,100
+"297","R_1opZiiOXfYA8Jk0",NA,178,2.75,0,"Control","No","No",18,"Female","Hispanic/Latino","Freshman","It is interesting to see different views",37.5,45.5,16,37,14,35
+"298","R_2QfiJecXuzwyWeK",NA,180,4,4,"Control","No","No",18,"Female","White","Freshman","It's important to know what health care options you have available to you. ",50.25,74,82,83,66.5,85
+"299","R_RkvO3lbcxpNi4A9",NA,183,4.5,4,"Control","No","No",18,"Female","White","Freshman","I had never seen those infogrphics before so it was nice to see new information.",53.5,42.5,27,40,87.5,74.5
+"300","R_25zoRDl45KNr7zi",NA,184,4.75,3,"Control","No","No",18,"Female","White","Freshman","benificial",61.5,81.5,75,46,75,62
+"301","R_R4VMpq1r9ddPeIV",NA,187,4,6,"Control","No","Yes",18,"Male","White","Freshman","I admired how much information was presented and the detail to which the information was explained.",79.25,75.75,75,100,96.5,95.5
+"302","R_31WtVxIg5hVw8ck",NA,189,4.375,5,"Control","No","Yes",18,"Female","White","Freshman","I believe we need more accessible healthcare",65.5,74.5,45,67,23.5,58.5
+"303","R_sLJOZdrzehHN29P",NA,190,5.25,6,"Control","No","No",18,"Male","White","Freshman","I think the US needs a basic form of healthcare for all individuals. It is an essential right. I am unsure whether America is ready for a universal healthcare system.",61.25,61.25,40,40,22.5,30
+"304","R_2fxOIdfrpQPEBDi",NA,192,2.75,3,"Control","No","No",18,"Female","White","Freshman","Glad to learn that a good amount of people in the world receive health care regardless of their financial problems.",60,62.5,83,100,88,97.5
+"305","R_3PmBopgJn74x5No",NA,194,4.625,6,"Control","No","No",18,"Male","White","Freshman","UHC will be incredibly difficult to finance.",33.25,46.5,11,18,0,4
+"306","R_11i1mKa9TeD6kR7",NA,195,3.625,2,"Control","No","No",18,"Female","White","Freshman","I did not realize how many people are lacking proper healthcare. ",81.5,95.5,40,9,27,27.5
+"307","R_An5aEaA8pu6EW3L",NA,198,3.75,3,"Control","No","No",18,"Female","White","Freshman","It was fine",84,85,50,2,20,21
+"308","R_QiCJ90WUodpaPVT",NA,201,4.625,5,"Control","No","No",19,"Female","White","Freshman","Why should health care be free?",12.5,12.5,100,50,51,51
+"309","R_YQgE8bwZtuHwgiB",NA,202,2.25,0,"Control","No","No",19,NA,"Other","Other","very informative",49.25,99.75,49,100,49.5,100
+"310","R_79EJhNGmv4uW0tr",NA,205,4.125,5,"Control","No","No",19,"Female","White","Freshman","It was informational but is biased. It gave no indication of the positives to our capitalist way of healthcare, such as being able to choose the healthcare/doctor's office/hospital/surgeons/care plan you want or need",45,52.5,40,40,45,45.5
+"311","R_Uz1dmNzvP9ol3uF",NA,206,4,3,"Control","No","No",20,"Female","White","Sophmore","It was very informational and important. ",60.25,80,60,80,45,10
+"312","R_3hrpDJ6XLV7QR93",NA,209,4.5,3,"Control","No","No",18,"Male","White","Freshman","It was very informative. ",38,53.75,73,50,3,50
+"313","R_ODLgveECQhcbljX",NA,211,4.75,4,"Control","No","No",20,"Male","White","Junior","It was interesting to learn about",77.5,82.5,85,70,50,50
+"314","R_2WvhmVeDtpia73q",NA,213,3.375,4,"Control","Yes","No",19,"Female","White","Sophmore","I agree everyone should be able to have access to healthcare and that it should be more affordable",50,52.5,47,49,34,51
+"315","R_2ToskIkPlqc0G9O",NA,214,3.125,2,"Control","No","No",18,"Female","Black","Freshman","The US's healthcare system is inadequate. ",79.25,84,8,2,21,12.5
+"316","R_3kNFMIWdcEq3Jzy",NA,215,3.75,4,"Control","No","No",18,"Female","White","Freshman","I know less than I thought I did but I still understand and support the need for UHC",98,100,99,100,88,90
+"317","R_V5aZklV4JcGSe6l",NA,217,3.5,3,"Control","No","No",20,"Female","Black","Sophmore","It made me stop to think of others and I appreciate that.",92.75,96.25,70,82,50,50.5
+"318","R_2thbOuJQsXDkvxY",NA,219,3.125,5,"Control","No","No",18,"Female","White","Freshman","The infographics were very informative and persuasive",67.5,72.75,75,100,55,57.5
+"319","R_1cVeBNNOmeSssRZ",NA,221,3.25,0,"Control","No","No",19,"Female","White","Freshman","it was complicated",60.75,42.25,18,20,26,20
+"320","R_38exQCIeCpNgUrn",NA,222,5.25,3,"Control","No","Yes",18,"Female","APAC","Freshman","I agree that healthcare is a right. ",93.75,98.5,86,100,64.5,100
+"321","R_1IWS5yGH9rY54Fw",NA,225,5,7,"Control","Yes","Yes",NA,NA,"Other","Freshman","I liked it. It didn't change my overall opinion, but I appreciated the information. ",37.5,50,0,40,50,100
+"322","R_1gUX0DeXcLZBe5C",NA,226,4.25,5,"Control","No","No",18,"Female","White","Freshman","It made me think about things in a different way ",63.25,77.25,64,72,43.5,40
+"323","R_31NLVbm4SwwhIxl",NA,230,4.875,6,"Control","No","No",18,"Female","White","Freshman","It was very eye opening.",63.75,81.75,66,91,53,76
+"324","R_2CpvNttW3F49II5",NA,232,5.125,4,"Control","No","Yes",18,"Female","Hispanic/Latino","Freshman","Very educational",97.25,99.75,100,100,100,100
+"325","R_29v8xm6vZjHB2GY",NA,233,2.75,2,"Control","No","No",18,"Male","White","Freshman","it was interesting",52.25,56.5,50,35,21,21.5
+"326","R_1eJEolhfqPG628e",NA,235,4.75,6,"Control","No","No",20,"Female","White","Junior","It was eyeopening and interesting to see the statistics. I knew there were problems with healthcare disparities in our country, but seeing the statistics to back these statements is helpful.",81.5,91.25,81,87,23.5,14.5
+"327","R_3IaTPlmLRtC3ax4",NA,238,4,5,"Control","No","No",18,"Female","White","Freshman","It was really neat to see the way my answers seemed to change after I received just a little bit more information.",87.5,89.5,63,71,44,51
+"328","R_1KlG1XE4KBswcck",NA,239,4,6,"Control","No","Yes",18,"Female","White","Freshman","I've always supported UHC and I really hope we find a way to actually have it one day",90.25,92,71,78,56,73.5
+"329","R_1H6LJAcYEHPDeOG",NA,241,3.5,0,"Control","No","No",20,"Male","Black","Sophmore","forces you to think",82.25,89.75,78,59,51,50.5
+"330","R_svYeoClV6rbuR57",NA,244,4.125,3,"Control","No","No",19,"Male","White","Freshman","I thought it was very informative and easy to follow",63.25,78.25,61,82,40.5,81.5
+"331","R_2wj1Avb7Z5Ys80f",NA,247,4.125,4,"Control","No","No",19,"Female","White","Freshman","Thoughts didn't really change when I looked at the infographics",31.75,31.75,27,29,10.5,27.5
+"332","R_2UgOMWWVvBIsbUA",NA,248,4.375,3,"Control","No","No",18,"Female","White,Hispanic/Latino","Freshman","Very informative ",99.5,88.25,100,49,45,34
+"333","R_2zUc3E39glXjPG5",NA,250,4,4,"Control","No","No",18,"Male","White","Freshman","It was an okay exercise, but I thought it would be smart to tax things like cigarettes and alcohol that can potentially have harmful effects",48.75,60,62,40,52.5,50
+"334","R_A4gvAHFCymgEKlz",NA,251,2.75,3,"Control","No","No",19,"Female","White","Sophmore","interesting ",36,36.5,21,22,22,28
+"335","R_1Cq2XcwAz3Z6JCS",NA,253,3.875,4,"Control","No","No",18,"Female","White","Freshman","I liked how I couldn't move forward for a certain amount of time, I skimmed the first one and saw I couldn't move forward so I went back and read everything more clearly ",86.5,96.75,65,96,51.5,90
+"336","R_24dAyOj9VT3oC0K",NA,255,5,4,"Control","No","No",18,"Female","White","Freshman","none",45.25,56.25,58,58,14.5,40
+"337","R_DTAjc3K63wWiWMp",NA,257,3.625,4,"Control","No","No",18,"Female","White","Freshman","well designed educational graphics. The style of study is bound to produce some interesting results. ",87.75,92.5,100,100,100,100
+"338","R_1eFdCBmWlzhR3P5",NA,258,2.875,2,"Control","No","No",19,"Female","White","Sophmore","informative",40,27.75,9,32,33.5,70.5
+"339","R_x4lZ0j7xNhdFdBv",NA,261,5.625,5,"Control","No","No",18,"Female","White","Freshman","It taught me a little bit of information.",25,17,15,35,17.5,45.5
+"340","R_3isC3tAXRC3U9NV",NA,264,5,3,"Control","No","No",20,"Male","White","Junior","intersting",87,88.5,85,89,30,26
+"341","R_eRk5d9emsx10qcN",NA,266,4.125,6,"Control","No","No",18,"Female","White","Freshman","i enjoyed it",84.25,88.75,34,62,42,49.5
+"342","R_a5XjyxP6cFmJk9r",NA,267,3.625,3,"Control","No","No",18,"Female","White","Freshman","I think its obvious that not everyone is born with the same tools that other people have access to so we need to have UHC so everyone is born into an equal playing field. Because it is affecting peoples basic need to health amenities. ",97.25,100,47,100,34.5,100
+"343","R_3l4lcJibbnL62hH",NA,269,3.25,1,"Control","No","Yes",19,"Male","White,Other","Freshman","I am very passionate about universal health care because there was a time when I needed medical attention but did not seek it because I could not afford it ",72.5,83.25,40,83,72.5,84.5
+"344","R_2qC96rj3CBUS7WW",NA,271,4.875,4,"Control","No","No",19,"Female","White","Freshman","I appreciate the articles so I can become more educated on the topic.",19.5,26.75,9,29,18.5,11.5
+"345","R_2P0UrG2hq9czpLY",NA,274,3.375,3,"Control","No","No",19,"Female","White","Sophmore","informative",34.5,64,21,63,18.5,72
+"346","R_b9mp1MjHyO2mlkl",NA,276,3.625,1,"Control","No","No",18,"Male","White","Freshman","it talk me a lot about health care and how important it is and how lucky I am to have good coverage.",81.75,78.25,88,18,58.5,72
+"347","R_z8V9lCJWjXksAJX",NA,277,4.375,3,"Control","No","No",18,"Female","White","Freshman","It was informative to learn more about Universal Healthcare and how it works.",76,83.25,84,50,53,59
+"348","R_1ghBDE5jRNwaHH3",NA,279,3.5,5,"Control","Yes","No",19,"Male","White","Freshman","I learned more about how many have to pay as much as 1/4th their income for health care",72.5,72.5,50,80,20,20
+"349","R_6Mzi8qlRfjpYRFv",NA,281,3.625,4,"Control","No","Yes",18,"Female","White","Freshman","I think it didn't show the other side of universal healthcare and the sacrifices people would have to make ",45.75,47,47,24,9,10
+"350","R_3HqaMlOeFUzjiUZ",NA,283,4.75,4,"Control","No","No",18,"Female","White","Freshman","This was a good exercise it opened my eyes to certain issues. ",34.5,44.5,50,50,50,49.5
+"351","R_1cTUcvkSbyzBUy7",NA,286,5.25,4,"Control","No","No",18,"Female","White","Freshman","Very informative ",81.25,97.5,51,95,45.5,90
+"352","R_eR39pHduZy89hgl",NA,287,5.375,7,"Control","No","No",18,"Male","White","Freshman","I think that it was really enlightening to see all the numerical data in support of UHC. ",100,100,95,100,45,100
+"353","R_3fDGniI2MFExifT",NA,289,4.375,5,"Control","No","No",18,"Female","White","Freshman","I really thought it helped me understand more",46.75,48.75,52,49,32.5,52
+"354","R_2ZDkmV2tNHootRn",NA,293,3.75,2,"Control","No","No",18,"Female","White","Freshman","I think univeraal healthcare is an unattainable goal in the USA yet I am a strong advocate for healthcare reform here. The vast majority of underpriveledged people do not recieve sufficient healthcare, a neccesity, in the US. Many people die because they cannot afford price gouged insulin for crying out loud!",97,93,36,47,9,18
+"355","R_e8zuMLFXji9iSiZ",NA,294,3.75,5,"Control","No","No",18,"Female","White","Freshman","informative",62.25,65,51,51,39.5,50
+"356","R_3O9AHMNq3kshD6X",NA,296,3.75,5,"Control","No","No",18,"Male","White","Freshman","It was interesting",91.25,86.25,85,85,35,50
+"357","R_2qn0UDEyE8RB9yz",NA,299,4.375,5,"Control","No","No",18,"Male","White","Freshman","i learned a lot because i didnt know what it was before i started it and now I have an idea but i honestly dont know how i feel about it",50,67.75,50,77,1,69
+"358","R_3ISMHxD3Svwd1Ad",NA,301,5.25,1,"Control","No","No",18,"Female","White","Freshman","simple and very informative",98.25,100,97,100,37,83.5
+"359","R_2dziM4zsIShHfBd",NA,302,3.75,4,"Control","No","No",18,"Female","White","Freshman","It's good to talk about health care",67.5,75,40,30,45,30
+"360","R_10YHSzNg9uYZccO",NA,304,3.875,2,"Control","No","No",18,"Female","Black","Freshman","it was very informational.",88,90.75,92,86,59,86.5
+"361","R_1lsNASrZtd0aX3k",NA,306,3.5,5,"Control","No","Yes",18,"Female","White,APAC","Freshman","Very informative ",76.5,79.75,100,100,10.5,7.5
+"362","R_2RPbNmL9AB7iwZg",NA,310,3.375,4,"Control","No","No",18,"Female","White","Freshman","I thought the information provided in the exercise was very interesting as well as eye opening. ",70,82.5,7,25,20,30.5
+"363","R_2vZbQs81Ff4orRx",NA,312,4.375,7,"Control","No","No",18,"Female","White","Freshman","I think that it makes it obvious that educating people on political topics can change their opinion in a very short amount of time. ",54.5,93,50,100,18.5,81
+"364","R_11Xhp2ijYgUmHSL",NA,313,4.5,3,"Control","No","No",18,"Female","Black","Freshman","I liked this exercise, it is a great way to see where people stand in their beliefs on health care.",84.5,90.25,39,43,47,56
+"365","R_3CV7s5OwF7uFULT",NA,317,4.375,5,"Control","No","No",18,"Female","White","Freshman","Although I did learn a bit about UHC, I would like to know more about how it would be implemented, as well as how it would affect things like taxes and current insurance rates. ",46.25,56.25,10,40,7.5,12.5
+"366","R_1ITu9K0B5Lg8ges",NA,318,4,3,"Control","No","No",22,"Female","White","Junior","its important to educate people on what universal health care means.",78.75,75,81,71,57,66
+"367","R_1C9JDleMmIxxGgY",NA,320,3.875,3,"Control","No","No",18,"Female","White","Freshman","I thought it was very educational and insightful",48.25,69,60,67,46.5,70.5
+"368","R_1InIybCNQpMYWMT",NA,323,4.75,4,"Control","No","No",18,"Female","White","Freshman","It seems very informative and pretty basic to understand.",60.5,60,50,60,45,60
+"369","R_2ZHXSlg4fGcBfNm",NA,324,4.5,6,"Control","No","No",21,"Male","White","Senior","I believe it spoke much of the problems with health care but nothing of the feasible solutions. The 2013 Obama care certainly was not a feasible solution",24.75,22.25,50,5,20,17.5
+"370","R_z7i2LLxRfLCQGf7",NA,326,3.125,2,"Control","No","No",18,"Female","White","Freshman","I thought it was beneficial and important ",81.25,78.75,15,12,15,13.5
+"371","R_8kxdt0EHri8EWOJ",NA,328,2.5,4,"Control","No","No",18,"Female","White","Freshman","i didnt quite realize how many people struggle because they do not have health care ",53.75,59.75,19,9,20,9.5
+"372","R_29cs8NruMCDIW7A",NA,331,5.125,7,"Control","No","No",18,"Male","White","Freshman","It is very interesting to see the numerical data supporting UHC. I don't see how anyone wouldn't support it after reading the infographics.",100,100,100,100,100,100
+"373","R_1gcJLezlTXExWye",NA,334,3.375,1,"Control","No","No",19,"Female","White","Freshman","good",57,56,100,83,99,89.5
+"374","R_3qqCpJ6kUu4eJbI",NA,335,2.5,2,"Control","No","No",19,"Female","White","Freshman","good",54.5,68.25,50,88,56.5,87.5
+"375","R_1Kx50HF6hvl2tj5",NA,338,5,0,"Control","No","No",18,"Male","White","Freshman","interesting",96,87.5,49,100,48,61
+"376","R_1hQEr5fFJP4Ru7K",NA,341,4.375,6,"Control","No","No",19,"Female","White","Freshman","I think the infographics were very engaging while also being very informative and definitely swayed some of my views in a very short amount of time.",65.75,71,71,91,50.5,65.5
+"377","R_3Pbin5gjUHXJwet",NA,343,3.75,3,"Control","No","Yes",22,"Male","White","Senior","It makes me sad because of how many people need help but greed seems to be the reason we don't have universal healthcare. I have been to Europe and utilized their doctors, and stuff that would have cost me a fortune to do in America was practically free. ",84.75,73,91,98,91.5,99.5
+"378","R_2QVsJEDqY98wx1K",NA,345,5.875,4,"Control","No","Yes",18,"Male","White","Freshman","I thought the questions were very leading and didn't offer an option that didn't support your narrative. Such as why universal healthcare was designed. It is designed to make citizens more dependent upon government, rather than independent of government.",25.25,18.25,3,90,81,69
+"379","R_21hWzSjqn8qLyRH",NA,348,4.625,6,"Control","No","No",18,"Male","White","Freshman","I definitely think the information provided strengthened the opinions I already had about universal health care. I am still aware of a few possible counterarguments from those opposed to universal health care, but the information provided had me thinking more about the benefits of it.",71.25,79,25,75,21,25
+"380","R_2vZZq2azSPCcUZX",NA,350,3.875,7,"Control","No","No",19,"Male","APAC","Freshman","It is very insightful to learn about all the benefits of universal health care",66.25,70.5,60,81,49.5,71
+"381","R_DV1l43FkjYRkBkl",NA,351,5.25,4,"Control","No","No",20,"Female","White","Sophmore","I thought the information was very important and was delivered in a way that was very easy to understand.",97,100,98,100,71,93.5
+"382","R_SK90PH4Is5o1e1z",NA,354,4.75,6,"Control","No","No",18,"Female","White","Freshman","It was very informative, I supported ACA/UHC before but that had even more information that I never even thought of and makes me more confident this is what we need to have in this country.",90,96,81,90,75,86.5
+"383","R_V2U9lU0MURJNbj3",NA,355,4.5,7,"Control","No","Yes",19,"Male","White","Freshman","I'm wondering what the purpose of it was",72.75,66.75,73,63,39.5,45.5
+"384","R_2rkgOjkhLodOu3q",NA,358,3.875,5,"Control","No","No",19,"Gender Variant/Nonconforming","White","Freshman","I am very tired but Hell Yea",99.5,100,70,98,4.5,46.5
+"385","R_2Puvmg8GqnQ2clF",NA,359,4.375,5,"Control","No","No",18,"Female","White","Freshman","My thoughts on this is that this exercise was made to challenge and change your ideas and views based on showing you one opinion. ",61,58,60,18,45,33
+"386","R_AaFoAgH1fmynZvj",NA,361,4.125,4,"Control","No","Yes",22,"Male","White,Black","Senior","Republicans are evil",91.25,73,89,98,93,91
+"387","R_3qVSrRiSqtbrGKD",NA,363,4.25,4,"Control","No","No",19,"Female","White","Freshman","doesnt change my mind",8.25,12.25,19,12,86,97.5
+"388","R_1d4U5Z1iNA23CHa",NA,366,1,1,"Control","No","No",18,"Female","White","Freshman","I liked it a lot",50,48,50,50,63,50.5
+"389","R_31Mf9lYlzwf0W26",NA,369,3.125,5,"Control","No","No",18,"Female","White","Freshman","good",82.75,69.75,99,1,1,2
+"390","R_1GTjwndJQ6WpI1c",NA,371,4.75,4,"Control","No","No",18,"Female","White","Freshman","I like the descriptions from the flyers about the healthcare systems and the need for basic and inherent health care. it was very informative.",74.75,94.25,72,97,17.5,93
+"391","R_2pXXPJex19GeCj8",NA,376,4.75,5,"Control","No","Yes",18,"Female","White","Freshman","I think universal health care should be the main system of health care in the U.S. and other countries seem to know what they are doing when it comes to health care and the U.S. just needs to figure it out.",79.75,76.5,100,100,5,100
+"392","R_78oYiiAZsa6YdDb",NA,377,3.5,2,"Control","No","No",18,"Male","White","Freshman","I never really knew much about universal health care and now I realize that it is a big topic people should be talking about.  ",50,56.25,50,50,50,55
+"393","R_3n6gwqAG0JUwEvV",NA,379,3.375,1,"Control","No","No",18,"Female","Black","Freshman","i think it is important for people to know",72.25,89.75,55,82,43,72
+"394","R_3h6ih9Kvqs3m1LM",NA,380,3.75,4,"Control","No","No",18,"Male","White","Freshman","gave good information",21.25,29.5,39,51,49.5,41
+"395","R_1mQxpmkpSGUwXFh",NA,383,4.5,5,"Control","No","No",18,"Male","White","Freshman","I liked all the statistics and graphics.",75.25,81,68,74,8,22.5
+"396","R_1oCgASVfQm80Gex",NA,384,3.375,3,"Control","No","No",19,"Male","White","Freshman","pointless and really won't persuade someone one way or the other",45,42.5,34,35,15.5,14.5
+"397","R_2zbttyKUw4HonGq",NA,386,2.625,4,"Control","No","No",18,"Female","White,Hispanic/Latino","Freshman","It was very informative",92.5,90,10,100,70,100
+"398","R_8vUxMzLSpfI0Fnr",NA,388,3.5,4,"Control","No","No",18,"Male","White","Freshman","I learned more about statistics on healthcare. ",45.5,62.75,47,72,66,73
+"399","R_1kRNnz3Zu0NRua8",NA,389,3,4,"Control","No","Yes",18,"Female","Black","Freshman","The exercise is very informative. ",84.25,81.75,97,30,15.5,8
+"400","R_3FIFA5CVeDmfUKL",NA,392,5.75,4,"Control","No","Yes",19,"Female","APAC","Freshman","Very informative",93,97.5,100,31,35,40.5
+"401","R_3CV3zAVce1yVHiV",NA,394,4.75,3,"Control","No","No",19,"Male","White","Sophmore","Shocked",49.75,49.5,50,50,49.5,50
+"402","R_2TMpnzvyR7ajX5R",NA,396,4.875,6,"Control","No","No",18,"Male","White","Freshman","Very eye opening.  I didn't realize how many people weren't able to afford health care",55.5,67.75,82,24,28,26.5
+"403","R_2YssSyzIq9uQeAm",NA,398,5.125,5,"Control","No","No",19,"Male","White","Freshman","I thought it was very straightforward and informational",93.75,94,90,95,25,45
+"404","R_b1HuwqRfQyujRp7",NA,399,5.125,3,"Control","No","No",18,"Female","White","Freshman","It really makes you think about how the government really works. ",83.5,68.25,30,26,38.5,43
+"405","R_1f6NpldM1fEUzFc",NA,402,4.875,4,"Control","Yes","No",21,"Male","White","Junior","I feel that the information provided only tells a one sided narrative that is not consistent with that happened when the affordable care act was in place.  ",42.75,48.5,1,2,2,3.5
+"406","R_9RgTIzemAn8qQjT",NA,405,4.5,6,"Control","No","No",18,"Female","White","Freshman","I support Universal Healthcare.",74.5,87.5,48,49,60.5,74.5
+"407","R_25TJln34mn0Q7ny",NA,406,4,4,"Control","No","No",19,"Female","White","Freshman","Opened my eyes to the health care system and the changes it needs to undergo. ",37.5,44.5,22,25,28.5,20.5
+"408","R_3OiGdNqDfOaRD56",NA,408,4.25,4,"Control","No","No",18,"Female","White","Freshman","good",82.5,80,20,100,30,55
+"409","R_2zJj6nRmMgBO8nZ",NA,410,5.25,6,"Control","No","No",20,"Male","Other","Junior","we've needed universal HC for a while now",95,95.25,100,100,50.5,81.5
+"410","R_3PHJCW3kRypeU0H",NA,411,4,4,"Control","No","No",19,"Male","White","Freshman","Helps people realize the importance of UHC who were previously uneducated on the topic.",37.5,61.25,40,70,40,65
+"411","R_3dQT85TnU6LtgGV",NA,414,4.125,3,"Control","No","No",19,"Male","White,Black","Sophmore","I think it was very interesting ti see the statistical facts",67.75,70.5,76,92,86,90.5
+"412","R_1pQgvwMELBdL4rp",NA,418,4.25,3,"Control","No","No",19,"Male","White","Sophmore","interesting",52,60.25,26,30,14.5,35
