@@ -1,10 +1,11 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
-  editor_options: 
+  editor_options:
     chunk_output_type: console
   chunk_output_type: console
+  pdf_document: default
 ---
 
 
@@ -32,17 +33,17 @@ levels(UHC_final$condition) <- c("No Intervention", "Active Intervention","Passi
 study_1_m <- lmer(value ~  condition*variable + (1|SUBJECT), data    = UHC_final)
 study_1_m_sum <- summary(study_1_m)
 s_1_b<-lm(value ~ condition*variable, data =UHC_final)
+UHC<-read.csv("UHC_rdy_for_analysis_2020.csv")
+
 ```
 
 # Method
 
 ## Participants
 
-Participants were 412 students enrolled in Psychology 1000 at a Midwestern University. They were primarily white (76%), female (66%), and freshmen (74%); further demographic information can be found in [Table here]. Participants received course credit for participation in the study. 
+Participants were 412 students enrolled in Psychology 1000 at a Midwestern University. They were primarily white (76%), female (66%), and freshmen (74%); further demographic information can be found in the table above. Participants received course credit for participation in the study. 
 
-```{r study2_methods_demographics, echo=FALSE, message=FALSE, results="asis", tab.cap="Demographic information for Study 1"}
-setwd("D:/Grad School/2020-2021/psych-masters")
-UHC<-read.csv("UHC_rdy_for_analysis_2020.csv")
+```{r study2_methods_demographics, eval=FALSE, message=FALSE, include=FALSE}
 
 demog<-UHC[,c(25:28,15)]
 
@@ -60,24 +61,28 @@ demog %>%
 #  gt::gtsave(filename = "demog.html")
 ```
 
+```{r study_2_demog_1_alt, echo=FALSE, out.width="75%", fig.cap="Demographics for Study 2"}
+knitr::include_graphics("study2_demog.png")
+```
+
 ## Procedure
 
-Participants were randomly assigned to one of two conditions representing different exposure to health benefits information. Our two conditions were an intervention (n=217) and control condition (n=195). The intervention condition consisted of a web-application adapted from the Choosing Healthplans All Together (CHAT) paradigm used in our ‘active’ condition for Study 1. Participants allocated limited resources to levels and categories of coverage to build an explicit health benefit plan. Due to limited resources, not all categories can be fully covered, leading to forced trade-offs. The content of the intervention condition in Study 2 remains the same, but it is delivered by using a web-application instead of pencil and paper; See Appendix [LETTER HERE] for Study 2 experimental materials. The control condition consisted of informational brochures and pamphlets obtained from the World Health Organization and World Bank containing accurate information on the benefits of UHC; see Appendix [LETTER HERE] for Study 2 experimental materials. Study 2 used a 2 (pre-post) x 2(condition) mixed-subjects design, where condition was a between-subjects factor. Time was a within-subjects factor with the primary outcome, support for UHC, measured before and after participants completed the control or intervention condition.
+Participants were randomly assigned to one of two conditions representing different exposure to health benefits information. Our two conditions were an intervention (n=217) and control condition (n=195). The intervention condition consisted of a web-application adapted from the Choosing Healthplans All Together (CHAT) paradigm used in our ‘active’ condition for Study 1. Participants allocated limited resources to levels and categories of coverage to build an explicit health benefit plan. Due to limited resources, not all categories can be fully covered, leading to forced trade-offs. The content of the intervention condition in Study 2 remains the same, but it is delivered by using a web-application instead of pencil and paper; See Appendix B for Study 2 experimental materials. The control condition consisted of informational brochures and pamphlets obtained from the World Health Organization and World Bank containing accurate information on the benefits of UHC; see Appendix B for Study 2 experimental materials. Study 2 used a 2 (pre-post) x 2(condition) mixed-subjects design, where condition was a between-subjects factor. Time was a within-subjects factor with the primary outcome, support for UHC, measured before and after participants completed the control or intervention condition.
 
 
 ## Measures
 
 The primary outcome was the support for UHC scale, adapted from Shen & Labouff (2013), measured both pre and post-test. The items included in the scale were the same as in Study 1 (e.g. “Access to medical care and insurance is a basic, inherent right of man”). For Study 2, each item was measured on a 100-point sliding scale from 0 (strongly disagree) to 100 (strongly agree), instead of the 7 point Likert scale used in Study 1. Cronbach’s alpha for the items in this measure was 0.85; see Table [LETTER HERE] for item wording.
 
-Our secondary outcomes were our proposed mediating factors, perceived equality, and comprehensibility, measured both pre and post-test.   Perceived equality was a single item measure adapted from Netemeyer, Boles, McKee, and McMurrian (1997) (‘Universal Health Care provides fair and equitable care to all US citizens, regardless of employment status’). The original item measured fairness in reward allocation, in an industrial/ organizational context relative to amount of responsibilities and work. Our adaptation inquires instead about the fairness in the reward analogue of universal healthcare, relative to type and/or amount of employment.   Our measure of comprehensibility was adapted from the perceived complexity measure developed by Mulken, Pair, and Forceville (2010). This scale comprised of two items measuring comprehensibility, which are averaged together (‘Universal Health Care is straightforward, ‘Universal Health Care is easy to understand’). The original item   measured perceived complexity and comprehensibility in an advertising context, operationalizing the terms by simply asking if the concept is straightforward to easy to understand. Cronbach’s alpha for the items in our measure of perceived complexity was 0.92.    
+Our secondary outcomes were our proposed mediating factors, perceived equality, and comprehensibility, measured both pre and post-test.   Perceived equality was a single item measure adapted from Netemeyer, Boles, McKee, and McMurrian -@Netemeyer1996 (‘Universal Health Care provides fair and equitable care to all US citizens, regardless of employment status’). The original item measured fairness in reward allocation, in an industrial/ organizational context relative to amount of responsibilities and work. Our adaptation inquires instead about the fairness in the reward analogue of universal healthcare, relative to type and/or amount of employment.   Our measure of comprehensibility was adapted from the perceived complexity measure developed by Mulken, Pair, and Forceville -@VanMulken2010. This scale comprised of two items measuring comprehensibility, which are averaged together (‘Universal Health Care is straightforward, ‘Universal Health Care is easy to understand’). The original item   measured perceived complexity and comprehensibility in an advertising context, operationalizing the terms by simply asking if the concept is straightforward to easy to understand. Cronbach’s alpha for the items in our measure of perceived complexity was 0.92.    
 
-Our moderating variables were subjective and objective numeracy. Objective numeracy was measured using the Rasch Numeracy Scale, created by Weller et al. (2013). This measure consists of 8 items, all math problems of varying complexity, requiring some amount of algebra, percentiles, and table reading skill (e.g. “If it takes five machines 5 minutes to make five widgets, how long would it take 100 machines to make 100 widgets?”). This measure was scored from 0 to 8, with the sum of all correct answers to the individual items as the subject’s objective numeracy score . The Cronbach’s alpha for these items is 0.71  .    Subjective numeracy was measured using the Subjective Numeracy Scale created by Fagerlin et al. (2007). This measure is an average eight items Likert-scale items that range from 1 (generally poor with numbers) to 7 (generally prefer numbers) (e.g. “How good are you at calculating a 15% tip?”). The Cronbach’s alpha for these items is 0.84.   Additionally, we did not initially collect data on subjective and objective numeracy until part-way through the data collection. Thus, the first 68 subjects do not have this data recorded.
+Our moderating variables were subjective and objective numeracy. Objective numeracy was measured using the Rasch Numeracy Scale, created by Weller and colleagues -@Weller2013. This measure consists of 8 items, all math problems of varying complexity, requiring some amount of algebra, percentiles, and table reading skill (e.g. “If it takes five machines 5 minutes to make five widgets, how long would it take 100 machines to make 100 widgets?”). This measure was scored from 0 to 8, with the sum of all correct answers to the individual items as the subject’s objective numeracy score . The Cronbach’s alpha for these items is 0.71. Subjective numeracy was measured using the Subjective Numeracy Scale created by Fagerlin and colleagues -@Fagerlin2007. This measure is an average eight items Likert-scale items that range from 1 (generally poor with numbers) to 7 (generally prefer numbers) (e.g. “How good are you at calculating a 15% tip?”). The Cronbach’s alpha for these items is 0.84.   Additionally, we did not initially collect data on subjective and objective numeracy until part-way through the data collection. Thus, the first 68 subjects do not have this data recorded.
 
 Participants were then asked whether they paid for their own health insurance and if they have been uninsured, and the active intervention condition was asked if they would be happy having the plan they built as their own health insurance. Each of these three items was measured as a ‘yes’ or ‘no’ response. Additionally, there was a free-response question asking about the subjects’ thoughts about the exercise they just completed. Finally, we also measured demographic information, including gender identity, age, race/ethnicity, and year in school.
 
 ## Power and Statistical Analyses
 
-We planned to recruit 176 participants. Sample size was determined a-priori using G-power with the following parameters: greater than 90% power to determine a significant large-sized effect (Cohen’s f =0.10) at an alpha level of .05, for a linear multiple regression. Our support for UHC outcome   was treated as a continuous variable. We examined the effects of experimental condition (intervention condition and control condition ), time of intervention (pre vs. post), subjective numeracy, and objective numeracy on our outcome variable by conducting a series of analysis of variance tests. We examined the main effect and the 2-way interactions of condition x time, time x numeracy, and condition x numeracy of our four predictors. Additionally, we also tested models with random and fixed intercepts, with participants being treated as the random effect. Fixed effects comprised of the effect of the experimental condition and time of intervention (pre vs post). All tests were conducted in R and were considered statistically significant when P < .05. Lastly, for our mediational hypothesis, we utilized the bootstrapping method outlined by Tingley and colleagues (2014), to estimate the effect of our proposed mediational variables on support for UHC in the population. 
+We planned to recruit 176 participants. Sample size was determined a-priori using G-power with the following parameters: greater than 90% power to determine a significant large-sized effect (Cohen’s f =0.10) at an alpha level of .05, for a linear multiple regression. Our support for UHC outcome   was treated as a continuous variable. We examined the effects of experimental condition (intervention condition and control condition ), time of intervention (pre vs. post), subjective numeracy, and objective numeracy on our outcome variable by conducting a series of analysis of variance tests. We examined the main effect and the 2-way interactions of condition x time, time x numeracy, and condition x numeracy of our four predictors. Additionally, we also tested models with random and fixed intercepts, with participants being treated as the random effect. Fixed effects comprised of the effect of the experimental condition and time of intervention (pre vs post). All tests were conducted in R and were considered statistically significant when P < .05. Lastly, for our mediational hypothesis, we utilized the bootstrapping method outlined by Tingley and colleagues -@Tingley2014, to estimate the effect of our proposed mediational variables on support for UHC in the population. 
 
 ## Study 2 Hypothesis:
 

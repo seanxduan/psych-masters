@@ -1,10 +1,11 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
-  editor_options: 
+  editor_options:
     chunk_output_type: console
   chunk_output_type: console
+  pdf_document: default
 ---
 
 
@@ -13,6 +14,7 @@ output:
 library(lme4)
 library("texreg")
 library(ggplot2)
+library(knitr)
 
 #study 1 data
 setwd("D:/Grad School/2020-2021/psych-masters")
@@ -35,14 +37,19 @@ s_1_b<-lm(value ~ condition*variable, data =UHC_final)
 
 #note should we make sure to actually directly ref these results?
 
-Descriptive statistics are summarized in [Table here].  Our hypothesis was tested using a linear mixed model fitted to our support for UHC outcome measure. Cronbach’s alpha for the items in this measure was 0.85. In opposition to H1a and H1b, we observed no statistically significant effect in our planned comparison of our active intervention condition t(198.5) = 1.22 ,p = .224, or our passive intervention condition t(198.5) = 1.04 ,p = .299. Additionally, we observed no statistically significant effect in our planned comparison of time t(181) = 1.00 ,p = .317. Finally, we also saw no significant interaction between time and the active condition t(181) = 1.14 ,p = .258, or the passive condition t(181) = 1.67 ,p = .0963. 
+Descriptive statistics are summarized in the table above.  Our hypothesis was tested using a linear mixed model fitted to our support for UHC outcome measure. Cronbach’s alpha for the items in this measure was 0.85. In opposition to H1a and H1b, we observed no statistically significant effect in our planned comparison of our active intervention condition t(198.5) = 1.22 ,p = .224, or our passive intervention condition t(198.5) = 1.04 ,p = .299. Additionally, we observed no statistically significant effect in our planned comparison of time t(181) = 1.00 ,p = .317. Finally, we also saw no significant interaction between time and the active condition t(181) = 1.14 ,p = .258, or the passive condition t(181) = 1.67 ,p = .0963. 
 
 
-```{r study1_tab_freq, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results="asis"}
+```{r study1_tab_freq, tab.cap= "Frequentist Model of Intervention on UHC Support", echo=FALSE, results ="asis"}
 texreg(study_1_m, custom.model.names = "Multi Level Model - Intercept Varies by Subject",
        custom.coef.names = c("Control","Active Intervention ","Passive Intervention","Post-Measurement Effect", "Interaction between Active Intervention and Post-Measurement", "Interaction between Passive Intervention and Post-Measurement"),
        caption = "Frequentist Table of Intervention on UHC Support", label = "tab:study_1_tabs",
        ci.force = TRUE) 
+
+```
+
+```{r study_1_table_1_alt, echo=FALSE, out.width="75%", fig.cap="Frequentist Model of Intervention on UHC Support"}
+knitr::include_graphics("study_1_table.png")
 ```
 
 For our Bayesian estimation, we had four sampling chains, each with 2000 iterations and 1000 warmup repetitions. This yielded 4000 estimated samples at convergence. Participants in our uninformative control condition had no significant change in support for UHC post intervention (℮ = 4.78, CI =4.49, 5.07) than pre intervention (℮ = 4.84, CI =4.55, 5.13). Participants in our ‘active’ experimental condition had no difference in support for UHC post intervention (℮ = 5.03, CI =4.74, 5.32) than pre intervention (℮ =5.19, CI =4.90, 5.48). Participants in our ‘passive’ experimental condition had no difference in support for UHC post intervention (℮ =4.99, CI =4.70, 1.34) versus pre intervention (℮ = 5.21 , CI =4.92, 5.50). In support of H1a, participants in both intervention conditions had greater support for UHC compared to the control. However, in opposition to H1b, participants in our active intervention condition did not have a greater increase in support for UHC compared to our passive condition.

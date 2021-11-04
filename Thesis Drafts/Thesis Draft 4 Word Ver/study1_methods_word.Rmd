@@ -1,10 +1,11 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
-  editor_options: 
+  editor_options:
     chunk_output_type: console
   chunk_output_type: console
+  pdf_document: default
 ---
 
 
@@ -38,9 +39,9 @@ s_1_b<-lm(value ~ condition*variable, data =UHC_final)
 
 ## Participants
 
-Our participants were 189 students enrolled in a Psychology course at a Midwestern University. Our participants were primarily white (76%), female (68%), and freshmen (80%); further demographic information can be found in [Table here]. Participants received course credit for participation in the study. 
+Our participants were 189 students enrolled in a Psychology course at a Midwestern University. Our participants were primarily white (76%), female (68%), and freshmen (80%); further demographic information can be found in the table above. Participants received course credit for participation in the study. 
 
-```{r study1_methods_demographics, echo=FALSE, message=FALSE, results="asis", tab.cap="Demographic information for Study 1"}
+```{r study1_methods_demographics, eval=FALSE, message=FALSE, include=FALSE }
 s1_d %>%
   tbl_summary(
     by = condition,
@@ -54,15 +55,20 @@ s1_d %>%
   ) %>% add_p() %>% bold_labels() %>% bold_p ()
 ```
 
+```{r study_1_demog_1_alt, echo=FALSE, out.width="75%", fig.cap="Demographic information for Study 1"}
+knitr::include_graphics("study1_demog.png")
+```
+
+
 ## Procedure
 
 Participants were randomly assigned to one of three conditions representing different exposure to health benefits information. Our three conditions were an ‘active’ intervention condition (n=60), a ‘passive’ intervention condition (n=62), and our control condition (n=63).  The two intervention conditions consisted of a packet of exercises adapted from the Choosing Healthplans All Together (CHAT) paradigm developed by Danis, Biddle & Goold (2002). CHAT is a simulation exercise where participants construct their own HBP by allocating a limited set of resources to benefit types (e.g. dental) and choosing scope of coverage (basic-to-high). The HBP as a whole is represented by a ‘game board’ with several sections representing the different benefit types and with the scope of coverage represented by subdivisions in those sections. Each of these sections can be added to the HBP by paying a cost in markers representative of it’s approximate relative cost in the US. For example, if a subject desired ‘basic’ dental care (regular cleanings and examinations every 6 months, with minimal dental care), it would cost 2 markers. If the participant desired to upgrade to ‘medium’ dental care (everything in ‘basic’, plus complete dental care including repairs and crowns), that would cost 4 additional markers, bringing the total cost to 6 markers. Participants have a total of 47 markers to use to design their HBP. Trade-offs are enforced as complete coverage is not possible with the limited resources. The core of the exercise is a simplified version of choosing priorities for a health care system. 
 
-Our active  intervention condition had participants creating their own HBP through the CHAT exercise, while our passive intervention condition had participants being given a completed CHAT exercise. The HBP in our passive intervention condition, consisted of the consensus choices for health insurance found by Danis et al. (2002). Our control condition was similar to the active intervention condition, but mentions of health care are replaced with pizza topping choices instead. Trade-offs are still enforced due to limited resources. This results in an exercise of similar length and intensity that is intentionally uninformative; see Appendix [LETTER HERE] for Study 1 active intervention materials, and [LETTER HERE] for passive intervention materials. Study 1 used a 2 (pre-post) x 3 (condition) mixed-subjects design, where condition was a between-subjects factor and participant were assigned to one of the three conditions. Time was a within-subjects factor with the primary outcome, support for UHC, measured before and after participants completed the control or one of the two intervention conditions.
+Our active  intervention condition had participants creating their own HBP through the CHAT exercise, while our passive intervention condition had participants being given a completed CHAT exercise. The HBP in our passive intervention condition, consisted of the consensus choices for health insurance found by Danis et al. (2002). Our control condition was similar to the active intervention condition, but mentions of health care are replaced with pizza topping choices instead. Trade-offs are still enforced due to limited resources. This results in an exercise of similar length and intensity that is intentionally uninformative; see Appendix A for Study 1 materials. Study 1 used a 2 (pre-post) x 3 (condition) mixed-subjects design, where condition was a between-subjects factor and participant were assigned to one of the three conditions. Time was a within-subjects factor with the primary outcome, support for UHC, measured before and after participants completed the control or one of the two intervention conditions.
 
 ## Measures
 
-The primary outcome measure was the support for UHC scale, adapted from Shen & Labouff (2013), measured both pre and post-test. The scale was comprised of 4 items measuring support for UHC, which were averaged after reverse scoring the third item (e.g. “Access to medical care and insurance is a basic, inherent right of man”)   .Each item was measured on a 7 point Likert scale from 1 (strongly disagree) to 7 (strongly agree); see Table [LETTER HERE] for item wording.
+The primary outcome measure was the support for UHC scale, adapted from Shen & Labouff (2013), measured both pre and post-test. The scale was comprised of 4 items measuring support for UHC, which were averaged after reverse scoring the third item (e.g. “Access to medical care and insurance is a basic, inherent right of man”)   .Each item was measured on a 7 point Likert scale from 1 (strongly disagree) to 7 (strongly agree); see Appendix B for item wording.
 
 Participants also responded to several items about their experience with health. Participants were asked whether they paid for their own health insurance and if they had ever been uninsured. Participants in the active intervention condition were also asked if they would be happy having the plan they built as their own health insurance. Each of these three items was measured as a ‘yes’ or ‘no’ response. Additionally, there was a free-response question asking about the subjects thoughts about the exercise they just completed. Finally, we also measured demographic information, including gender identity, age, race/ethnicity, and year in school.
 

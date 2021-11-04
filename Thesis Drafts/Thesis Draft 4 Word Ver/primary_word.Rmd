@@ -3,23 +3,31 @@ title: The Use of Explicit Health Benefits Packages Increases Support for Univer
   Health Care for People with High Objective Numeracy
 author:
 - name: Sean Xiaohao Duan
-  affiliation: 'University of Missouri, Columbia - Department of Psychology'
+  affiliation: University of Missouri, Columbia - Department of Psychology
   url: sxdff5@mail.missouri.edu
 shorttitle: Effect of HBPs on UHC
-bibliography: UHC_citations.bib
 output:
   word_document:
-    toc: true
+    toc: yes
     toc_depth: 2
-
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+bibliography: UHC_citations.bib
 abstract: |
-  Bayesian methods are becoming increasingly used in applied psychology research. Previous researchers have thoroughly written about much of the details already, including the philosophy underlying Bayesian methods, computational issues associated with Bayesian model estimation, Bayesian model development and summary, and the role of Bayesian methods in the so-called replication crisis. We do not attempt to rehash these topics in this paper, but instead seek to provide case studies comparing the use of frequentist methods to the use of Bayesian methods in applied psychological research. These case studies are intended to "illustrate by example" the ways that Bayesian modeling differs from frequentist modeling, and the differing conclusions that one may arrive at using the two methods. The intended audience is applied psychology researchers who have been trained in the traditional frequentist framework, and who are curious about how statistical results might look different in a Bayesian context. Along with our case studies, we provide general opinions and guidance on the use of Bayesian methods in applied psychology research.
+  Universal health care lacks support in the US. Explicit health benefits packages (HBPs) may improve support for UHC by heightening comprehensibility and increasing perceived equality through outlining the cost and scope of care. To test these hypotheses, we compared support for UHC after a HBP intervention, uninformative control, or ‘standard’ UHC messaging from the World Health Organization (WHO).
+  
+  Study 1 (N=189) was a 2(pre-post)x3(condition) mixed-subjects design. Participants were randomly assigned to one of three conditions: 1) building an HBP exercise; 2) reviewing a pre-selected HBP; 3) completing an uninformative control exercise. Study 2 (N=412) was a 2(pre-post)x2(condition) mixed-subjects design with random assignment to either building an HBP or reading WHO pamphlets about UHC. HBP building used the “Choosing Healthplans All Together” (CHAT) simulation exercise where participants constructed their own HBP by allocating a limited set of resources to benefit types (e.g. dental) and choosing scope of coverage (basic-to-high). Support for UHC was our primary outcome measure; perceived equality (i.e. is UHC seen as fair?) and comprehensibility (i.e. how easy is it to understand UHC?) were included as mediators. All items were measured both pre and post intervention using 0-100 slider-bar scales. In Study 2, we also included the Rasch Numeracy Scale and the Subjective Numeracy Scale as moderators.
+  
+  In Study 1, both HBP interventions increased UHC support versus the control. In Study 2 there was no main effect of the intervention on support for UHC; ps < .05. However, there was a significant interaction between the intervention and objective numeracy. Greater objective numeracy predicted increased support for UHC in the intervention versus the control.Conversely, lower objective numeracy resulted in our control increasing support for UHC more than our intervention. Support for UHC was mediated by perceived equity, but not comprehensibility.
+  
+  Active (i.e., creating your own plan) and passive (i.e., reviewing a pre-selected plan) HBP interventions increased support for UHC but not more than ‘standard’ UHC pamphlets. These interventions appeared to function by highlighting the equity inherent in HBP. However, the interventions were only effective for participants with high objective numeracy. Given that 29% of American adults (approximately 73 million) have low numeracy, it is important to focus future research on alternative approaches that are less quantitatively taxing. 
 ---
 
 
 
 ```{r pkgload, include = FALSE}
-#lets teach ourselves how to do this shit using the 'distill' package
+#lets teach ourselves how to do this shit using the 'distill' package #lolno
 library("distill")
 library("papaja")
 r_refs("r-references.bib")
@@ -63,9 +71,11 @@ library("texreg")
 ```
 
 
-```#{r child = "appendix_a.Rmd"}
+```{r child = "appendix_a.Rmd"}
 ```
 
 
-```#{r child = "appendix_b.Rmd"}
+```{r child = "appendix_b.Rmd"}
 ```
+
+# References

@@ -78,15 +78,19 @@ texreg(m1, custom.model.names = "Multi Level Model - Intercept Varies by Subject
        ci.force = TRUE)
 ```
 
-Descriptive statistics are summarized in [Table here]. Hypothesis 1 was analyzed using a linear mixed model fitted to our support for UHC outcome measure. We did not observe a statistically significant linear main effect for our experimental intervention, t (410) = -1.55, p = .122. We did observe a statistically significant linear main effect of time, t (410) = 6.09, p < .001. Support for UHC increased 1.903 points from pre-intervention to post-intervention. We also saw a statistically significant two-way interaction between the linear effect of time and condition, t(410) = -4.662 ,p < .001. In opposition of H1, as illustrated in [Table of Means Here], the intervention condition reduces support for UHC as compared to our control condition. This was opposite to the effect we expected.
+```{r study_2_table_1_alt, echo=FALSE, out.width="75%", fig.cap="Frequentist Model of Intervention on UHC Support"}
+knitr::include_graphics("study_2_table_1.png")
+```
+
+Descriptive statistics are summarized in the Table above. Hypothesis 1 was analyzed using a linear mixed model fitted to our support for UHC outcome measure. We did not observe a statistically significant linear main effect for our experimental intervention, t (410) = -1.55, p = .122. We did observe a statistically significant linear main effect of time, t (410) = 6.09, p < .001. Support for UHC increased 1.903 points from pre-intervention to post-intervention. We also saw a statistically significant two-way interaction between the linear effect of time and condition, t(410) = -4.662 ,p < .001. In opposition of H1, as illustrated in [Table of Means Here], the intervention condition reduces support for UHC as compared to our control condition. This was opposite to the effect we expected.
 
 ```{r study2_tab2, message=FALSE, warning=FALSE, echo=FALSE, results="asis"}
-
-
 by_cond
 ```
 
-
+```{r study_2_table_2_alt, echo=FALSE, out.width="75%", fig.cap="Table of Means"}
+knitr::include_graphics("study_2_table_2.png")
+```
 
 ```{r study2_plot1, fig.cap="Our control condition improved support for UHC while our intervention did not",message=FALSE, warning=FALSE, echo=FALSE}
 
@@ -98,7 +102,7 @@ plot1 + facet_wrap(~ condition)+ scale_color_brewer(palette = "Set1")+labs(x = "
 
 ## Proposed Mediational Effects
 
-Tingley et al., (2014) as well as Frazier & Tix (2004) describe the necessary procedures to test mediational hypothesis. For H2a, we posit that perceived equity as a mediating variable for the causal effect of our intervention condition on support for UHC. The initial step in fitting our mediation model is to have our measure of perceived equity modelled as a function of our intervention condition and all covariates. Next, we have our support for UHC outcome variable modelled as a function of our measure of perceived equity (the proposed mediator) and the same set of covariates we used in our previous step. Finally, we generate 1000 bootstrap simulations using a quasi-Bayesian monte-carlo method based on normal approximation to estimate the average causal mediational effects and average direct effects of perceived equity on support for UHC. In support of H2a, the effect of our explicit HBP on support for UHC was partially mediated via the perceived equality of the HBP. We observed a statistically significant effect of experimental condition on our proposed mediating variable, perceived equality, t(820) = -3.551 ,p < .001. Perceived equality decreased 10.49 points in our intervention condition compared to our control condition. Furthermore, we observed a statistically significant effect of perceived equality on our outcome variable, support for UHC, t(821) = 18.243 ,p < .001. Support for UHC increased by .424 points for every point of increase in perceived equality. After computing 1000 bootstrapped samples, our estimate for our indirect effect was -2.72 (95% CI = -4.43, -1.03), thus our estimated average causal mediation effect is significant (p = 0.002).  In opposition to H2b, the effect of our explicit HBP on support for UHC was not mediated by the comprehensibility of the HBP.  This is since we do not see a significant effect of experimental condition on our proposed mediating variable, comprehensibility, t(820) = -0.805 , p =0.421.
+Tingley and colleagues -@Tingley2014 as well as Frazier & Tix -@Frazier2004 describe the necessary procedures to test mediational hypothesis. For H2a, we posit that perceived equity as a mediating variable for the causal effect of our intervention condition on support for UHC. The initial step in fitting our mediation model is to have our measure of perceived equity modelled as a function of our intervention condition and all covariates. Next, we have our support for UHC outcome variable modelled as a function of our measure of perceived equity (the proposed mediator) and the same set of covariates we used in our previous step. Finally, we generate 1000 bootstrap simulations using a quasi-Bayesian monte-carlo method based on normal approximation to estimate the average causal mediational effects and average direct effects of perceived equity on support for UHC. In support of H2a, the effect of our explicit HBP on support for UHC was partially mediated via the perceived equality of the HBP. We observed a statistically significant effect of experimental condition on our proposed mediating variable, perceived equality, t(820) = -3.551 ,p < .001. Perceived equality decreased 10.49 points in our intervention condition compared to our control condition. Furthermore, we observed a statistically significant effect of perceived equality on our outcome variable, support for UHC, t(821) = 18.243 ,p < .001. Support for UHC increased by .424 points for every point of increase in perceived equality. After computing 1000 bootstrapped samples, our estimate for our indirect effect was -2.72 (95% CI = -4.43, -1.03), thus our estimated average causal mediation effect is significant (p = 0.002).  In opposition to H2b, the effect of our explicit HBP on support for UHC was not mediated by the comprehensibility of the HBP.  This is since we do not see a significant effect of experimental condition on our proposed mediating variable, comprehensibility, t(820) = -0.805 , p =0.421.
 
 ```{r path_dia_equity, fig.cap="Path Diagram showing the effect of condition on UHC Support and Percieved Equity",message=FALSE, warning=FALSE, echo=FALSE}
 
@@ -118,7 +122,7 @@ mediation.fit <- sem(mediation.model, data=UHC_model_long)
 semPlot::semPaths(mediation.fit, "par", sizeMan = 8, sizeInt = 8, sizeLat = 8, edge.label.cex=1.5,fade=FALSE)
 ```
 
-We chose to illustrate our proposed mediational relationship using a path diagram, as seen in [Figure here]. Again, in support of H1a, we see that there is a mediational relationship between condition and UHC through the effect of perceived equity. Increased perceived equity increases support for UHC, and the control condition both has greater support for UHC, as well as greater perceived equity.
+We chose to illustrate our proposed mediational relationship using a path diagram. Again, in support of H1a, we see that there is a mediational relationship between condition and UHC through the effect of perceived equity. Increased perceived equity increases support for UHC, and the control condition both has greater support for UHC, as well as greater perceived equity.
 
 ## Moderating Effect of Numeracy
 
@@ -134,9 +138,9 @@ plot6 + scale_color_brewer(palette = "Set1")+
   geom_smooth(method = "lm", alpha =.3, se=FALSE)
 ```
 
-In partial opposition of H3, in [Table here], we see that there is no direct effect of subjective numeracy, ß = 1.784, t(624) = 1.551 ,p = .121, or significant interaction with experimental condition, ß = 1.411, t(624) = -0.867 ,p = .386, on support for UHC. Given the lack of direct effect and interaction, we were unable to find evidence of a moderating effect of subjective numeracy on support for UHC.
+In partial opposition of H3, in the table above, we see that there is no direct effect of subjective numeracy, ß = 1.784, t(624) = 1.551 ,p = .121, or significant interaction with experimental condition, ß = 1.411, t(624) = -0.867 ,p = .386, on support for UHC. Given the lack of direct effect and interaction, we were unable to find evidence of a moderating effect of subjective numeracy on support for UHC.
 
-In partial support of H3, in [Table here], we see a direct effect of objective numeracy on support for UHC, ß = 1.43, t (684) = 2.904, p = 0.004. Support for UHC increases by 1.43 points for each point of increase on the Rasch Numeracy Scale. Furthermore, we also see a significant interaction between the effect of objective numeracy and the condition, ß = 2.78, t (624) = 3.99, p < .001. In our intervention condition, support for UHC increases by an additional 2.78 points for each point of increase on the Rasch Numeracy Scale. Objective, but not subjective, numeracy has a significant effect on support for UHC, with an even greater effect for subjects in our intervention condition. 
+In partial support of H3, in the table above, we see a direct effect of objective numeracy on support for UHC, ß = 1.43, t (684) = 2.904, p = 0.004. Support for UHC increases by 1.43 points for each point of increase on the Rasch Numeracy Scale. Furthermore, we also see a significant interaction between the effect of objective numeracy and the condition, ß = 2.78, t (624) = 3.99, p < .001. In our intervention condition, support for UHC increases by an additional 2.78 points for each point of increase on the Rasch Numeracy Scale. Objective, but not subjective, numeracy has a significant effect on support for UHC, with an even greater effect for subjects in our intervention condition. 
 
 ```{r study2_plot3, fig.cap="We see no interaction between subjective numeracy and the intervention",message=FALSE, warning=FALSE, echo=FALSE}
 
